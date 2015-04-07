@@ -1,0 +1,12 @@
+# app
+dist/
+node_modules/
+bower_components/
+
+# IDE
+*sublime*
+
+# System
+.DS_Store*
+Thumbs.db
+script.min.js
