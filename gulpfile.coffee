@@ -14,6 +14,7 @@ require('./tasks/index.tasks') g, gsize, config
 require('./tasks/js.tasks') g, gsize, config
 require('./tasks/soy.tasks') g, gsize, config
 require('./tasks/less.tasks') g, gsize, config
+require('./tasks/lint.tasks') g, gsize, config
 
 
 g.task 'clean', ['clean:app'], ->
@@ -23,7 +24,7 @@ buildTaskDeps = ['copy:all', 'less:transpile', 'js:transpile', 'soy:transpile', 
 g.task 'build', buildTaskDeps, ->
 	return
 
-g.task 'lint', ['coffee:lint', 'js:lint'], ->
+g.task 'lint', ['coffee:lint'], ->
 	return
 
 g.task 'watch', ['build'], ->

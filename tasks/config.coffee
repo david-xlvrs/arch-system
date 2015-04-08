@@ -29,6 +29,7 @@ module.exports =
 				'!./src/**/*_test.coffee'
 				'!./src/test/*'
 			]
+			lint: 'coffeelint.json'
 		soy:
 			srcGlob: [
 				'./src/**/*.soy'
