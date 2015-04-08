@@ -65,5 +65,5 @@ module.exports =
 			nameConcatenatedLess: 'style.less'
 			nameCSSMinified: 'style.min.css'
 		react:
-			src: './node_modules/react/dist/react.min.js'
+			src: './node_modules/react/dist/react-with-addons.min.js'
 			dst: './dist/react'
