@@ -2,6 +2,7 @@ module.exports = (g, gsize, config) ->
 
   g.task 'index:create', ->
     gtemplate = require 'gulp-template'
+    gconnect = require 'gulp-connect'
 
     if config.argv.production
       scripts = """
@@ -20,3 +21,4 @@ module.exports = (g, gsize, config) ->
     .pipe(gtemplate {scripts})
     .pipe(gsize title: 'index:create')
     .pipe(g.dest config.paths.app.dst)
+    .pipe(gconnect.reload())

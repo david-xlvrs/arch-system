@@ -19,6 +19,7 @@ module.exports = (g, gsize, config) ->
 
   g.task 'js:minify', ['coffee:transpile'], ->
     gcompiler = require 'gulp-closure-compiler'
+    gconnect = require 'gulp-connect'
 
     level = switch config.argv.level
       when 1 then 'SIMPLE_OPTIMIZATIONS'
@@ -48,7 +49,7 @@ module.exports = (g, gsize, config) ->
         ]
     )
     .pipe(gsize title: 'js:minify minified')
-    # .pipe(g.dest config.paths.js.dst)
+    .pipe(gconnect.reload())
 
   g.task 'js:deps', ['coffee:transpile', 'copy:closure', 'copy:react'], ->
     gdeps = require 'gulp-closure-deps'

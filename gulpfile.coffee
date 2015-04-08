@@ -20,25 +20,23 @@ require('./tasks/lint.tasks') g, gsize, config
 g.task 'clean', ['clean:app'], ->
 	return
 
-buildTaskDeps = ['copy:all', 'less:transpile', 'js:transpile', 'soy:transpile', 'index:create']
-g.task 'build', buildTaskDeps, ->
+g.task 'build', ['copy:all', 'less:transpile', 'js:transpile', 'soy:transpile', 'index:create'], ->
 	return
 
 g.task 'lint', ['coffee:lint'], ->
 	return
 
 g.task 'watch', ['build'], ->
-	watchTaskDeps = if config.argv.timeInTitle then ['index:create'] else []
 	g.watch [
 		config.paths.img.srcGlob
 		config.paths.static.srcGlob
-	], watchTaskDeps.concat 'copy:all'
+	], ['copy:all']
 	g.watch [
 		config.paths.sprites.srcGlob
 		config.paths.less.srcGlob
-	], watchTaskDeps.concat 'less:transpile'
-	g.watch config.paths.coffee.srcGlob, watchTaskDeps.concat 'js:transpile'
-	g.watch config.paths.soy.srcGlob, watchTaskDeps.concat ['soy:transpile', 'js:transpile']
+	], ['less:transpile']
+	g.watch config.paths.coffee.srcGlob, ['js:transpile']
+	g.watch config.paths.soy.srcGlob, ['soy:transpile', 'js:transpile']
 	g.watch config.paths.index.srcGlob, ['index:create']
 
 g.task 'serve', ->
