@@ -29,5 +29,5 @@ module.exports = (g, config) ->
 	oldSrc = g.src
 	g.src = () ->
 		oldSrc.apply(g, Array::slice.call arguments, 0)
-		.pipe(gif(config.argv.continueOnError, gplumber errorHandler: onError))
+		.pipe(gif(not config.argv.failOnError, gplumber errorHandler: onError))
 	g
