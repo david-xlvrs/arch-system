@@ -9,7 +9,7 @@ indent_style = space
 
 [*.{coffee,html,less}]
 indent_size = 2
-indent_style = tab
+indent_style = space
 
 [*.{json,soy}]
 indent_size = 2
