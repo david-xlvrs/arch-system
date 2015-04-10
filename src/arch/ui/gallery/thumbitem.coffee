@@ -13,7 +13,7 @@ arch.ui.gallery.ThumbItem = React.createClass
 		'onClick': ->
 
 	render: ->
-		styles = @props['classes'][..]
+		styles = @props['classes'][..]	#TODO: vyresime pres classnames
 		styles.push 'active' if @props['active']
 		styles.push 'arch-hide' unless @props['display']
 

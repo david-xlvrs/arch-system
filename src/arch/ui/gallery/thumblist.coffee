@@ -17,6 +17,7 @@ arch.ui.gallery.ThumbList = React.createClass
 		items = []
 
 		items.push React.createElement arch.ui.gallery.ThumbItem,
+			'key': @props['labels']['prev']
 			'title': @props['labels']['prev']
 			'classes': ['thumblist-navig-prev']
 			'display': @props['actualItemIndex'] isnt 0
@@ -24,6 +25,7 @@ arch.ui.gallery.ThumbList = React.createClass
 
 		for page, index in @props['items']
 			items.push React.createElement arch.ui.gallery.ThumbItem,
+				'key': index + page['title']
 				'title': page['title']
 				'classes': ['thumblist-navig-item']
 				'thumbUrl': page['thumbUrl']
@@ -31,6 +33,7 @@ arch.ui.gallery.ThumbList = React.createClass
 				'onClick': @selectPage.bind @, index
 
 		items.push React.createElement arch.ui.gallery.ThumbItem,
+			'key': @props['labels']['next']
 			'title': @props['labels']['next']
 			'classes': ['thumblist-navig-next']
 			'display': @props['actualItemIndex'] isnt @props['items'].length - 1

@@ -23,7 +23,7 @@ sandbox.Bootstrap = ->
 
   galleryEl = domHelper.getElementByClass 'content', (`/** @type {!Element} */`) templateEl
 
-  arch.ui.gallery.create settings, galleryEl
+  arch.ui.gallery.render settings, galleryEl
 
   return
 
