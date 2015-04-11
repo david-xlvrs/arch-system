@@ -16,13 +16,10 @@ arch.ui.gallery.Gallery = React.createClass
   render: ->
     imageUrl = @props['items'][@state['actualItemIndex']]['imageUrl']
 
-    img = React.DOM.img 'className': 'full-image', 'src': imageUrl
-
     React.DOM.div 'className': 'arch-gallery', [
-      React.createElement(React.addons.CSSTransitionGroup, {transitionName: "example"},
-        img
+      React.createElement(React.addons.CSSTransitionGroup, {className: 'switchImg', transitionName: "example"},
+        React.DOM.img 'key': imageUrl, 'className': 'full-image', 'src': imageUrl
       ),
-      #img, #TODO: zkusit transition React.addons.CSSTransitionGroup('example', img),
       React.createElement(arch.ui.gallery.ThumbList,
         'items': @props['items']
         'actualItemIndex': @state['actualItemIndex']
