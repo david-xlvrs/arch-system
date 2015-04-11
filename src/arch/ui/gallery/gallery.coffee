@@ -1,8 +1,6 @@
 goog.provide 'arch.ui.gallery.Gallery'
 
-goog.require 'react'
 goog.require 'arch.ui.gallery.ThumbList'
-
 
 arch.ui.gallery.Gallery = React.createClass
   getDefaultProps: ->

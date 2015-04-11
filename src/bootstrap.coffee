@@ -1,7 +1,6 @@
 goog.provide 'sandbox.Bootstrap'
 
 goog.require 'goog.dom'
-goog.require 'react'
 goog.require 'sandbox.template'
 goog.require 'arch.mock'
 goog.require 'arch.ui.gallery.Gallery'
@@ -21,7 +20,7 @@ sandbox.Bootstrap = ->
     'initialItemIndex': 0
     'onPageChange': -> console.log 'outer change'
 
-  galleryEl = domHelper.getElementByClass 'content', (`/** @type {!Element} */`) templateEl
+  galleryEl = goog.dom.getElementByClass 'content', (`/** @type {!Element} */`) templateEl
 
   arch.ui.gallery.render settings, galleryEl
 

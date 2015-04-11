@@ -1,8 +1,6 @@
 goog.provide 'arch.ui.gallery.ThumbList'
 
-goog.require 'react'
 goog.require 'arch.ui.gallery.ThumbItem'
-
 
 arch.ui.gallery.ThumbList = React.createClass
   getDefaultProps: ->
@@ -19,7 +17,7 @@ arch.ui.gallery.ThumbList = React.createClass
     items.push React.createElement arch.ui.gallery.ThumbItem,
       'key': @props['labels']['prev']
       'title': @props['labels']['prev']
-      'classes': ['thumblist-navig-prev']
+      'type': arch.ui.gallery.ThumbItem.TYPE_PREVIOUS
       'display': @props['actualItemIndex'] isnt 0
       'onClick': @selectPage.bind @, Math.max 0, @props['actualItemIndex'] - 1
 
@@ -27,7 +25,6 @@ arch.ui.gallery.ThumbList = React.createClass
       items.push React.createElement arch.ui.gallery.ThumbItem,
         'key': index + page['title']
         'title': page['title']
-        'classes': ['thumblist-navig-item']
         'thumbUrl': page['thumbUrl']
         'active': @props['actualItemIndex'] is index
         'onClick': @selectPage.bind @, index
@@ -35,7 +32,7 @@ arch.ui.gallery.ThumbList = React.createClass
     items.push React.createElement arch.ui.gallery.ThumbItem,
       'key': @props['labels']['next']
       'title': @props['labels']['next']
-      'classes': ['thumblist-navig-next']
+      'type': arch.ui.gallery.ThumbItem.TYPE_NEXT
       'display': @props['actualItemIndex'] isnt @props['items'].length - 1
       'onClick': @selectPage.bind @, Math.min @props['items'].length - 1, @props['actualItemIndex'] + 1
 
