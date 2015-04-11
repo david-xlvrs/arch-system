@@ -1,6 +1,5 @@
 {
-  "name": "sandbox",
-  "version": "1.0.0",
+  "name": "closure-sandbox",
   "private": true,
   "dependencies": {
     "closure-compiler": "http://dl.google.com/closure-compiler/compiler-latest.zip"

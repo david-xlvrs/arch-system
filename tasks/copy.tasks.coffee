@@ -1,13 +1,11 @@
 module.exports = (g, gsize, config) ->
 
   gchanged = require 'gulp-changed'
-  ginsert = require 'gulp-insert'
+  gsymlink = require 'gulp-sym'
 
   g.task 'copy:closure', [], ->
-    g.src(config.paths.closure.srcGlob)
-    .pipe(gchanged config.paths.closure.dst)
-    .pipe(gsize title: 'copy:closure')
-    .pipe(g.dest config.paths.closure.dst)
+    g.src(config.paths.closure.src)
+    .pipe(gsymlink config.paths.closure.dst, force: yes, relative: yes)
 
   g.task 'copy:img', [], ->
     stream = g.src(config.paths.img.srcGlob)
@@ -28,11 +26,4 @@ module.exports = (g, gsize, config) ->
     .pipe(gsize title: 'copy:static')
     .pipe(g.dest config.paths.app.dst)
 
-  g.task 'copy:react', [], ->
-    g.src(config.paths.react.src)
-    .pipe(gchanged config.paths.react.dst)
-    .pipe(ginsert.prepend "goog.provide('react');\n\n")
-    .pipe(gsize title: 'copy:react')
-    .pipe(g.dest config.paths.react.dst)
-
-  g.task 'copy:all', ['copy:closure', 'copy:img', 'copy:static', 'copy:react']
+  g.task 'copy:all', ['copy:closure', 'copy:img', 'copy:static']

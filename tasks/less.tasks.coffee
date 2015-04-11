@@ -52,7 +52,7 @@ module.exports = (g, gsize, config) ->
       stream = stream.pipe(gminify())
         .pipe(grename config.paths.less.nameCSSMinified)
 
-    stream = stream.pipe(gsize title: 'less:transpile CSS')
+    stream = stream.pipe(gsize title: 'less:transpile output')
 
     if config.argv.sourcemaps
       stream = stream.pipe(gsourcemaps.write path.relative config.paths.less.dst, config.paths.less.mapDst)

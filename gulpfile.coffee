@@ -16,36 +16,37 @@ require('./tasks/soy.tasks') g, gsize, config
 require('./tasks/less.tasks') g, gsize, config
 require('./tasks/lint.tasks') g, gsize, config
 
-
 g.task 'clean', ['clean:app'], ->
-	return
+  return
 
-g.task 'build', ['copy:all', 'less:transpile', 'js:transpile', 'soy:transpile', 'index:create'], ->
-	return
+g.task 'build', ['copy:all', 'less:transpile', 'js:all', 'index:create'], ->
+  return
 
 g.task 'lint', ['coffee:lint'], ->
-	return
+  return
 
 g.task 'watch', ['build'], ->
-	g.watch [
-		config.paths.img.srcGlob
-		config.paths.static.srcGlob
-	], ['copy:all']
-	g.watch [
-		config.paths.sprites.srcGlob
-		config.paths.less.srcGlob
-	], ['less:transpile']
-	g.watch config.paths.coffee.srcGlob, ['js:transpile']
-	g.watch config.paths.soy.srcGlob, ['soy:transpile', 'js:transpile']
-	g.watch config.paths.index.srcGlob, ['index:create']
+  g.watch [
+    config.paths.img.srcGlob
+    config.paths.static.srcGlob
+  ], ['copy:all']
+  g.watch [
+    config.paths.sprites.srcGlob
+    config.paths.less.srcGlob
+  ], ['less:transpile']
+  g.watch [
+    config.paths.coffee.srcGlob
+    config.paths.soy.srcGlob
+  ], ['js:all']
+  g.watch config.paths.index.template, ['index:create']
 
 g.task 'serve', ->
-	gconnect.server
-		root: ['dist']
-		port: port
-		livereload: env is 'development'
+  gconnect.server
+    root: ['dist']
+    port: port
+    livereload: env is 'development'
 
-	open 'http://localhost:' + port
+  open 'http://localhost:' + port
 
 g.task 'default', ['build'], ->
-	return
+  return

@@ -1,25 +1,46 @@
 module.exports = (g, gsize, config) ->
+  path = require 'path'
+  gconcat = require 'gulp-concat'
+  gconnect = require 'gulp-connect'
+  gchanged = require 'gulp-changed'
 
   g.task 'coffee:transpile', [], ->
-    # coffee do JS
-    gchanged = require 'gulp-changed'
     gcoffee = require 'gulp-coffee'
     gcoffee2closure = require 'gulp-coffee2closure'
 
     g.src(config.paths.coffee.srcGlob)
-    .pipe(gchanged config.paths.js.dst, extension: '.js')
+    .pipe(gchanged config.paths.js.devDst, extension: '.js')
     .pipe(gsize title: 'coffee:transpile source')
     .pipe(gcoffee bare: yes)
     .pipe(gcoffee2closure())
     .pipe(gsize title: 'coffee:transpile output')
+    .pipe(g.dest config.paths.js.devDst)
+
+  g.task 'js:all', if config.argv.production then ['js:build'] else ['js:vendor', 'js:deps']
+
+  g.task 'js:build', ['js:vendor', 'js:compile'], ->
+    g.src([
+      path.join config.paths.vendor.dst, config.paths.vendor.concatName
+      path.join config.paths.js.devBuildDst, config.paths.js.nameMinified
+    ])
+    .pipe(gconcat config.paths.js.nameConcatenatedMinified)
+    .pipe(gsize title: 'js:build')
     .pipe(g.dest config.paths.js.dst)
+    .pipe(gconnect.reload())
 
-  # min na prod
-  g.task 'js:transpile', [if config.argv.production then 'js:minify' else 'js:deps']
+  g.task 'js:vendor', [], ->
+    guglify = require 'gulp-uglify'
 
-  g.task 'js:minify', ['coffee:transpile'], ->
+    g.src(config.paths.vendor.srcGlob)
+    .pipe(gchanged config.paths.vendor.dst)
+    .pipe(gsize title: 'js:vendor source')
+    .pipe(guglify compress: no)
+    .pipe(gconcat config.paths.vendor.concatName)
+    .pipe(gsize title: 'js:vendor output')
+    .pipe(g.dest config.paths.vendor.dst)
+
+  g.task 'js:compile', ['coffee:transpile', 'soy:transpile'], ->
     gcompiler = require 'gulp-closure-compiler'
-    gconnect = require 'gulp-connect'
 
     level = switch config.argv.level
       when 1 then 'SIMPLE_OPTIMIZATIONS'
@@ -27,42 +48,37 @@ module.exports = (g, gsize, config) ->
       else 'WHITESPACE_ONLY'
 
     g.src(config.paths.js.srcGlob)
-    .pipe(gsize title: 'js:minify source')
+    .pipe(gsize title: 'js:compile source')
     .pipe(gcompiler
-      fileName: config.paths.js.dstMinified
+      fileName: path.join config.paths.js.devBuildDst, config.paths.js.nameMinified
       maxBuffer: 10000
       compilerPath: config.paths.js.compiler
       compilerFlags:
         closure_entry_point: 'sandbox.Bootstrap'
         define: [
-          'goog.DEBUG=' + config.argv.debug.toString()
+          'goog.DEBUG=' + config.argv.debug
         ]
         compilation_level: level
         only_closure_dependencies: yes
+        output_manifest: path.join config.paths.js.devBuildDst, config.paths.js.compiledManifest
         output_wrapper: '(function(){%output%})();'
         warning_level: 'QUIET'
-        jscomp_off: [
-          'globalThis' # get past the first batch of errors
-        ]
         externs: [
           'node_modules/react-externs/externs.js'
         ]
     )
-    .pipe(gsize title: 'js:minify minified')
-    .pipe(gconnect.reload())
+    .pipe(gsize title: 'js:compile output')
 
-  g.task 'js:deps', ['coffee:transpile', 'copy:closure', 'copy:react'], ->
+  g.task 'js:deps', ['coffee:transpile', 'soy:transpile'], ->
     gdeps = require 'gulp-closure-deps'
-    path = require 'path'
-    gconnect = require 'gulp-connect'
 
     g.src(config.paths.js.srcDepsGlob)
     .pipe(gsize title: 'js:deps source')
     .pipe(gdeps
-      fileName: path.relative config.paths.js.dst, config.paths.js.depsDst
-      prefix: '../../../../'
+      fileName: config.paths.js.nameDeps
+      prefix: config.paths.js.depsRelative
       baseDir: config.paths.app.dst
     )
-    .pipe(gsize title: 'js:deps')
-    .pipe(g.dest config.paths.js.dst)
+    .pipe(gsize title: 'js:deps output')
+    .pipe(g.dest config.paths.js.devDst)
     .pipe(gconnect.reload())
