@@ -1,0 +1,78 @@
+html, body, .main, .content {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+
+  .aa-application {
+    position: relative;
+    height: 100%;
+
+    .aa-menu {
+      position: absolute;
+      bottom: 0;
+      height: 50px;
+      width: 100%;
+
+      li {
+        display: inline-block;
+        padding: 0 20px;
+      }
+    }
+
+    .aa-page {
+      width: 100%;
+      height: 100%;
+
+      &.aa-page-splash {
+        background-position: center center;
+        background-size: cover;
+
+        h1 {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: 60px;
+          margin-top: -30px;
+          line-height: 60px;
+          font-size: 40px;
+          text-align: center;
+        }
+
+        .aa-splash-fade {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transition: opacity 500ms ease-in;
+
+          div {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+}

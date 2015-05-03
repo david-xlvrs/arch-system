@@ -56,7 +56,7 @@ module.exports =
       nameCSSMinified: 'style.min.css'
     vendor:
       srcGlob: [
-        './node_modules/react/dist/react-with-addons.min.js'
+        './node_modules/react/dist/react-with-addons.js'
         './node_modules/classnames/index.js'
       ]
       dst: './' + buildDir + '/_dev/vendor/'
