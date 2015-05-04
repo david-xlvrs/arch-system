@@ -1,3 +1,16 @@
+.aaHover {
+  transition: opacity 200ms ease-in;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
+
 html, body, .main, .content {
   width: 100%;
   height: 100%;
@@ -11,17 +24,38 @@ html, body, .main, .content {
 
     .aa-menu {
       position: absolute;
-      bottom: 0;
+      top: 100%;
       height: 50px;
       width: 100%;
+      margin-top: -50px;
+      transition: top 500ms ease-in, margin-top 500ms ease-in;
 
-      li {
-        display: inline-block;
-        padding: 0 20px;
+      &.expanded {
+        top: 0%;
+        margin-top: 0;
+      }
+
+      ul {
+        margin: 0;
+        line-height: 50px;
+
+        li {
+          display: inline-block;
+          padding: 0 20px;
+
+          a {
+            color: inherit;
+            font-weight: bold;
+            text-decoration: none;
+            .aaHover;
+          }
+        }
       }
     }
 
     .aa-page {
+      position: absolute;
+      top: 0;
       width: 100%;
       height: 100%;
 
@@ -55,6 +89,36 @@ html, body, .main, .content {
           }
         }
       }
+
+      &.aa-page-selected {
+        // position: absolute;
+        // top: 50px;
+      }
+    }
+
+    .aa-project-slide {
+      height: 80%;
+      position: relative;
+
+      img {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: 75%;
+        max-height: 65%;
+        margin: auto;
+      }
+
+      h2 {
+        position: absolute;
+        bottom: 5%;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+      }
     }
   }
 }
@@ -75,4 +139,42 @@ html, body, .main, .content {
 
 .example-leave.example-leave-active {
   opacity: 0.01;
+}
+
+.selected-start-enter {
+  top: 90% !important;
+  opacity: 1;
+  transition: opacity 6s linear, top .5s ease-in;
+
+  .aa-project-slide * {
+    opacity: 0.01;
+    transition: opacity .5s ease-in 3s;
+  }
+}
+
+.selected-start-enter.selected-start-enter-active {
+  top: 0% !important;
+  opacity: 1;
+
+  .aa-project-slide * {
+    opacity: 1;
+  }
+}
+
+.selected-start-leave {
+  top: 0% !important;
+  transition: opacity 6s linear, top .5s ease-in;
+
+  .aa-project-slide * {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }
+}
+
+.selected-start-leave.selected-start-leave-active {
+  top: 100% !important;
+
+  .aa-project-slide * {
+    opacity: 0.01;
+  }
 }

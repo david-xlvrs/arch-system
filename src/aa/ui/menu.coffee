@@ -3,7 +3,8 @@ goog.provide 'aa.ui.MenuItem'
 
 aa.ui.Menu = React.createClass
   getDefaultProps: ->
-    'active': null
+    'expanded': no
+    'colors': {}
 
   render: ->
     links = []
@@ -29,7 +30,15 @@ aa.ui.Menu = React.createClass
       'url': window.location.href + '#index'
       'className': 'aa-menu-index'
 
-    React.DOM.div 'className': 'aa-menu',
+    config =
+      'className': classNames
+        'aa-menu': yes
+        'expanded': @props['expanded']
+      'style':
+        'color': @props['colors']['content']
+        'backgroundColor': @props['colors']['bg']
+
+    React.DOM.div config,
       React.DOM.ul null, links
 
 

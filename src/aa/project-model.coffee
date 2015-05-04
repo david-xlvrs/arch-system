@@ -20,10 +20,13 @@ class aa.ProjectModel extends goog.events.EventTarget
 
   getSplashData: ->
     'colors':
-      'bg': '#906090'
+      'bg': '#aaa'
       'content': '#333'
     'title': 'Studio Raketoplan'
     'imageUrl': 'http://www.bustler.net/images/gallery/international_architecture_awards_2009_03.jpg'
+
+  getSelectedData: ->
+    @rows
 
   load: ->
     setTimeout(=>
