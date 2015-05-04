@@ -1,4 +1,5 @@
 port = process.env.PORT or 9000
+livereloadPort = process.env.LIVERELOAD_PORT or 35730
 env = process.env.NODE_ENV or 'development'
 
 g = require 'gulp'
@@ -41,10 +42,15 @@ g.task 'watch', ['build'], ->
   g.watch config.paths.index.template, ['index:create']
 
 g.task 'serve', ->
+  liverload = if env is 'development'
+    port: livereloadPort
+  else
+    no
+
   gconnect.server
     root: ['dist']
     port: port
-    livereload: env is 'development'
+    livereload: liverload
 
   open 'http://localhost:' + port
 
