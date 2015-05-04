@@ -9,20 +9,17 @@ aa.ui.Splash = React.createClass
     'loaded': no
 
   render: ->
-    config =
-      'className': classNames ['aa-page', 'aa-page-splash']
-      'style':
-        'backgroundImage': 'url(' + @props['imageUrl'] + ')'
-
     content = []
-
-    unless @props['loaded']
-      content.push React.createElement(React.addons.CSSTransitionGroup, {'className': 'aa-splash-fade', 'transitionName': "example"},
+    content.push React.createElement(React.addons.CSSTransitionGroup, {
+      'className': 'aa-splash-fade', 'transitionName': 'example', 'key': 'splash-transition'},
+        unless @props['loaded']
           React.DOM.div
             'key': 'splash-fade'
             'style':
               'backgroundColor': @props['colors']['bg']
-        )
+        else
+          null
+      )
 
     content.push React.DOM.h1
       'key': 'splash-title'
@@ -31,5 +28,9 @@ aa.ui.Splash = React.createClass
       ,
         @props['title']
 
+    config =
+      'className': classNames ['aa-page', 'aa-page-splash']
+      'style':
+        'backgroundImage': 'url(' + @props['imageUrl'] + ')'
     React.DOM.div config, content
 

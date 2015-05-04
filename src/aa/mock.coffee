@@ -17,11 +17,11 @@ aa.mock.List =
         value: 'Realizováno'
     ]
     colors:
-      bgColor: '#403B3B'
-      contentColor: '#fff'
+      bg: '#403B3B'
+      content: '#fff'
     image:
       size: [1024, 768]
-      url: 'url na obrazek, ktery bude ve velikosti kterou poslu v requestu'
+      url: 'http://ad009cdnb.archdaily.net/wp-content/uploads/2011/03/1299213392-mg-1336-1280x853-1000x666.jpg'
   ,
     id: 2
     title: 'Stodola, Benešov'
@@ -36,11 +36,11 @@ aa.mock.List =
         value: 'Realizováno'
     ]
     colors:
-      bgColor: '#fff'
-      contentColor: '#906090'
+      bg: '#fff'
+      content: '#906090'
     image:
       size: [1080, 1920]
-      url: 'url na obrazek, ktery bude ve velikosti kterou poslu v requestu'
+      url: 'http://ad009cdnb.archdaily.net/wp-content/uploads/2012/08/5024bf9528ba0d658d00003c_hope-street-geelong-west-steve-domoney-architecture_heard_1.jpg'
 ]
 
 aa.mock.Detail =
@@ -60,8 +60,8 @@ aa.mock.Detail =
         value: 'Realizováno'
     ]
     colors:
-      bgColor: '#403B3B'
-      contentColor: '#fff'
+      bg: '#403B3B'
+      content: '#fff'
     image:
       size: [1024, 768]
       url: 'url na obrazek, ktery bude ve velikosti kterou poslu v requestu'
@@ -72,8 +72,8 @@ aa.mock.Detail =
         title: 'Pohled na štít domu z jižní části'
         desc: 'nějaký popisek' # muze byt null
         colors:
-          bgColor: '#403B3B'
-          contentColor: '#fff'
+          bg: '#403B3B'
+          content: '#fff'
         image:
           size: [1024, 768]
           url: 'url na obrazek, ktery bude ve velikosti kterou poslu v requestu'
@@ -87,6 +87,6 @@ aa.mock.Detail =
         title: 'Pohled na štít domu z jižní části'
         html: '<p>prvni odstavec</p><p>druhy <strong>odstavec</strong></p>'
         colors:
-          bgColor: '#403B3B'
-          contentColor: '#fff'
+          bg: '#403B3B'
+          content: '#fff'
     ]
