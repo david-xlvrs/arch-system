@@ -9,25 +9,27 @@ aa.ui.Menu = React.createClass
   render: ->
     links = []
 
+    urlwithoutHash = window.location.href.split('#')[0]
+
     #about
     links.push React.createElement aa.ui.MenuItem,
       'key': 'about'
       'title': 'About'
-      'url': window.location.href + '#about'
+      'url': urlwithoutHash + '#about'
       'className': 'aa-menu-about'
 
     #selected
     links.push React.createElement aa.ui.MenuItem,
       'key': 'selected'
       'title': 'Selected projects'
-      'url': window.location.href + '#selected'
+      'url': urlwithoutHash + '#selected'
       'className': 'aa-menu-selected'
 
     #index
     links.push React.createElement aa.ui.MenuItem,
       'key': 'index'
       'title': 'Index'
-      'url': window.location.href + '#index'
+      'url': urlwithoutHash + '#index'
       'className': 'aa-menu-index'
 
     config =

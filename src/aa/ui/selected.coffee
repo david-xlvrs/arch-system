@@ -8,6 +8,10 @@ aa.ui.Selected = React.createClass
 
   render: ->
     content = []
+    content.push React.createElement aa.ui.Menu,
+      'key': 'aa-content-menu'
+      #'expanded': @props['section'] isnt aa.ui.Application.SECTION_SPLASH
+      'colors': @props['projects']?[0]['colors']
 
     if @props['projects']?.length
       for project in @props['projects']

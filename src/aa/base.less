@@ -1,4 +1,4 @@
-.aaHover {
+.aaHover-mixin {
   transition: opacity 200ms ease-in;
   opacity: 0.5;
 
@@ -9,6 +9,34 @@
   &:active {
     opacity: 1;
   }
+}
+
+.keyframes-mixin (@name; @arguments) {
+  @-webkit-keyframes @name { @arguments(); }
+  @-moz-keyframes @name { @arguments(); }
+  @-ms-keyframes @name { @arguments(); }
+  @-o-keyframes @name { @arguments(); }
+  @keyframes @name { @arguments(); }
+}
+
+.animation-mixin (@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  -ms-animation: @arguments;
+  -o-animation: @arguments;
+  animation: @arguments;
+}
+
+.animation-play-state-mixin (@arguments) {
+  -webkit-animation-play-state: @arguments;
+  -moz-animation-play-state: @arguments;
+  -ms-animation-play-state: @arguments;
+  -o-animation-play-state: @arguments;
+  animation-play-state: @arguments;
+}
+
+body {
+  overflow-y: scroll;
 }
 
 html, body, .main, .content {
@@ -47,9 +75,17 @@ html, body, .main, .content {
             color: inherit;
             font-weight: bold;
             text-decoration: none;
-            .aaHover;
+            .aaHover-mixin;
           }
         }
+      }
+    }
+
+    .aa-content {
+      .aa-menu {
+        top: 0;
+        margin-top: 0;
+        z-index: 100;
       }
     }
 
@@ -141,20 +177,31 @@ html, body, .main, .content {
   opacity: 0.01;
 }
 
+
+
+.keyframes-mixin(contentAnimIn; {
+    0% {transform: translate3d(0,90%,0);}
+    50% {transform: translate3d(0,0%,0);}
+    100% {transform: translate3d(0,0%,0);}
+});
+
+.keyframes-mixin(contentAnimOut; {
+    0% {transform: translate3d(0,0%,0);}
+    40% {transform: translate3d(0,0%,0);}
+    100% {transform: translate3d(0,90%,0);}
+});
+
 .selected-start-enter {
-  top: 90% !important;
-  opacity: 1;
-  transition: opacity 6s linear, top .5s ease-in;
+  .animation-mixin(contentAnimIn 1s ease-in paused);
 
   .aa-project-slide * {
     opacity: 0.01;
-    transition: opacity .5s ease-in 3s;
+    transition: opacity .5s ease-in 0.4s;
   }
 }
 
 .selected-start-enter.selected-start-enter-active {
-  top: 0% !important;
-  opacity: 1;
+  .animation-play-state-mixin(running);
 
   .aa-project-slide * {
     opacity: 1;
@@ -162,8 +209,7 @@ html, body, .main, .content {
 }
 
 .selected-start-leave {
-  top: 0% !important;
-  transition: opacity 6s linear, top .5s ease-in;
+  .animation-mixin(contentAnimOut 1s ease-in paused);
 
   .aa-project-slide * {
     opacity: 1;
@@ -172,7 +218,7 @@ html, body, .main, .content {
 }
 
 .selected-start-leave.selected-start-leave-active {
-  top: 100% !important;
+  .animation-play-state-mixin(running);
 
   .aa-project-slide * {
     opacity: 0.01;
