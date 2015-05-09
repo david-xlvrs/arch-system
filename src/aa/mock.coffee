@@ -88,17 +88,17 @@ aa.mock.Detail =
         id: 1
         projectId: 1
         type: 'image'
-        title: 'Hlavní část'
+        title: 'Hlavní budova'
         desc: 'nějaký popisek' # muze byt null
         colors:
           bg: '#4c746c'
           content: '#C6CFCE'
         image:
           size: [1024, 768]
-          url: '/img/data/01.jpg'
+          url: '/img/data/04.jpg'
         fullImage:
           size: [2048, 1536]
-          url: '/img/data/01.jpg'
+          url: '/img/data/04.jpg'
       ,
         id: 2
         projectId: 1

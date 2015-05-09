@@ -1,40 +1,72 @@
 goog.provide 'aa.ui.Detail'
 
+goog.require 'goog.array'
 goog.require 'goog.object'
 
 
 aa.ui.Detail = React.createClass
   getDefaultProps: ->
     'project': {}
-    'activeProject': 0
+    'activeSlide': 0
+    'moveNext': no
 
   render: ->
     project = @props['project']
     return null if goog.object.isEmpty project
 
-    content = []
+    console.log 'kreslim DETAIL', @props['moveNext']
+
+    slides = goog.array.clone project['slides']
+    goog.array.insertAt slides, project, 0
+
+    slideElements = []
 
     config =
       'key': 'project' + project['id']
       'className': 'aa-project-slide'
-      'style':
-        'color': project['colors']['content']
-        'backgroundColor': project['colors']['bg']
 
-    content.push React.DOM.div config, [
+    slideElements.push React.DOM.div config, [
         React.DOM.img
-          'key': 'projectImg' + project['id']
-          'src': project['image']['url']
+          'key': 'projectImg' + slides[@props['activeSlide']]['id']
+          'src': slides[@props['activeSlide']]['image']['url']
       ,
-        React.DOM.h2 'key': 'projectTitle' + project['id'], project['title']
+        React.DOM.h2 'key': 'projectTitle' + slides[@props['activeSlide']]['id'], slides[@props['activeSlide']]['title']
       ]
 
-    content.push React.DOM.a
-      'key': 'detail-closer'
-      'className': 'aa-close'
-      'href': '/#selected'
+    if slides.length > 1
+      slideElements.push React.DOM.div {
+        'key': 'next-slide'
+        'className': 'aa-project-slide aa-next-slide'
+        'onClick': ->
+      }, [
+        React.DOM.img
+          'key': 'projectImg' + slides[@props['activeSlide'] + 1]['id']
+          'src': slides[@props['activeSlide'] + 1]['image']['url']
+      ]
+
+      slideElements.push React.DOM.div {
+        'key': 'previous-slide'
+        'className': 'aa-project-slide aa-previous-slide'
+      }, [
+        React.DOM.img
+          'key': 'projectImg' + slides[slides.length - 1]['id']
+          'src': slides[slides.length - 1]['image']['url']
+      ]
+
+
 
     config =
-      'className': classNames ['aa-page', 'aa-page-detail']
-    React.DOM.div config, content
+      'className': classNames
+        'aa-page': yes
+        'aa-page-detail': yes
+      'style':
+        'color': slides[@props['activeSlide']]['colors']['content']
+        'backgroundColor': slides[@props['activeSlide']]['colors']['bg']
+    React.DOM.div config, [
+      React.DOM.div 'key': 'detail-list', 'className': 'aa-detail-list', slideElements
+      React.DOM.a
+        'key': 'detail-closer'
+        'className': 'aa-close'
+        'href': '/#selected'
+    ]
 

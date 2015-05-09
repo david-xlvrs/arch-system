@@ -46,7 +46,7 @@ aa.ui.Application = React.createClass
           when aa.ui.Application.SECTION_DETAIL
             React.createElement aa.ui.Detail,
               'key': 'section-detail'
-              'project': @props['data']['selected']?[0]
+              'project': @props['data']['detail']
           else
             null
       )
