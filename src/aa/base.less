@@ -1,39 +1,8 @@
-.aaHover-mixin {
-  transition: opacity 200ms ease-in;
-  opacity: 0.5;
+@import "./src/aa/reset.less";
+@import "./src/aa/mixins.less";
+@import "./src/aa/transitions.less";
 
-  &:hover {
-    opacity: 0.75;
-  }
-
-  &:active {
-    opacity: 1;
-  }
-}
-
-.keyframes-mixin (@name; @arguments) {
-  @-webkit-keyframes @name { @arguments(); }
-  @-moz-keyframes @name { @arguments(); }
-  @-ms-keyframes @name { @arguments(); }
-  @-o-keyframes @name { @arguments(); }
-  @keyframes @name { @arguments(); }
-}
-
-.animation-mixin (@arguments) {
-  -webkit-animation: @arguments;
-  -moz-animation: @arguments;
-  -ms-animation: @arguments;
-  -o-animation: @arguments;
-  animation: @arguments;
-}
-
-.animation-play-state-mixin (@arguments) {
-  -webkit-animation-play-state: @arguments;
-  -moz-animation-play-state: @arguments;
-  -ms-animation-play-state: @arguments;
-  -o-animation-play-state: @arguments;
-  animation-play-state: @arguments;
-}
+//TODO: uklidit
 
 body {
   overflow-y: scroll;
@@ -104,10 +73,10 @@ html, body, .main, .content {
           top: 50%;
           left: 0;
           width: 100%;
-          height: 60px;
-          margin-top: -30px;
-          line-height: 60px;
-          font-size: 40px;
+          height: 90px;
+          margin-top: -45px;
+          line-height: 90px;
+          font-size: 80px;
           text-align: center;
         }
 
@@ -125,16 +94,15 @@ html, body, .main, .content {
           }
         }
       }
-
-      &.aa-page-selected {
-        // position: absolute;
-        // top: 50px;
-      }
     }
 
     .aa-project-slide {
       height: 80%;
       position: relative;
+
+      a {
+        color: inherit;
+      }
 
       img {
         display: block;
@@ -154,73 +122,75 @@ html, body, .main, .content {
         width: 100%;
         margin: 0;
         text-align: center;
+        color: inherit;
+      }
+
+      &.aa-next-slide {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 12.5%;
+        .aaHover-mixin;
+        cursor: pointer;
+
+        img {
+          right: auto;
+          max-width: 600%;
+        }
+      }
+
+      &.aa-previous-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 12.5%;
+        .aaHover-mixin;
+        cursor: pointer;
+
+        img {
+          left: auto;
+          max-width: 600%;
+        }
+      }
+    }
+
+    .aa-page-detail {
+      overflow-x: hidden;
+
+      .aa-project-slide {
+        height: 100%;
+      }
+    }
+
+    .aa-page-index {
+      .aa-table {
+        padding: 100px 50px;
+        table {
+          width: 100%;
+
+          td img {
+            display: block;
+            width: 150px;
+          }
+        }
       }
     }
   }
 }
 
-.example-enter {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
+.aa-detail-list {
+  position: relative;
+  height: 100%;
 }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-}
-
-.example-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-}
-
-
-
-.keyframes-mixin(contentAnimIn; {
-    0% {transform: translate3d(0,90%,0);}
-    50% {transform: translate3d(0,0%,0);}
-    100% {transform: translate3d(0,0%,0);}
-});
-
-.keyframes-mixin(contentAnimOut; {
-    0% {transform: translate3d(0,0%,0);}
-    40% {transform: translate3d(0,0%,0);}
-    100% {transform: translate3d(0,90%,0);}
-});
-
-.selected-start-enter {
-  .animation-mixin(contentAnimIn 1s ease-in paused);
-
-  .aa-project-slide * {
-    opacity: 0.01;
-    transition: opacity .5s ease-in 0.4s;
-  }
-}
-
-.selected-start-enter.selected-start-enter-active {
-  .animation-play-state-mixin(running);
-
-  .aa-project-slide * {
-    opacity: 1;
-  }
-}
-
-.selected-start-leave {
-  .animation-mixin(contentAnimOut 1s ease-in paused);
-
-  .aa-project-slide * {
-    opacity: 1;
-    transition: opacity .5s ease-in;
-  }
-}
-
-.selected-start-leave.selected-start-leave-active {
-  .animation-play-state-mixin(running);
-
-  .aa-project-slide * {
-    opacity: 0.01;
-  }
+.aa-close {
+  display: block;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  background: url(/img/cross.png) no-repeat;
+  .aaHover-mixin;
 }

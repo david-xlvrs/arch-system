@@ -1,0 +1,103 @@
+/*
+ *
+ * CSS Normalize 1.0 v31
+ * https://github.com/vancakjansw/CSS-Normalize
+ *
+ */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: subpixel-antialiased;
+  line-height: 1.4;
+  font-family: sans-serif;
+}
+
+/*
+ *  Block elements normalization
+ */
+html, body, canvas, dd, div, dl, fieldset, figcaption, figure, footer, form,
+h1, h2, h3, h4, h5, h6, address, article, aside, audio, blockquote, header,
+hr, ol, output, p, pre, section, table, tfoot, tbody, thead, ul,
+video, legend, time, embed, output, iframe {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+/*
+ *  Set HTML5 tags to a block elements in IE 8/9
+ *  Set HTML5 'details' and 'summary' tags to a block elements in IE 10/11 and firefox
+ *  Set HTML5 'main' tag to a block elements in IE 11
+ */
+article, aside, figcaption, figure, footer, header, nav, section,
+details, summary, main {
+  display: block;
+}
+
+/*
+ *  In-line elements normalization
+ */
+b, big, i, small, tt, abbr, acronym, cite, code, dfn, em, kbd, button, input,
+label, select, textarea, optgroup, small, strike, mark, strong, samp, var, a,
+bdo, br, img, map, object, q, span, sub, sup {
+  padding: 0;
+  margin: 0;
+  border: 0; //kill focus stuffs
+  outline: 0;
+}
+
+/*
+ *  Table homogenization
+ */
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0;
+}
+
+/*
+ *  Force HTML 5 tags to be a in-line block elements in IE 8/9
+ */
+audio, canvas, progress, video {
+  display: inline-block;
+}
+
+/*
+ *  Form elements homogenization
+ */
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+}
+
+textarea {
+  display: block;
+}
+
+/*
+ *  Inner input tag vertical centering
+ */
+input {
+  line-height: normal;
+}
+
+/*
+ *  remove image border when its placed in anchor in IE
+ */
+img {
+  border: 0;
+}
+
+/*
+ *  Style reset of list tags
+ */
+ul, ol, dl {
+  list-style: none;
+}
+
+html, body {
+  height: 100%;
+}
