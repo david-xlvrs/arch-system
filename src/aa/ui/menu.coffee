@@ -3,7 +3,6 @@ goog.provide 'aa.ui.MenuItem'
 
 aa.ui.Menu = React.createClass
   getDefaultProps: ->
-    'expanded': no
     'colors': {}
 
   render: ->
@@ -35,7 +34,6 @@ aa.ui.Menu = React.createClass
     config =
       'className': classNames
         'aa-menu': yes
-        'expanded': @props['expanded']
       'style':
         'color': @props['colors']['content']
         'backgroundColor': @props['colors']['bg']

@@ -10,7 +10,6 @@ aa.ui.Selected = React.createClass
     content = []
     content.push React.createElement aa.ui.Menu,
       'key': 'aa-content-menu'
-      #'expanded': @props['section'] isnt aa.ui.Application.SECTION_SPLASH
       'colors': @props['projects']?[0]['colors']
 
     if @props['projects']?.length
@@ -22,7 +21,7 @@ aa.ui.Selected = React.createClass
             'color': project['colors']['content']
             'backgroundColor': project['colors']['bg']
 
-        content.push React.DOM.div config, [
+        content.push React.DOM.div config, React.DOM.a 'href': '/#selected/' + project['id'], [
             React.DOM.img
               'key': 'projectImg' + project['id']
               'src': project['image']['url']

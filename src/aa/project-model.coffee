@@ -20,13 +20,19 @@ class aa.ProjectModel extends goog.events.EventTarget
 
   getSplashData: ->
     'colors':
-      'bg': '#aaa'
-      'content': '#333'
-    'title': 'Studio Raketoplan'
-    'imageUrl': 'http://www.bustler.net/images/gallery/international_architecture_awards_2009_03.jpg'
+      'bg': '#4c746c'
+      'content': '#C6CFCE'
+    'title': 'D3A'
+    'imageUrl': '/img/data/01.jpg'
 
   getSelectedData: ->
     @rows
+
+  getAllData: ->
+    @rows
+
+  getDetail: (projectId) ->
+    aa.mock.Detail.data
 
   load: ->
     setTimeout(=>

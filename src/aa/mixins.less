@@ -1,0 +1,36 @@
+.aaHover-mixin {
+  transition: opacity 200ms ease-in;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
+
+.keyframes-mixin (@name; @arguments) {
+  @-webkit-keyframes @name { @arguments(); }
+  @-moz-keyframes @name { @arguments(); }
+  @-ms-keyframes @name { @arguments(); }
+  @-o-keyframes @name { @arguments(); }
+  @keyframes @name { @arguments(); }
+}
+
+.animation-mixin (@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  -ms-animation: @arguments;
+  -o-animation: @arguments;
+  animation: @arguments;
+}
+
+.animation-play-state-mixin (@arguments) {
+  -webkit-animation-play-state: @arguments;
+  -moz-animation-play-state: @arguments;
+  -ms-animation-play-state: @arguments;
+  -o-animation-play-state: @arguments;
+  animation-play-state: @arguments;
+}
