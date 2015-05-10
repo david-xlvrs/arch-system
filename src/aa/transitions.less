@@ -186,3 +186,33 @@
 
   }
 }
+
+
+/*
+ *  TRANSITION_DETAIL_2_NEXT
+ */
+.detail-to-next-enter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0.001;
+  transition: opacity @animDurationSt ease-in;
+  z-index: 10;
+
+  &.detail-to-next-enter-active {
+    opacity: 0.000;
+  }
+}
+
+.detail-to-next-leave {
+  transform: translate3d(0,0,0);
+  transition: transform @animDurationSt ease-in;
+
+  &.detail-to-next-leave-active {
+    transform: translate3d(-50%,0,0);
+    z-index: 1;
+  }
+}

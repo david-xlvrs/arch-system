@@ -45,6 +45,7 @@ sandbox.Bootstrap = ->
       'selected': projectsModel.getSelectedData()
       'all': projectsModel.getAllData()
       'detail': projectsModel.getDetail 1
+      'detailSlide': 0
 
   ###*
     Render whole application
@@ -67,6 +68,11 @@ sandbox.Bootstrap = ->
     routerStatus = router.getStatus()
     completeSettings['section'] = routerStatus['section']
     completeSettings['transition'] = routerStatus['transition']
+
+    if routerStatus['params']?['projectId']
+      completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectId']
+      completeSettings['data']['detailSlide'] = routerStatus['params']?['slideId']
+
     render()
 
   router.enableRouting()
