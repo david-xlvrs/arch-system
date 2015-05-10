@@ -30,8 +30,6 @@ aa.ui.Application = React.createClass
   render: ->
     content = []
 
-    console.log 'trans', @props['transition']
-
     content.push React.createElement(React.addons.CSSTransitionGroup, {
       'className': 'aa-content', 'transitionName': @props['transition'], 'key': 'aa-content-transition'},
         switch @props['section']
