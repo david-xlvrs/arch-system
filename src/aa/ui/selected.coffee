@@ -21,7 +21,7 @@ aa.ui.Selected = React.createClass
             'color': project['colors']['content']
             'backgroundColor': project['colors']['bg']
 
-        content.push React.DOM.div config, React.DOM.a 'href': '/#selected/' + project['id'], [
+        content.push React.DOM.div config, React.DOM.a 'href': '/#selected/' + project['id'] + '/0', [
             React.DOM.img
               'key': 'projectImg' + project['id']
               'src': project['image']['url']

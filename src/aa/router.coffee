@@ -72,8 +72,7 @@ class aa.Router extends goog.events.EventTarget
         parsedRoute = @parseToken route
         if part isnt parsedRoute[i]
           if parsedRoute[i]?[0] is '{'
-            # TODO: vyresit lepe odstraneni zavorek
-            params[parsedRoute[i].replace('{', '').replace('}', '')] = part
+            params[parsedRoute[i].replace(/[{}]/g, '')] = part
           else
             continue
         if hash.length is i + 1
@@ -103,8 +102,9 @@ class aa.Router extends goog.events.EventTarget
   getTransition: (previousRoute, newRoute) ->
     switch
       when not previousRoute or not newRoute then aa.ui.Application.TRANSITION_SPLASH_2_SECTION
-      when newRoute is 'selected/{projectId}' then aa.ui.Application.TRANSITION_SELECTED_2_DETAIL
-      when previousRoute is 'selected/{projectId}'
+      when newRoute is 'selected/{projectId}' or newRoute is 'selected/{projectId}/{slideId}'
+        aa.ui.Application.TRANSITION_SELECTED_2_DETAIL
+      when previousRoute is 'selected/{projectId}' or previousRoute is 'selected/{projectId}/{slideId}'
         if newRoute is 'selected'
           aa.ui.Application.TRANSITION_DETAIL_2_SELECTED
         else
