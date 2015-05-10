@@ -45,6 +45,7 @@ aa.ui.Application = React.createClass
             React.createElement aa.ui.Detail,
               'key': 'section-detail'
               'project': @props['data']['detail']
+              'activeSlide': @props['data']['detailSlide']
           else
             null
       )
