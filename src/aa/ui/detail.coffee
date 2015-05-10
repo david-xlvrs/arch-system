@@ -29,9 +29,8 @@ aa.ui.Detail = React.createClass
     else
       @getActiveSlide() - 1
 
-  updateSizeAndPosition: ->
+  getSizeAndPosition: ->
     actSlide = @getActiveSlide()
-    console.log 'UPDATE'
 
     if actSlide is 0
       slide = @props['project']['slides'][actSlide]
@@ -41,8 +40,8 @@ aa.ui.Detail = React.createClass
     ow = slide['image']['size'][0]
     oh = slide['image']['size'][1]
 
-    cw = goog.dom.getViewportSize().width
-    ch = goog.dom.getViewportSize().height
+    cw = @state['width']
+    ch = @state['height']
 
     # by width
     iw = cw * aa.ui.Detail.IMG_WIDTH
@@ -50,30 +49,28 @@ aa.ui.Detail = React.createClass
 
     # by height
     if Math.floor(ih) > ch * aa.ui.Detail.IMG_HEIGHT
-      console.log 'pocitam pres vysku', ow, oh
       ih = ch * aa.ui.Detail.IMG_HEIGHT
       iw = ow / (oh / ih)
 
+    'img':
+      'width': iw
+      'height': ih
+      'top': ch / 2 - ih / 2
+      'left': cw / 2 - iw / 2
+      'bottom': 'auto'
+      'right': 'auto'
+
+  getAndSaveViewportSize: ->
     @setState
-      'img':
-        'width': iw
-        'height': ih
-        'top': ch / 2 - ih / 2
-        'left': cw / 2 - iw / 2
-        'bottom': 'auto'
-        'right': 'auto'
+      'viewport':
+        'width': goog.dom.getViewportSize().width
+        'height': goog.dom.getViewportSize().height
 
   handleResize: (e) ->
-    @updateSizeAndPosition()
-    return
+    @getAndSaveViewportSize()
 
   componentWillMount: ->
-    console.log 'WILL MOUNT'
-    @updateSizeAndPosition()
-
-  componentWillUpdate: ->
-    # @updateSizeAndPosition()
-    console.log '------ TEST', @props['activeSlide']
+    @getAndSaveViewportSize()
 
   componentDidMount: ->
     window.addEventListener 'resize', @handleResize
@@ -82,7 +79,6 @@ aa.ui.Detail = React.createClass
     window.removeEventListener 'resize', @handleResize
 
   render: ->
-    console.log 'RENDER'
     project = @props['project']
     activeSlide = @getActiveSlide()
     nextSlide = @getNextSlide()
@@ -99,13 +95,11 @@ aa.ui.Detail = React.createClass
       'key': 'project' + project['id']
       'className': 'aa-project-slide aa-actual-slide'
 
-    console.log 'AX', @state['img']
-
     slideElements.push React.DOM.div config, [
         React.DOM.img
           'key': 'projectImg' + slides[activeSlide]['id']
           'src': slides[activeSlide]['image']['url']
-          'style': @state['img']
+          'style': @getSizeAndPosition()
       ,
         React.DOM.h2 'key': 'projectTitle' + slides[activeSlide]['id'], slides[activeSlide]['title']
       ]
