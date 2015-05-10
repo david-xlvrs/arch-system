@@ -55,7 +55,7 @@
 .section-to-section-enter {
   opacity: 0.01;
   transition: opacity 0.5s ease-in;
-  z-index: 2;
+  z-index: 10;
 
   &.section-to-section-enter-active {
     opacity: 1;
@@ -75,58 +75,91 @@
 /*
  *  TRANSITION_SELECTED_2_DETAIL
  */
+.keyframes-mixin(selectedToDetail; {
+    0% {height: 80%;}
+    50% {height: 100%;}
+    100% {height: 100%;}
+});
+
 .selected-to-detail-enter {
-  opacity: 0.01;
-  transition: opacity 0.5s ease-in;
-  z-index: 1;
+  .animation-mixin(selectedToDetail 1s ease-in paused);
+  z-index: 10;
+
+  .aa-next-slide, .aa-previous-slide, .aa-close {
+    transition: opacity 0.5s ease-in 0.5s !important;
+    opacity: 0.0 !important;
+  }
+
+  .aa-menu {
+    display: block !important;
+    transition: opacity 0.5s ease-in 0.5s !important;
+    opacity: 1.0 !important;
+  }
 
   &.selected-to-detail-enter-active {
-    opacity: 0.02;
-    z-index: 1;
+    .animation-play-state-mixin(running);
+
+    .aa-next-slide, .aa-previous-slide, .aa-close {
+      opacity: 0.5 !important;
+    }
+
+    .aa-menu {
+      opacity: 0.0 !important;
+    }
   }
 }
 
 .selected-to-detail-leave {
+  transition: opacity 1s ease-in;
   opacity: 1;
-  transition: opacity 0.5s ease-in;
-
-  .aa-project-slide {
-    height: 80% !important;
-    transition: height 0.5s ease-in;
-    z-index: 5;
-  }
 
   &.selected-to-detail-leave-active {
     opacity: 0.999;
-
-    .aa-project-slide {
-      height: 100% !important;
-      z-index: 5;
-    }
   }
 }
 
 /*
  *  TRANSITION_DETAIL_2_SELECTED
  */
+ .keyframes-mixin(detailToSelected; {
+    0% {height: 100%;}
+    50% {height: 100%;}
+    100% {height: 80%;}
+});
 .detail-to-selected-enter {
-  opacity: 0.99;
-  transition: opacity 0.5s ease-in;
-  z-index: 1;
+  opacity: 0.999;
+  transition: opacity 1s ease-in;
 
   &.detail-to-selected-enter-active {
     opacity: 1;
-    z-index: 1;
   }
 }
 
 .detail-to-selected-leave {
-  height: 100% !important;
-  transition: height 0.5s ease-in;
-  z-index: 5;
+  .animation-mixin(detailToSelected 1s ease-in paused);
+  z-index: 10;
+
+  .aa-next-slide, .aa-previous-slide, .aa-close {
+    transition: opacity 0.5s ease-in !important;
+    opacity: 0.5 !important;
+  }
+
+  .aa-menu {
+    display: block !important;
+    transition: opacity 0.5s ease-in !important;
+    opacity: 0.0 !important;
+  }
 
   &.detail-to-selected-leave-active {
-    height: 80% !important;
+    .animation-play-state-mixin(running);
+
+    .aa-next-slide, .aa-previous-slide, .aa-close {
+      opacity: 0.0 !important;
+    }
+
+    .aa-menu {
+      opacity: 1.0 !important;
+    }
   }
 }
 

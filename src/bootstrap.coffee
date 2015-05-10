@@ -6,66 +6,70 @@ goog.require 'aa.ui.Application'
 goog.require 'aa.ProjectModel'
 goog.require 'goog.dom'
 goog.require 'goog.History'
+goog.require 'aa.Router'
 
 top.location = self.location if self isnt top
 
 sandbox.Bootstrap = ->
 
+  ###*
+    DOM things
+  ###
   templateEl = goog.dom.htmlToDocumentFragment aa.template.main().toString()
   goog.dom.appendChild document.body, templateEl
   appEl = goog.dom.getElementByClass 'content', (`/** @type {!Element} */`) templateEl
 
+  ###*
+    ProjectsModel
+  ###
   projectsModel = new aa.ProjectModel()
+  projectsModel.load()
+  projectsModel.addEventListener 'change', (e) ->
+    completeSettings['loaded'] = projectsModel.isLoaded()
+    completeSettings['data'] =
+      'splash': projectsModel.getSplashData()
+      'selected': projectsModel.getSelectedData()
+      'all': projectsModel.getAllData()
+      'detail': projectsModel.getDetail 1
+    render()
 
-  actSection = aa.ui.Application.SECTION_SPLASH
-  actTransition = aa.ui.Application.TRANSITION_SPLASH_2_SECTION
-  previousToken = ''
-
-  getCompleteSettings = ->
-    'section': actSection
-    'transition': actTransition
+  ###*
+    Settings for Application
+  ###
+  completeSettings =
+    'section': aa.ui.Application.SECTION_SPLASH
+    'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
     'loaded': projectsModel.isLoaded()
     'data':
       'splash': projectsModel.getSplashData()
       'selected': projectsModel.getSelectedData()
       'all': projectsModel.getAllData()
+      'detail': projectsModel.getDetail 1
 
+  ###*
+    Render whole application
+  ###
   render = ->
-    aa.ui.application.render getCompleteSettings(), appEl
+    aa.ui.application.render completeSettings, appEl
 
-  #render()
+  ###*
+    Router settings and listening
+  ###
+  router = new aa.Router
+    '': aa.ui.Application.SECTION_SPLASH
+    'selected': aa.ui.Application.SECTION_SELECTED
+    'selected/{projectId}': aa.ui.Application.SECTION_DETAIL
+    'selected/{projectId}/{slideId}': aa.ui.Application.SECTION_DETAIL
+    'selected/{projectId}/{slideId}/full': aa.ui.Application.SECTION_DETAIL
+    'index': aa.ui.Application.SECTION_INDEX
 
-  projectsModel.load()
-
-  projectsModel.addEventListener 'change', (e) ->
-    console.log 'pali change'
+  goog.events.listen router, aa.Router.EventType.CHANGE, (e) ->
+    routerStatus = router.getStatus()
+    completeSettings['section'] = routerStatus['section']
+    completeSettings['transition'] = routerStatus['transition']
     render()
 
-  h = new goog.History()
-  goog.events.listen h, goog.history.EventType.NAVIGATE, (e) ->
-    console.log 'NAVIGATE', e
-    switch
-      #from splash to section
-      when not previousToken or not e.token then actTransition = aa.ui.Application.TRANSITION_SPLASH_2_SECTION
-      when e.token is 'selected/1' then actTransition = aa.ui.Application.TRANSITION_SELECTED_2_DETAIL
-      when previousToken is 'selected/1'
-        if e.token is 'selected'
-          actTransition = aa.ui.Application.TRANSITION_DETAIL_2_SELECTED
-        else
-          actTransition = aa.ui.Application.TRANSITION_DETAIL_2_SECTION
-
-      else actTransition = aa.ui.Application.TRANSITION_SECTION_2_SECTION
-
-    actSection = switch e.token
-      when 'selected' then aa.ui.Application.SECTION_SELECTED
-      when 'selected/1' then aa.ui.Application.SECTION_DETAIL
-      when 'index' then aa.ui.Application.SECTION_INDEX
-      else aa.ui.Application.SECTION_SPLASH
-
-    previousToken = e.token
-    render()
-
-  h.setEnabled yes
+  router.enableRouting()
 
   return
 

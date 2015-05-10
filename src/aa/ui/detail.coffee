@@ -64,6 +64,9 @@ aa.ui.Detail = React.createClass
         'backgroundColor': slides[@props['activeSlide']]['colors']['bg']
     React.DOM.div config, [
       React.DOM.div 'key': 'detail-list', 'className': 'aa-detail-list', slideElements
+      React.createElement aa.ui.Menu,
+        'key': 'aa-content-menu'
+        'colors': @props['project']?['colors']
       React.DOM.a
         'key': 'detail-closer'
         'className': 'aa-close'
