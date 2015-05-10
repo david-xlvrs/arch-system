@@ -1,5 +1,8 @@
+@animDurationSt: 500ms;
+@animDurationMin: 200ms;
+
 .aaHover-mixin {
-  transition: opacity 200ms ease-in;
+  transition: opacity @animDurationMin ease-in;
   opacity: 0.5;
 
   &:hover {

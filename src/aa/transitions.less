@@ -16,11 +16,11 @@
  *  TRANSITION_SPLASH_2_SECTION
  */
 .splash-to-section-enter {
-  .animation-mixin(splashToSection 1s ease-in paused);
+  .animation-mixin(splashToSection @animDurationSt*2 ease-in paused);
 
   .aa-project-slide * {
     opacity: 0.01;
-    transition: opacity .5s ease-in 0.4s;
+    transition: opacity @animDurationSt ease-in 0.4s;
   }
 
   &.splash-to-section-enter-active {
@@ -33,11 +33,11 @@
 }
 
 .splash-to-section-leave {
-  .animation-mixin(splashFromSection 1s ease-in paused);
+  .animation-mixin(splashFromSection @animDurationSt*2 ease-in paused);
 
   .aa-project-slide * {
     opacity: 1;
-    transition: opacity .5s ease-in;
+    transition: opacity @animDurationSt ease-in;
   }
 
   &.splash-to-section-leave-active {
@@ -54,7 +54,7 @@
  */
 .section-to-section-enter {
   opacity: 0.01;
-  transition: opacity 0.5s ease-in;
+  transition: opacity @animDurationSt ease-in;
   z-index: 10;
 
   &.section-to-section-enter-active {
@@ -64,7 +64,7 @@
 
 .section-to-section-leave {
   opacity: 1;
-  transition: opacity 0.5s ease-in;
+  transition: opacity @animDurationSt ease-in;
 
   &.section-to-section-leave-active {
     opacity: 0.99;
@@ -82,17 +82,17 @@
 });
 
 .selected-to-detail-enter {
-  .animation-mixin(selectedToDetail 1s ease-in paused);
+  .animation-mixin(selectedToDetail @animDurationSt*2 ease-in paused);
   z-index: 10;
 
   .aa-next-slide, .aa-previous-slide, .aa-close {
-    transition: opacity 0.5s ease-in 0.5s !important;
+    transition: opacity @animDurationSt ease-in @animDurationSt !important;
     opacity: 0.0 !important;
   }
 
   .aa-menu {
     display: block !important;
-    transition: opacity 0.5s ease-in 0.5s !important;
+    transition: opacity @animDurationSt ease-in @animDurationSt !important;
     opacity: 1.0 !important;
   }
 
@@ -110,7 +110,7 @@
 }
 
 .selected-to-detail-leave {
-  transition: opacity 1s ease-in;
+  transition: opacity @animDurationSt*2 ease-in;
   opacity: 1;
 
   &.selected-to-detail-leave-active {
@@ -128,7 +128,7 @@
 });
 .detail-to-selected-enter {
   opacity: 0.999;
-  transition: opacity 1s ease-in;
+  transition: opacity @animDurationSt*2 ease-in;
 
   &.detail-to-selected-enter-active {
     opacity: 1;
@@ -136,17 +136,17 @@
 }
 
 .detail-to-selected-leave {
-  .animation-mixin(detailToSelected 1s ease-in paused);
+  .animation-mixin(detailToSelected @animDurationSt*2 ease-in paused);
   z-index: 10;
 
   .aa-next-slide, .aa-previous-slide, .aa-close {
-    transition: opacity 0.5s ease-in !important;
+    transition: opacity @animDurationSt ease-in !important;
     opacity: 0.5 !important;
   }
 
   .aa-menu {
     display: block !important;
-    transition: opacity 0.5s ease-in !important;
+    transition: opacity @animDurationSt ease-in !important;
     opacity: 0.0 !important;
   }
 
@@ -168,7 +168,7 @@
  */
 .detail-to-section-enter {
   opacity: 0.99;
-  transition: opacity 0.5s ease-in;
+  transition: opacity @animDurationSt ease-in;
   z-index: 1;
 
   &.detail-to-section-enter-active {
@@ -178,7 +178,7 @@
 
 .detail-to-section-leave {
   opacity: 1;
-  transition: opacity 0.5s ease-in;
+  transition: opacity @animDurationSt ease-in;
   z-index: 10;
 
   &.detail-to-section-leave-active {

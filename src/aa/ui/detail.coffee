@@ -14,8 +14,6 @@ aa.ui.Detail = React.createClass
     project = @props['project']
     return null if goog.object.isEmpty project
 
-    console.log 'kreslim DETAIL', @props['moveNext']
-
     slides = goog.array.clone project['slides']
     goog.array.insertAt slides, project, 0
 
