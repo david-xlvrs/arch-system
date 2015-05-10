@@ -29,8 +29,9 @@ aa.ui.Detail = React.createClass
     else
       @getActiveSlide() - 1
 
-  countSizeAndPosition: ->
+  updateSizeAndPosition: ->
     actSlide = @getActiveSlide()
+    console.log 'UPDATE'
 
     if actSlide is 0
       slide = @props['project']['slides'][actSlide]
@@ -49,19 +50,30 @@ aa.ui.Detail = React.createClass
 
     # by height
     if Math.floor(ih) > ch * aa.ui.Detail.IMG_HEIGHT
+      console.log 'pocitam pres vysku', ow, oh
       ih = ch * aa.ui.Detail.IMG_HEIGHT
       iw = ow / (oh / ih)
 
-    'width': iw
-    'height': ih
-    'top': ch / 2 - ih / 2
-    'left': cw / 2 - iw / 2
-    'bottom': 'auto'
-    'right': 'auto'
+    @setState
+      'img':
+        'width': iw
+        'height': ih
+        'top': ch / 2 - ih / 2
+        'left': cw / 2 - iw / 2
+        'bottom': 'auto'
+        'right': 'auto'
 
   handleResize: (e) ->
-    @render()
+    @updateSizeAndPosition()
     return
+
+  componentWillMount: ->
+    console.log 'WILL MOUNT'
+    @updateSizeAndPosition()
+
+  componentWillUpdate: ->
+    # @updateSizeAndPosition()
+    console.log '------ TEST', @props['activeSlide']
 
   componentDidMount: ->
     window.addEventListener 'resize', @handleResize
@@ -70,7 +82,7 @@ aa.ui.Detail = React.createClass
     window.removeEventListener 'resize', @handleResize
 
   render: ->
-    console.log 'a', @countSizeAndPosition()
+    console.log 'RENDER'
     project = @props['project']
     activeSlide = @getActiveSlide()
     nextSlide = @getNextSlide()
@@ -85,13 +97,15 @@ aa.ui.Detail = React.createClass
 
     config =
       'key': 'project' + project['id']
-      'className': 'aa-project-slide'
+      'className': 'aa-project-slide aa-actual-slide'
+
+    console.log 'AX', @state['img']
 
     slideElements.push React.DOM.div config, [
         React.DOM.img
           'key': 'projectImg' + slides[activeSlide]['id']
           'src': slides[activeSlide]['image']['url']
-          'style': @countSizeAndPosition()
+          'style': @state['img']
       ,
         React.DOM.h2 'key': 'projectTitle' + slides[activeSlide]['id'], slides[activeSlide]['title']
       ]
