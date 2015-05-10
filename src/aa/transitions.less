@@ -85,6 +85,15 @@
   .animation-mixin(selectedToDetail @animDurationSt*2 ease-in paused);
   z-index: 10;
 
+  .aa-actual-slide img {
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
   .aa-next-slide, .aa-previous-slide, .aa-close {
     transition: opacity @animDurationSt ease-in @animDurationSt !important;
     opacity: 0.0 !important;
@@ -138,6 +147,15 @@
 .detail-to-selected-leave {
   .animation-mixin(detailToSelected @animDurationSt*2 ease-in paused);
   z-index: 10;
+
+  .aa-actual-slide img {
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
 
   .aa-next-slide, .aa-previous-slide, .aa-close {
     transition: opacity @animDurationSt ease-in !important;
