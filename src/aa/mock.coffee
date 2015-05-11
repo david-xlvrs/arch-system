@@ -113,7 +113,7 @@ aa.mock.Detail =
       #     bg: '#C6CFCE'
       #     content: '#4c746c'
       ,
-        id: 3
+        id: 2
         projectId: 1
         type: 'image'
         title: 'Tréninkové plochy'
@@ -128,7 +128,7 @@ aa.mock.Detail =
           size: [2048, 1536]
           url: '/img/data/02.jpg'
       ,
-        id: 4
+        id: 3
         projectId: 1
         type: 'image'
         title: 'Klubovna'

@@ -5,6 +5,7 @@ goog.require 'aa.ui.Selected'
 goog.require 'aa.ui.Index'
 goog.require 'aa.ui.Detail'
 goog.require 'aa.ui.Menu'
+goog.require 'aa.ui.transition.Basic'
 
 aa.ui.Application = React.createClass
   statics:
@@ -25,22 +26,34 @@ aa.ui.Application = React.createClass
     'section': aa.ui.Application.SECTION_SPLASH
     'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
     'data': {}
+    'styleConfig': {}
     'loaded': no
 
   render: ->
     content = []
 
-    content.push React.createElement(React.addons.CSSTransitionGroup, {
-      'className': 'aa-content', 'transitionName': @props['transition'], 'key': 'aa-content-transition'},
+    content.push React.createElement(React.addons.TransitionGroup, {
+      'className': 'aa-section', 'key': 'aa-section-transition'},
         switch @props['section']
           when aa.ui.Application.SECTION_INDEX
-            React.createElement aa.ui.Index,
+            index = React.createElement aa.ui.Index,
               'key': 'section-all'
               'projects': @props['data']['all']
+            React.createElement aa.ui.transition.Basic(index),
+              'key': 'key-index-' + @props['transition']
+              'transition': @props['transition']
+              'fromColors': @props['data']['splash']['colors']
+              'toColors': @props['styleConfig']['colors']
           when aa.ui.Application.SECTION_SELECTED
-            React.createElement aa.ui.Selected,
+            selected = React.createElement aa.ui.Selected,
               'key': 'section-selected'
               'projects': @props['data']['selected']
+              'colors': @props['styleConfig']['colors']
+            React.createElement aa.ui.transition.Basic(selected),
+              'key': 'key-selected-' + @props['transition']
+              'transition': @props['transition']
+              'fromColors': @props['data']['splash']['colors']
+              'toColors': @props['styleConfig']['colors']
           when aa.ui.Application.SECTION_DETAIL
             React.createElement aa.ui.Detail,
               'key': 'section-detail'
@@ -61,7 +74,7 @@ aa.ui.Application = React.createClass
       ,
         React.createElement aa.ui.Menu,
           'key': 'aa-menu'
-          'colors': @props['data']['selected']?[0]['colors']
+          'colors': @props['data']['splash']['colors']
       ,
         content
     ]

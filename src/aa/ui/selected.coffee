@@ -1,25 +1,25 @@
 goog.provide 'aa.ui.Selected'
 
+goog.require 'goog.style'
+
 
 aa.ui.Selected = React.createClass
   getDefaultProps: ->
     'projects': []
     'activeProject': 0
+    'colors': {}
 
   render: ->
     content = []
     content.push React.createElement aa.ui.Menu,
       'key': 'aa-content-menu'
-      'colors': @props['projects']?[0]['colors']
+      'colors': @props['colors']
 
     if @props['projects']?.length
       for project in @props['projects']
         config =
           'key': 'project' + project['id']
           'className': 'aa-project-slide'
-          'style':
-            'color': project['colors']['content']
-            'backgroundColor': project['colors']['bg']
 
         content.push React.DOM.div config, React.DOM.a 'href': '/#selected/' + project['id'] + '/0', [
             React.DOM.img
@@ -30,6 +30,6 @@ aa.ui.Selected = React.createClass
           ]
 
     config =
-      'className': classNames ['aa-page', 'aa-page-selected']
+      'className': classNames ['aa-content', 'aa-content-selected']
     React.DOM.div config, content
 
