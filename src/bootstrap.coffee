@@ -40,6 +40,10 @@ sandbox.Bootstrap = ->
     'section': aa.ui.Application.SECTION_SPLASH
     'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
     'loaded': projectsModel.isLoaded()
+    'styleConfig':
+      'colors':
+        'content': '#222'
+        'bg': '#fff'
     'data':
       'splash': projectsModel.getSplashData()
       'selected': projectsModel.getSelectedData()

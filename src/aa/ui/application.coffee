@@ -25,12 +25,13 @@ aa.ui.Application = React.createClass
     'section': aa.ui.Application.SECTION_SPLASH
     'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
     'data': {}
+    'styleConfig': {}
     'loaded': no
 
   render: ->
     content = []
 
-    content.push React.createElement(React.addons.CSSTransitionGroup, {
+    content.push React.createElement(React.addons.TransitionGroup, {
       'className': 'aa-content', 'transitionName': @props['transition'], 'key': 'aa-content-transition'},
         switch @props['section']
           when aa.ui.Application.SECTION_INDEX
@@ -41,6 +42,9 @@ aa.ui.Application = React.createClass
             React.createElement aa.ui.Selected,
               'key': 'section-selected'
               'projects': @props['data']['selected']
+              'transition': @props['transition']
+              'fromColors': @props['data']['splash']['colors']
+              'colors': @props['styleConfig']['colors']
           when aa.ui.Application.SECTION_DETAIL
             React.createElement aa.ui.Detail,
               'key': 'section-detail'
@@ -61,7 +65,7 @@ aa.ui.Application = React.createClass
       ,
         React.createElement aa.ui.Menu,
           'key': 'aa-menu'
-          'colors': @props['data']['selected']?[0]['colors']
+          'colors': @props['data']['splash']['colors']
       ,
         content
     ]

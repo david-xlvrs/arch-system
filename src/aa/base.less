@@ -21,16 +21,10 @@ html, body, .main, .content {
 
     .aa-menu {
       position: absolute;
-      top: 100%;
+      bottom: 0;
+      left: 0;
       height: 50px;
       width: 100%;
-      margin-top: -50px;
-      transition: top 500ms ease-in, margin-top 500ms ease-in;
-
-      &.expanded {
-        top: 0%;
-        margin-top: 0;
-      }
 
       ul {
         margin: 0;
@@ -52,8 +46,9 @@ html, body, .main, .content {
 
     .aa-content {
       .aa-menu {
+        position: absolute;
         top: 0;
-        margin-top: 0;
+        left: 0;
         z-index: 10;
       }
     }
@@ -93,6 +88,10 @@ html, body, .main, .content {
             height: 100%;
           }
         }
+      }
+
+      &.aa-page-selected {
+        background-color: #fff;
       }
     }
 
@@ -160,6 +159,10 @@ html, body, .main, .content {
 
       .aa-project-slide {
         height: 100%;
+
+        h2 {
+          top: @size1;
+        }
       }
 
       .aa-menu {

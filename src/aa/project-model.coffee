@@ -22,7 +22,7 @@ class aa.ProjectModel extends goog.events.EventTarget
     'colors':
       'bg': '#4c746c'
       'content': '#C6CFCE'
-    'title': 'D3A'
+    'title': 'FIALA+NEMEC'
     'imageUrl': '/img/data/01.jpg'
 
   getSelectedData: ->

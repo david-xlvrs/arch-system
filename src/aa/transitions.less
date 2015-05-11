@@ -18,15 +18,19 @@
 .splash-to-section-enter {
   .animation-mixin(splashToSection @animDurationSt*2 ease-in paused);
 
-  .aa-project-slide * {
+  transition: background-color @animDurationSt ease-in;
+
+  .aa-project-slide {
     opacity: 0.01;
     transition: opacity @animDurationSt ease-in 0.4s;
   }
 
+  .aa-menu {background: transparent !important;}
+
   &.splash-to-section-enter-active {
     .animation-play-state-mixin(running);
 
-    .aa-project-slide * {
+    .aa-project-slide {
       opacity: 1;
     }
   }
@@ -34,6 +38,10 @@
 
 .splash-to-section-leave {
   .animation-mixin(splashFromSection @animDurationSt*2 ease-in paused);
+
+  transition: background-color @animDurationSt ease-in @animDurationSt;
+
+  .aa-menu {background: transparent !important;}
 
   .aa-project-slide * {
     opacity: 1;

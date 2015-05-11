@@ -18,14 +18,14 @@ aa.ui.Detail = React.createClass
     parseInt @props['activeSlide']
 
   getNextSlide: ->
-    if @getActiveSlide() + 1 > @props['project']['slides'].length
+    if @getActiveSlide() + 1 >= @props['project']['slides'].length
       0
     else
       @getActiveSlide() + 1
 
   getPreviousSlide: ->
     if @getActiveSlide() - 1 < 0
-      @props['project']['slides'].length
+      @props['project']['slides'].length - 1
     else
       @getActiveSlide() - 1
 
@@ -86,8 +86,7 @@ aa.ui.Detail = React.createClass
 
     return null if goog.object.isEmpty project
 
-    slides = goog.array.clone project['slides']
-    goog.array.insertAt slides, project, 0
+    slides = project['slides']
 
     slideElements = []
 
