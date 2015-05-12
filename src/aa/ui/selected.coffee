@@ -30,6 +30,6 @@ aa.ui.Selected = React.createClass
           ]
 
     config =
-      'className': classNames ['aa-content-selected']
+      'className': classNames ['aa-content', 'aa-content-selected']
     React.DOM.div config, content
 

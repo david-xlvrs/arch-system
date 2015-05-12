@@ -18,7 +18,7 @@ aa.ui.transition.SplashToSection = (section) ->
 
         requestAnimationFrame =>
           goog.dom.classes.add @getDOMNode(), "#{@props['transition']}-enter-active"
-          goog.style.setStyle @getDOMNode(), 'background-color', ''
+          goog.style.setStyle @getDOMNode(), 'background-color', @props['toColors']['bg']
           window.setTimeout callback, 1000
 
     componentDidEnter: ->
@@ -34,11 +34,16 @@ aa.ui.transition.SplashToSection = (section) ->
         goog.style.setStyle @getDOMNode(), 'background-color', @props['fromColors']['bg']
         window.setTimeout callback, 1000
 
+    componentDidLeave: () ->
+      console.log 'componentDidLeave'
+      goog.dom.classes.remove @getDOMNode(), "#{@props['transition']}-leave", "#{@props['transition']}-leave-active"
+
     render: ->
+      console.log 'AAA', section
+
       config =
         'className': classNames ['aa-page']
-        # 'style':
-        #   'color': @props['colors']['content']
-        #   'backgroundColor': @props['colors']['bg']
-      React.DOM.div config, section
+        'style':
+          'backgroundColor': @props['toColors']['bg']
+      React.DOM.div config, section #mozna neni potreba div, staci vratit tu sekci
 

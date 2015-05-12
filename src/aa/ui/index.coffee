@@ -13,9 +13,6 @@ aa.ui.Index = React.createClass
         config =
           'key': 'projectTr' + project['id']
           'className': 'aa-project-row'
-          # 'style':
-          #   'color': project['colors']['content']
-          #   'backgroundColor': project['colors']['bg']
 
         year = (new Date project['date']).getFullYear()
 
@@ -40,14 +37,10 @@ aa.ui.Index = React.createClass
 
     menu = React.createElement aa.ui.Menu,
       'key': 'aa-content-menu'
-      'colors': @props['projects']?[0]['colors']
+      'colors': @props['colors']
 
     config =
-      'className': classNames ['aa-page', 'aa-page-index']
-      'key': 'neco12324'
-      'style':
-        'color': @props['projects']?[0]['colors']['content']
-        'backgroundColor': @props['projects']?[0]['colors']['bg']
+      'className': classNames ['aa-content', 'aa-content-index']
     React.DOM.div config, [
       menu
       React.DOM.div 'key': 'asdj2e08', 'className': 'aa-table', React.DOM.table null, content

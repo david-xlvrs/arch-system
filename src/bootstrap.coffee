@@ -15,9 +15,8 @@ sandbox.Bootstrap = ->
   ###*
     DOM things
   ###
-  templateEl = goog.dom.htmlToDocumentFragment aa.template.main().toString()
-  goog.dom.appendChild document.body, templateEl
-  appEl = goog.dom.getElementByClass 'content', (`/** @type {!Element} */`) templateEl
+  appEl = goog.dom.htmlToDocumentFragment aa.template.main().toString()
+  goog.dom.appendChild document.body, appEl
 
   ###*
     ProjectsModel

@@ -33,13 +33,14 @@ aa.ui.Application = React.createClass
     content = []
 
     content.push React.createElement(React.addons.TransitionGroup, {
-      'className': 'aa-content', 'transitionName': @props['transition'], 'key': 'aa-content-transition'},
+      'className': 'aa-section', 'key': 'aa-section-transition'},
         switch @props['section']
           when aa.ui.Application.SECTION_INDEX
             index = React.createElement aa.ui.Index,
               'key': 'section-all'
               'projects': @props['data']['all']
             React.createElement aa.ui.transition.SplashToSection(index),
+              'key': 'key-' + @props['transition'] + Math.random()
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
@@ -47,10 +48,9 @@ aa.ui.Application = React.createClass
             selected = React.createElement aa.ui.Selected,
               'key': 'section-selected'
               'projects': @props['data']['selected']
-              'transition': @props['transition']
-              'fromColors': @props['data']['splash']['colors']
               'colors': @props['styleConfig']['colors']
             React.createElement aa.ui.transition.SplashToSection(selected),
+              'key': 'key-' + @props['transition'] + Math.random()
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
