@@ -5,6 +5,7 @@ goog.require 'aa.ui.Selected'
 goog.require 'aa.ui.Index'
 goog.require 'aa.ui.Detail'
 goog.require 'aa.ui.Menu'
+goog.require 'aa.ui.transition.SplashToSection'
 
 aa.ui.Application = React.createClass
   statics:
@@ -35,16 +36,24 @@ aa.ui.Application = React.createClass
       'className': 'aa-content', 'transitionName': @props['transition'], 'key': 'aa-content-transition'},
         switch @props['section']
           when aa.ui.Application.SECTION_INDEX
-            React.createElement aa.ui.Index,
+            index = React.createElement aa.ui.Index,
               'key': 'section-all'
               'projects': @props['data']['all']
+            React.createElement aa.ui.transition.SplashToSection(index),
+              'transition': @props['transition']
+              'fromColors': @props['data']['splash']['colors']
+              'toColors': @props['styleConfig']['colors']
           when aa.ui.Application.SECTION_SELECTED
-            React.createElement aa.ui.Selected,
+            selected = React.createElement aa.ui.Selected,
               'key': 'section-selected'
               'projects': @props['data']['selected']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'colors': @props['styleConfig']['colors']
+            React.createElement aa.ui.transition.SplashToSection(selected),
+              'transition': @props['transition']
+              'fromColors': @props['data']['splash']['colors']
+              'toColors': @props['styleConfig']['colors']
           when aa.ui.Application.SECTION_DETAIL
             React.createElement aa.ui.Detail,
               'key': 'section-detail'
