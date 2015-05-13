@@ -40,7 +40,7 @@ aa.ui.Application = React.createClass
               'key': 'section-all'
               'projects': @props['data']['all']
             React.createElement aa.ui.transition.SplashToSection(index),
-              'key': 'key-' + @props['transition'] + Math.random()
+              'key': 'key-index-' + @props['transition']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
@@ -50,7 +50,7 @@ aa.ui.Application = React.createClass
               'projects': @props['data']['selected']
               'colors': @props['styleConfig']['colors']
             React.createElement aa.ui.transition.SplashToSection(selected),
-              'key': 'key-' + @props['transition'] + Math.random()
+              'key': 'key-selected-' + @props['transition']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']

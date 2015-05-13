@@ -11,7 +11,7 @@ aa.ui.transition.SplashToSection = (section) ->
       'transition': ''
 
     componentWillEnter: (callback) ->
-      console.log 'componentWillEnter'
+      console.log 'componentWillEnter', @props['transition']
       requestAnimationFrame =>
         goog.dom.classes.add @getDOMNode(), "#{@props['transition']}-enter"
         goog.style.setStyle @getDOMNode(), 'background-color', @props['fromColors']['bg']
@@ -23,23 +23,24 @@ aa.ui.transition.SplashToSection = (section) ->
 
     componentDidEnter: ->
       goog.dom.classes.remove @getDOMNode(), "#{@props['transition']}-enter", "#{@props['transition']}-enter-active"
-      console.log 'componentDidEnter'
+      console.log 'componentDidEnter', @props['transition']
 
     componentWillLeave: (callback) ->
-      console.log 'componentWillLeave'
-      goog.dom.classes.add @getDOMNode(), "#{@props['transition']}-leave"
-
+      console.log 'componentWillLeave', @props['transition']
       requestAnimationFrame =>
-        goog.dom.classes.add @getDOMNode(), "#{@props['transition']}-leave-active"
-        goog.style.setStyle @getDOMNode(), 'background-color', @props['fromColors']['bg']
-        window.setTimeout callback, 1000
+        goog.dom.classes.add @getDOMNode(), "#{@props['transition']}-leave"
+
+        requestAnimationFrame =>
+          goog.dom.classes.add @getDOMNode(), "#{@props['transition']}-leave-active"
+          goog.style.setStyle @getDOMNode(), 'background-color', @props['fromColors']['bg']
+          window.setTimeout callback, 1000
 
     componentDidLeave: () ->
-      console.log 'componentDidLeave'
+      console.log 'componentDidLeave', @props['transition']
       goog.dom.classes.remove @getDOMNode(), "#{@props['transition']}-leave", "#{@props['transition']}-leave-active"
 
     render: ->
-      console.log 'AAA', section
+      console.log 'AAA', @props['transition']
 
       config =
         'className': classNames ['aa-page']
