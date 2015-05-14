@@ -1,6 +1,7 @@
 goog.provide 'sandbox.Bootstrap'
 
 goog.require 'aa.template'
+goog.require 'aa.Const'
 goog.require 'aa.mock'
 goog.require 'aa.ui.Application'
 goog.require 'aa.ProjectModel'
@@ -36,7 +37,7 @@ sandbox.Bootstrap = ->
     Settings for Application
   ###
   completeSettings =
-    'section': aa.ui.Application.SECTION_SPLASH
+    'section': aa.Const.SECTION.SPLASH
     'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
     'loaded': projectsModel.isLoaded()
     'styleConfig':
@@ -60,12 +61,12 @@ sandbox.Bootstrap = ->
     Router settings and listening
   ###
   router = new aa.Router
-    '': aa.ui.Application.SECTION_SPLASH
-    'selected': aa.ui.Application.SECTION_SELECTED
-    'selected/{projectId}': aa.ui.Application.SECTION_DETAIL
-    'selected/{projectId}/{slideId}': aa.ui.Application.SECTION_DETAIL
-    'selected/{projectId}/{slideId}/full': aa.ui.Application.SECTION_DETAIL
-    'index': aa.ui.Application.SECTION_INDEX
+    '': aa.Const.SECTION.SPLASH
+    'selected': aa.Const.SECTION.SELECTED
+    'selected/{projectId}': aa.Const.SECTION.DETAIL
+    'selected/{projectId}/{slideId}': aa.Const.SECTION.DETAIL
+    'selected/{projectId}/{slideId}/full': aa.Const.SECTION.DETAIL
+    'index': aa.Const.SECTION.INDEX
 
   goog.events.listen router, aa.Router.EventType.CHANGE, (e) ->
     routerStatus = router.getStatus()

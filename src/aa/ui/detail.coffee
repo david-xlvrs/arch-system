@@ -31,26 +31,28 @@ aa.ui.Detail = React.createClass
 
   getSizeAndPosition: ->
     actSlide = @getActiveSlide()
-
-    if actSlide is 0
-      slide = @props['project']['slides'][actSlide]
-    else
-      slide = @props['project']['slides'][actSlide - 1]
+    slide = @props['project']['slides'][actSlide]
 
     ow = slide['image']['size'][0]
     oh = slide['image']['size'][1]
+    ratio = ow / oh
 
-    cw = @state['width']
-    ch = @state['height']
+    console.log 'ORIG', ow, oh, ratio, slide, actSlide, @props['project']['slides']
+
+    cw = @state['viewport']['width']
+    ch = @state['viewport']['height']
 
     # by width
     iw = cw * aa.ui.Detail.IMG_WIDTH
-    ih = oh / (ow / iw)
+    ih = iw / ratio
 
     # by height
     if Math.floor(ih) > ch * aa.ui.Detail.IMG_HEIGHT
       ih = ch * aa.ui.Detail.IMG_HEIGHT
-      iw = ow / (oh / ih)
+      iw = ih * ratio
+      console.log 'podle vysky'
+    else
+      console.log 'podle sirky'
 
     'img':
       'width': iw
@@ -98,7 +100,7 @@ aa.ui.Detail = React.createClass
         React.DOM.img
           'key': 'projectImg' + slides[activeSlide]['id']
           'src': slides[activeSlide]['image']['url']
-          'style': @getSizeAndPosition()
+          'style': @getSizeAndPosition()['img']
       ,
         React.DOM.h2 'key': 'projectTitle' + slides[activeSlide]['id'], slides[activeSlide]['title']
       ]

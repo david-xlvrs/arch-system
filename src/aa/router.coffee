@@ -4,6 +4,7 @@ goog.require 'goog.events.EventTarget'
 goog.require 'goog.events'
 goog.require 'goog.History'
 goog.require 'goog.string'
+goog.require 'aa.Const'
 
 
 class aa.Router extends goog.events.EventTarget
@@ -16,7 +17,7 @@ class aa.Router extends goog.events.EventTarget
     super()
 
     ###* @private ###
-    @previousRoute = ''
+    @previousRoute = null
 
     ###*
       @type {aa.Router.Status}
@@ -80,11 +81,13 @@ class aa.Router extends goog.events.EventTarget
           break
 
     if foundRoute or goog.string.isEmpty foundRoute
+      window.newTransition = @getTransition @previousRoute, foundRoute
+
       @status =
         'section': @config[foundRoute]
         'route': foundRoute
         'params': params
-        'transition': @getTransition @previousRoute, foundRoute
+        'transition': window.newTransition
 
       @previousRoute = foundRoute
       @dispatchEvent new goog.events.Event aa.Router.EventType.CHANGE, @
@@ -100,16 +103,18 @@ class aa.Router extends goog.events.EventTarget
     @private
   ###
   getTransition: (previousRoute, newRoute) ->
+    console.log "previousRoute #{previousRoute} | newRoute #{newRoute}"
+
     switch
-      when not previousRoute or not newRoute then aa.ui.Application.TRANSITION_SPLASH_2_SECTION
+      when goog.string.isEmpty(previousRoute) or not newRoute then aa.Const.TRANSITION.SPLASH_2_SECTION
       when newRoute is 'selected/{projectId}' or newRoute is 'selected/{projectId}/{slideId}'
-        aa.ui.Application.TRANSITION_SELECTED_2_DETAIL
+        aa.Const.TRANSITION.SELECTED_2_DETAIL
       when previousRoute is 'selected/{projectId}' or previousRoute is 'selected/{projectId}/{slideId}'
         if newRoute is 'selected'
-          aa.ui.Application.TRANSITION_DETAIL_2_SELECTED
+          aa.Const.TRANSITION.DETAIL_2_SELECTED
         else
-          aa.ui.Application.TRANSITION_DETAIL_2_SECTION
-      else aa.ui.Application.TRANSITION_SECTION_2_SECTION
+          aa.Const.TRANSITION.DETAIL_2_SECTION
+      else aa.Const.TRANSITION.SECTION_2_SECTION
 
   ###*
     @private

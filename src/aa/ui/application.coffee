@@ -5,7 +5,7 @@ goog.require 'aa.ui.Selected'
 goog.require 'aa.ui.Index'
 goog.require 'aa.ui.Detail'
 goog.require 'aa.ui.Menu'
-goog.require 'aa.ui.transition.SplashToSection'
+goog.require 'aa.ui.transition.Basic'
 
 aa.ui.Application = React.createClass
   statics:
@@ -39,7 +39,7 @@ aa.ui.Application = React.createClass
             index = React.createElement aa.ui.Index,
               'key': 'section-all'
               'projects': @props['data']['all']
-            React.createElement aa.ui.transition.SplashToSection(index),
+            React.createElement aa.ui.transition.Basic(index),
               'key': 'key-index-' + @props['transition']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
@@ -49,7 +49,7 @@ aa.ui.Application = React.createClass
               'key': 'section-selected'
               'projects': @props['data']['selected']
               'colors': @props['styleConfig']['colors']
-            React.createElement aa.ui.transition.SplashToSection(selected),
+            React.createElement aa.ui.transition.Basic(selected),
               'key': 'key-selected-' + @props['transition']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
