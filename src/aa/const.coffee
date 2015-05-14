@@ -18,3 +18,8 @@ aa.Const =
 
   ANIMATION:
     DURATION: 500
+
+  CSS:
+    IMG_MAX_WIDTH: 0.75
+    IMG_MAX_HEIGHT: 0.65
+    SIZE1: 30
