@@ -32,7 +32,7 @@ aa.ui.transition.Basic = (section) ->
 
     componentWillLeave: (callback) ->
       transition = @props['transition']
-      if transition is aa.Const.TRANSITION.SPLASH_TO_SECTION and window.newTransition is aa.Const.TRANSITION.SECTION_TO_SECTION
+      if transition is aa.Const.TRANSITION.SPLASH_2_SECTION and window.newTransition is aa.Const.TRANSITION.SECTION_2_SECTION
         transition = window.newTransition
 
       console.log 'componentWillLeave', transition

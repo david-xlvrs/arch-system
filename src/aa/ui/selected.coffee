@@ -49,7 +49,7 @@ aa.ui.Selected = React.createClass
       'key': 'aa-content-menu'
       'colors': @props['colors']
 
-    content.push React.DOM.span 'className': 'empty'
+    content.push React.DOM.span 'className': 'empty', 'key': 'dummyElement'
 
     if @props['projects']?.length
 
