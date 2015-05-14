@@ -40,7 +40,7 @@ aa.mock.List =
       bg: '#6c797e'
       content: '#fff'
     image:
-      size: [1024, 768]
+      size: [1000, 666]
       url: 'http://ad009cdnb.archdaily.net/wp-content/uploads/2011/03/1299213392-mg-1336-1280x853-1000x666.jpg'
   ,
     id: 3
@@ -59,7 +59,7 @@ aa.mock.List =
       bg: '#8b8c8e'
       content: '#2b2933'
     image:
-      size: [1080, 1920]
+      size: [2000, 1500]
       url: 'http://ad009cdnb.archdaily.net/wp-content/uploads/2012/08/5024bf9528ba0d658d00003c_hope-street-geelong-west-steve-domoney-architecture_heard_1.jpg'
 ]
 

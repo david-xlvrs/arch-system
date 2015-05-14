@@ -52,8 +52,6 @@ aa.ui.transition.Basic = (section) ->
       goog.dom.classes.remove @getDOMNode(), "#{transition}-leave", "#{transition}-leave-active"
 
     render: ->
-      console.log 'AAA', @props['transition']
-
       config =
         'className': classNames ['aa-page']
         'style':

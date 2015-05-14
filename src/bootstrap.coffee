@@ -44,6 +44,9 @@ sandbox.Bootstrap = ->
       'colors':
         'content': '#222'
         'bg': '#fff'
+    'viewport':
+      'width': goog.dom.getViewportSize().width
+      'height': goog.dom.getViewportSize().height
     'data':
       'splash': projectsModel.getSplashData()
       'selected': projectsModel.getSelectedData()
@@ -80,6 +83,15 @@ sandbox.Bootstrap = ->
     render()
 
   router.enableRouting()
+
+  ###*
+    Listening RESIZE and SCROLL
+  ###
+  window.addEventListener 'resize', ->
+    completeSettings['viewport'] =
+      'width': goog.dom.getViewportSize().width
+      'height': goog.dom.getViewportSize().height
+    render()
 
   return
 

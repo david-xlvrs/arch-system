@@ -25,6 +25,9 @@ aa.ui.Application = React.createClass
     #TODO
     'section': aa.ui.Application.SECTION_SPLASH
     'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
+    'viewport':
+      'width': 0
+      'height': 0
     'data': {}
     'styleConfig': {}
     'loaded': no
@@ -47,6 +50,7 @@ aa.ui.Application = React.createClass
           when aa.ui.Application.SECTION_SELECTED
             selected = React.createElement aa.ui.Selected,
               'key': 'section-selected'
+              'viewport': @props['viewport']
               'projects': @props['data']['selected']
               'colors': @props['styleConfig']['colors']
             React.createElement aa.ui.transition.Basic(selected),
@@ -77,6 +81,8 @@ aa.ui.Application = React.createClass
           'colors': @props['data']['splash']['colors']
       ,
         content
+      ,
+        React.DOM.div 'key': 'TEMP1', 'className': 'TEMP', 'a'
     ]
 
 
