@@ -8,23 +8,10 @@ goog.require 'aa.ui.Menu'
 goog.require 'aa.ui.transition.Basic'
 
 aa.ui.Application = React.createClass
-  statics:
-    SECTION_SPLASH: 'section-splash'
-    SECTION_SELECTED: 'section-selected'
-    SECTION_INDEX: 'section-index'
-    SECTION_PRIVATE: 'section-private'
-    SECTION_ABOUT: 'section-about'
-    SECTION_DETAIL: 'section-detail'
-    TRANSITION_SPLASH_2_SECTION: 'splash-to-section'
-    TRANSITION_SECTION_2_SECTION: 'section-to-section'
-    TRANSITION_SELECTED_2_DETAIL: 'selected-to-detail'
-    TRANSITION_DETAIL_2_SELECTED: 'detail-to-selected'
-    TRANSITION_DETAIL_2_SECTION: 'detail-to-section'
-
   getDefaultProps: ->
     #TODO
-    'section': aa.ui.Application.SECTION_SPLASH
-    'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
+    'section': aa.Const.SECTION.SPLASH
+    'transition': aa.Const.TRANSITION.SPLASH_2_SECTION
     'viewport':
       'width': 0
       'height': 0
@@ -38,7 +25,7 @@ aa.ui.Application = React.createClass
     content.push React.createElement(React.addons.TransitionGroup, {
       'className': 'aa-section', 'key': 'aa-section-transition'},
         switch @props['section']
-          when aa.ui.Application.SECTION_INDEX
+          when aa.Const.SECTION.INDEX
             index = React.createElement aa.ui.Index,
               'key': 'section-all'
               'projects': @props['data']['all']
@@ -47,7 +34,7 @@ aa.ui.Application = React.createClass
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
-          when aa.ui.Application.SECTION_SELECTED
+          when aa.Const.SECTION.SELECTED
             selected = React.createElement aa.ui.Selected,
               'key': 'section-selected'
               'viewport': @props['viewport']
@@ -58,7 +45,7 @@ aa.ui.Application = React.createClass
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
-          when aa.ui.Application.SECTION_DETAIL
+          when aa.Const.SECTION.DETAIL
             React.createElement aa.ui.Detail,
               'key': 'section-detail'
               'project': @props['data']['detail']
@@ -82,7 +69,7 @@ aa.ui.Application = React.createClass
       ,
         content
       ,
-        React.DOM.div 'key': 'TEMP1', 'className': 'TEMP', 'a'
+        React.DOM.div 'key': 'TEMP1', 'className': 'TEMP', ''
     ]
 
 
