@@ -48,7 +48,7 @@ g.task 'serve', ->
     no
 
   gconnect.server
-    root: ['dist']
+    root: [config.paths.app.dst]
     port: port
     livereload: liverload
 

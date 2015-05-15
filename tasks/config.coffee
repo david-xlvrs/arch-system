@@ -1,13 +1,15 @@
+buildDir = 'dist'
+
 module.exports =
   paths:
     app:
-      dst: './dist'
+      dst: './' + buildDir
     closure:
       src: './node_modules/closure-library/'
-      dst: './dist/_dev/closure-library/'
+      dst: './' + buildDir + '/_dev/closure-library/'
     img:
       srcGlob: './assets/img/**'
-      dst: './dist/img'
+      dst: './' + buildDir + '/img'
     static:
       srcGlob: './assets/static/**'
     index:
@@ -17,10 +19,10 @@ module.exports =
       lint: 'coffeelint.json'
     soy:
       srcGlob: './src/**/*.soy'
-      dst: './dist/_dev/js'
+      dst: './' + buildDir + '/_dev/js'
     js:
       srcGlob: [
-        './dist/_dev/js/**/*.js'
+        './' + buildDir + '/_dev/js/**/*.js'
         './node_modules/closure-library/closure/goog/**/*.js'
         './node_modules/closure-library/third_party/closure/goog/**/*.js'
         '!./node_modules/closure-library/**/*_test.js'
@@ -31,10 +33,10 @@ module.exports =
         '!./node_modules/closure-library/**/i18n/*ext.js'
         '!./node_modules/closure-library/**/i18n/charpickerdata.js'
       ]
-      srcDepsGlob: './dist/_dev/js/**/*.js'
-      dst: './dist/js'
-      devDst: './dist/_dev/js'
-      devBuildDst: './dist/_dev/build'
+      srcDepsGlob: './' + buildDir + '/_dev/js/**/*.js'
+      dst: './' + buildDir + '/js'
+      devDst: './' + buildDir + '/_dev/js'
+      devBuildDst: './' + buildDir + '/_dev/build'
       nameDeps: 'closure-deps.js'
       nameMinified: 'app.min.js'
       nameConcatenatedMinified: 'app_all.min.js'
@@ -48,8 +50,8 @@ module.exports =
       nameLess: 'sprite-icons.less'
     less:
       srcGlob: './src/**/*.less'
-      dst: './dist/css'
-      mapDst: './dist/css/map'
+      dst: './' + buildDir + '/css'
+      mapDst: './' + buildDir + '/css/map'
       nameConcatenatedLess: 'style.less'
       nameCSSMinified: 'style.min.css'
     vendor:
@@ -57,5 +59,5 @@ module.exports =
         './node_modules/react/dist/react-with-addons.min.js'
         './node_modules/classnames/index.js'
       ]
-      dst: './dist/_dev/vendor/'
+      dst: './' + buildDir + '/_dev/vendor/'
       concatName: 'vendor.js'
