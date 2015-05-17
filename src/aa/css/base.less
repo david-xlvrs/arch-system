@@ -1,6 +1,6 @@
-@import "./src/aa/reset.less";
-@import "./src/aa/mixins.less";
-@import "./src/aa/transitions.less";
+@import "./src/aa/css/reset.less";
+@import "./src/aa/css/mixins.less";
+@import "./src/aa/css/transitions.less";
 
 //TODO: uklidit
 
@@ -119,22 +119,6 @@ html, body, .container {
       .aa-content-selected {
         position: relative;
         height: 100%;
-
-        .project-title {
-          position: fixed;
-          left: 0;
-          bottom: @size1 * 2;
-          width: 100%;
-          height: 40px;
-          line-height: 40px;
-          text-align: center;
-
-          a {
-            color: inherit;
-            text-decoration: none;
-            .aaHover-mixin;
-          }
-        }
       }
 
       .aa-content-index {
@@ -160,23 +144,6 @@ html, body, .container {
         display: block;
         width: 100%;
         height: 100%;
-        // position: absolute;
-        // top: 0;
-        // bottom: 0;
-        // left: 0;
-        // right: 0;
-        // max-width: 75%;
-        // max-height: 65%;
-
-      }
-
-      h2 {
-        position: absolute;
-        bottom: 5%;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-        color: inherit;
       }
 
       &.aa-next-slide {
@@ -208,6 +175,25 @@ html, body, .container {
       }
     }
 
+    .aa-project-title {
+      position: fixed;
+      left: 0;
+      bottom: @size1 * 2;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &.clickable {
+          .aaHover-mixin;
+        }
+      }
+    }
+
     .aa-page-detail {
       overflow-x: hidden;
       transition: background-color @animDurationSt ease-in, color @animDurationSt ease-in;
@@ -215,21 +201,49 @@ html, body, .container {
       .aa-project-slide {
         height: 100%;
 
-        h2 {
-          top: @size1;
+        &.aa-actual-slide {
+          position: relative;
         }
       }
 
       .aa-menu {
         display: none;
       }
-    }
-  }
-}
 
-.aa-detail-list {
-  position: relative;
-  height: 100%;
+      .aa-detail-counter {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        margin: -100px 0 0 -100px;
+        line-height: 200px;
+        font-size: 140px;
+        text-align: center;
+      }
+
+      .aa-project-title {
+        bottom: @size1;
+      }
+
+      .aa-slide-title {
+        position: fixed;
+        left: 0;
+        top: @size1 * 1;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+
+  }
 }
 
 .aa-close {
@@ -240,6 +254,13 @@ html, body, .container {
   z-index: 50;
   width: 30px;
   height: 30px;
-  background: url(/img/cross.png) no-repeat;
+  // background: url(/img/cross.png) no-repeat;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
   .aaHover-mixin;
 }

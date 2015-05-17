@@ -46,10 +46,16 @@ aa.ui.Application = React.createClass
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
           when aa.Const.SECTION.DETAIL
-            React.createElement aa.ui.Detail,
+            detail = React.createElement aa.ui.Detail,
               'key': 'section-detail'
               'project': @props['data']['detail']
               'activeSlide': @props['data']['detailSlide']
+              'viewport': @props['viewport']
+            React.createElement aa.ui.transition.Basic(detail),
+              'key': 'key-detail-' + @props['transition']
+              'transition': @props['transition']
+              'fromColors': @props['data']['splash']['colors']
+              'toColors': @props['styleConfig']['colors']
           else
             null
       )

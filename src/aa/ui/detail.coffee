@@ -13,6 +13,9 @@ aa.ui.Detail = React.createClass
     'project': {}
     'activeSlide': 0
     'moveNext': no
+    'viewport':
+      'width': 0
+      'height': 0
 
   getActiveSlide: ->
     parseInt @props['activeSlide']
@@ -29,38 +32,42 @@ aa.ui.Detail = React.createClass
     else
       @getActiveSlide() - 1
 
-  getSizeAndPosition: ->
-    actSlide = @getActiveSlide()
-    slide = @props['project']['slides'][actSlide]
+  getImageStyles: (pos, type) ->
+    slide = @props['project']['slides'][pos]
+    ratio = slide['image']['size'][0] / slide['image']['size'][1]
 
-    ow = slide['image']['size'][0]
-    oh = slide['image']['size'][1]
-    ratio = ow / oh
+    cw = @props['viewport']['width']
+    ch = @props['viewport']['height']
 
-    console.log 'ORIG', ow, oh, ratio, slide, actSlide, @props['project']['slides']
+    menuHeight = aa.Const.CSS.MENU.HEIGHT
+    titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    cw = @state['viewport']['width']
-    ch = @state['viewport']['height']
+    maxH = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
+    maxW = cw - 4 * aa.Const.CSS.SIZE1
+
+    # console.log "cw #{cw}, ch #{ch}, maxH #{maxH}, maxW #{maxW}"
 
     # by width
-    iw = cw * aa.ui.Detail.IMG_WIDTH
+    iw = maxW
     ih = iw / ratio
 
     # by height
-    if Math.floor(ih) > ch * aa.ui.Detail.IMG_HEIGHT
-      ih = ch * aa.ui.Detail.IMG_HEIGHT
+    if Math.floor(ih) > maxH
+      ih = maxH
       iw = ih * ratio
-      console.log 'podle vysky'
-    else
-      console.log 'podle sirky'
 
-    'img':
+    ret =
       'width': iw
       'height': ih
-      'top': ch / 2 - ih / 2
-      'left': cw / 2 - iw / 2
-      'bottom': 'auto'
-      'right': 'auto'
+      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 2
+
+    if type is 'next'
+      ret['marginLeft'] = 'auto'
+      ret['marginRight'] = -(iw - aa.Const.CSS.SIZE1)
+    else if type is 'previous'
+      ret['marginLeft'] = -(iw - aa.Const.CSS.SIZE1)
+
+    ret
 
   getAndSaveViewportSize: ->
     @setState
@@ -90,45 +97,82 @@ aa.ui.Detail = React.createClass
 
     slides = project['slides']
 
-    slideElements = []
+    content = []
 
+    #1-menu
+    content.push React.createElement aa.ui.Menu,
+        'key': 'aa-content-menu'
+        'colors': @props['project']?['colors']
+
+    #2-counter
+    content.push React.DOM.span 'key': 'counter', 'className': 'aa-detail-counter',
+      (activeSlide + 1) + '/' + @props['project']['slides'].length
+
+    #3-slide title
+    content.push React.createElement aa.ui.SelectedTitle,
+      'clickable': no
+      'className': 'aa-slide-title'
+      'key': 'slideTitle'
+      'projects': [slides[activeSlide]]
+
+    #4-project title
+    content.push React.createElement aa.ui.SelectedTitle,
+      'clickable': no
+      'key': 'projectTitle'
+      'projects': [project]
+      'imagePositions': [0]
+
+    #5-close
+    content.push React.DOM.a
+      'key': 'detail-closer'
+      'className': 'aa-close'
+      'href': '/#selected'
+    , 'X'
+
+    #6-actual slide
+    imageStyles = @getImageStyles activeSlide
     config =
       'key': 'project' + project['id']
       'className': 'aa-project-slide aa-actual-slide'
-
-    slideElements.push React.DOM.div config, [
-        React.DOM.img
-          'key': 'projectImg' + slides[activeSlide]['id']
-          'src': slides[activeSlide]['image']['url']
-          'style': @getSizeAndPosition()['img']
-      ,
-        React.DOM.h2 'key': 'projectTitle' + slides[activeSlide]['id'], slides[activeSlide]['title']
-      ]
+      'style': imageStyles
+    content.push React.DOM.a config, [
+      React.DOM.img
+        'key': 'projectImg' + slides[activeSlide]['id']
+        'src': slides[activeSlide]['image']['url']
+    ]
 
     if slides.length > 1
-      slideElements.push React.DOM.a {
+      #7-next slide
+      content.push React.DOM.a {
         'key': 'next-slide'
         'className': 'aa-project-slide aa-next-slide'
         'href': '/#selected/' + project['id'] + '/' + nextSlide
+        'style':
+          'width': (@props['viewport']['width'] - imageStyles['width']) / 2
       }, [
         React.DOM.img
           'key': 'projectImg' + slides[nextSlide]['id']
           'src': slides[nextSlide]['image']['url']
+          'style': @getImageStyles nextSlide, 'next'
       ]
 
-      slideElements.push React.DOM.a {
+      #8-previous slide
+      content.push React.DOM.a {
         'key': 'previous-slide'
         'className': 'aa-project-slide aa-previous-slide'
         'href': '/#selected/' + project['id'] + '/' + previousSlide
+        'style':
+          'width': (@props['viewport']['width'] - imageStyles['width']) / 2
       }, [
         React.DOM.img
           'key': 'projectImg' + slides[previousSlide]['id']
           'src': slides[previousSlide]['image']['url']
+          'style': @getImageStyles previousSlide, 'previous'
       ]
 
     animation = React.createElement(React.addons.CSSTransitionGroup, {
       'className': 'aa-detail-transition', 'transitionName': 'detail-to-next', 'key': 'aa-detail-transition'
-    }, React.DOM.div 'key': 'detail-list' + activeSlide, 'className': 'aa-detail-list', slideElements
+    }, React.DOM.div 'key': 'detail-list' + activeSlide, 'className': 'aa-detail-list', content
     )
 
     config =
@@ -138,14 +182,5 @@ aa.ui.Detail = React.createClass
       'style':
         'color': slides[activeSlide]['colors']['content']
         'backgroundColor': slides[activeSlide]['colors']['bg']
-    React.DOM.div config, [
-      animation,
-      React.createElement aa.ui.Menu,
-        'key': 'aa-content-menu'
-        'colors': @props['project']?['colors']
-      React.DOM.a
-        'key': 'detail-closer'
-        'className': 'aa-close'
-        'href': '/#selected'
-    ]
+    React.DOM.div config, content
 
