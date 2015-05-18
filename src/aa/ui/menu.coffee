@@ -13,21 +13,21 @@ aa.ui.Menu = React.createClass
     #about
     links.push React.createElement aa.ui.MenuItem,
       'key': 'about'
-      'title': 'About'
+      'title': 'about & contacts'
       'url': urlwithoutHash + '#about'
       'className': 'aa-menu-about'
 
     #selected
     links.push React.createElement aa.ui.MenuItem,
       'key': 'selected'
-      'title': 'Selected projects'
+      'title': 'selected projects'
       'url': urlwithoutHash + '#selected'
       'className': 'aa-menu-selected'
 
     #index
     links.push React.createElement aa.ui.MenuItem,
       'key': 'index'
-      'title': 'Index'
+      'title': 'index'
       'url': urlwithoutHash + '#index'
       'className': 'aa-menu-index'
 

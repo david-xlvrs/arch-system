@@ -1,4 +1,5 @@
 @import "./src/aa/css/reset.less";
+@import "./src/aa/css/fonts.less";
 @import "./src/aa/css/mixins.less";
 @import "./src/aa/css/transitions.less";
 
@@ -39,7 +40,7 @@ html, body, .container {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'CircularPro Bold', Helvetica, Arial, sans-serif;
 
   .aa-application {
     position: relative;
@@ -53,12 +54,27 @@ html, body, .container {
       width: 100%;
 
       ul {
+        position: relative;
         margin: 0;
         line-height: 50px;
+        font-size: 24px;
+        text-align: center;
 
         li {
           display: inline-block;
-          padding: 0 20px;
+          padding: 0 @size1;
+
+          &.aa-menu-about {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+
+          &.aa-menu-index {
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
 
           a {
             color: inherit;
@@ -182,6 +198,7 @@ html, body, .container {
       width: 100%;
       height: 40px;
       line-height: 40px;
+      font-size: 24px;
       text-align: center;
 
       a {
