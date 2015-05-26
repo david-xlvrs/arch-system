@@ -12,9 +12,7 @@ aa.Const =
   TRANSITION:
     SPLASH_2_SECTION: 'splash-to-section'
     SECTION_2_SECTION: 'section-to-section'
-    SELECTED_2_DETAIL: 'selected-to-detail'
-    DETAIL_2_SELECTED: 'detail-to-selected'
-    DETAIL_2_SECTION: 'detail-to-section'
+    DETAIL_2_DETAIL: 'detail-to-detail'
 
   ANIMATION:
     DURATION: 500

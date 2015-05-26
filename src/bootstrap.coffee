@@ -26,11 +26,10 @@ sandbox.Bootstrap = ->
   projectsModel.load()
   projectsModel.addEventListener 'change', (e) ->
     completeSettings['loaded'] = projectsModel.isLoaded()
-    completeSettings['data'] =
-      'splash': projectsModel.getSplashData()
-      'selected': projectsModel.getSelectedData()
-      'all': projectsModel.getAllData()
-      'detail': projectsModel.getDetail 1
+    completeSettings['data']['splash'] = projectsModel.getSplashData()
+    completeSettings['data']['selected'] = projectsModel.getSelectedData()
+    completeSettings['data']['all'] = projectsModel.getAllData()
+    completeSettings['data']['detail'] = projectsModel.getDetail 1
     render()
 
   ###*
@@ -58,6 +57,7 @@ sandbox.Bootstrap = ->
     Render whole application
   ###
   render = ->
+    console.log 'RENDER', completeSettings
     aa.ui.application.render completeSettings, appEl
 
   ###*
@@ -78,6 +78,7 @@ sandbox.Bootstrap = ->
 
     if routerStatus['params']?['projectId']
       completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectId']
+      console.log 'AA', routerStatus['params']?['slideId']
       completeSettings['data']['detailSlide'] = routerStatus['params']?['slideId']
 
     render()

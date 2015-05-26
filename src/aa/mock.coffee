@@ -113,21 +113,6 @@ aa.mock.Detail =
       #     bg: '#C6CFCE'
       #     content: '#4c746c'
       ,
-        id: 2
-        projectId: 1
-        type: 'image'
-        title: 'Tréninkové plochy'
-        desc: 'nějaký popisek' # muze byt null
-        colors:
-          bg: '#607a77'
-          content: '#C4AC9B'
-        image:
-          size: [2362, 1670]
-          url: '/img/data/02.jpg'
-        fullImage:
-          size: [2048, 1536]
-          url: '/img/data/02.jpg'
-      ,
         id: 3
         projectId: 1
         type: 'image'
@@ -142,5 +127,21 @@ aa.mock.Detail =
         fullImage:
           size: [2048, 1536]
           url: '/img/data/03.jpg'
+      ,
+        id: 2
+        projectId: 1
+        type: 'image'
+        title: 'Tréninkové plochy'
+        desc: 'nějaký popisek' # muze byt null
+        colors:
+          bg: '#607a77'
+          content: '#C4AC9B'
+        image:
+          size: [2362, 1670]
+          url: '/img/data/02.jpg'
+        fullImage:
+          size: [2048, 1536]
+          url: '/img/data/02.jpg'
+
 
     ]

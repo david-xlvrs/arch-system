@@ -93,6 +93,8 @@ aa.ui.Detail = React.createClass
     nextSlide = @getNextSlide()
     previousSlide = @getPreviousSlide()
 
+    console.log 'ACTIVE SLIDE', @props['activeSlide'], @getActiveSlide()
+
     return null if goog.object.isEmpty project
 
     slides = project['slides']
@@ -169,11 +171,6 @@ aa.ui.Detail = React.createClass
           'src': slides[previousSlide]['image']['url']
           'style': @getImageStyles previousSlide, 'previous'
       ]
-
-    animation = React.createElement(React.addons.CSSTransitionGroup, {
-      'className': 'aa-detail-transition', 'transitionName': 'detail-to-next', 'key': 'aa-detail-transition'
-    }, React.DOM.div 'key': 'detail-list' + activeSlide, 'className': 'aa-detail-list', content
-    )
 
     config =
       'className': classNames

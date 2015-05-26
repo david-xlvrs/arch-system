@@ -16,3 +16,6 @@ aa.ui.transition.Config[aa.Const.TRANSITION.SPLASH_2_SECTION] =
 
 aa.ui.transition.Config[aa.Const.TRANSITION.SECTION_2_SECTION] =
   'duration': aa.Const.ANIMATION.DURATION
+
+aa.ui.transition.Config[aa.Const.TRANSITION.DETAIL_2_DETAIL] =
+  'duration': aa.Const.ANIMATION.DURATION * 2

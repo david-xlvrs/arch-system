@@ -22,6 +22,8 @@ aa.ui.Application = React.createClass
   render: ->
     content = []
 
+    console.log 'detail slide', @props['data']['detailSlide']
+
     content.push React.createElement(React.addons.TransitionGroup, {
       'className': 'aa-section', 'key': 'aa-section-transition'},
         switch @props['section']
@@ -52,7 +54,7 @@ aa.ui.Application = React.createClass
               'activeSlide': @props['data']['detailSlide']
               'viewport': @props['viewport']
             React.createElement aa.ui.transition.Basic(detail),
-              'key': 'key-detail-' + @props['transition']
+              'key': 'key-detail-' + @props['transition'] + @props['data']['detailSlide']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
