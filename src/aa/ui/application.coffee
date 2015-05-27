@@ -26,40 +26,42 @@ aa.ui.Application = React.createClass
       'className': 'aa-section', 'key': 'aa-section-transition'},
         switch @props['section']
           when aa.Const.SECTION.INDEX
-            index = React.createElement aa.ui.Index,
-              'key': 'section-all'
-              'projects': @props['data']['all']
-            React.createElement aa.ui.transition.Basic(index),
+            React.createElement aa.ui.transition.Basic,
+              'section': aa.ui.Index,
+              'sectionProps': 
+                'key': 'section-all'
+                'projects': @props['data']['all']
               'key': 'key-index-' + @props['transition']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
           when aa.Const.SECTION.SELECTED
-            selected = React.createElement aa.ui.Selected,
-              'key': 'section-selected'
-              'viewport': @props['viewport']
-              'projects': @props['data']['selected']
-              'colors': @props['styleConfig']['colors']
-            React.createElement aa.ui.transition.Basic(selected),
+            React.createElement aa.ui.transition.Basic,
+              'section': aa.ui.Selected
+              'sectionProps':
+                'key': 'section-selected'
+                'viewport': @props['viewport']
+                'projects': @props['data']['selected']
+                'colors': @props['styleConfig']['colors']
               'key': 'key-selected-' + @props['transition']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
           when aa.Const.SECTION.DETAIL
-            detail = React.createElement aa.ui.Detail,
-              'key': 'section-detail'
-              'project': @props['data']['detail']
-              'activeSlide': @props['data']['detailSlide']
-              'viewport': @props['viewport']
-            React.createElement aa.ui.transition.Basic(detail),
-              'key': 'key-detail-' + @props['transition']# + @props['data']['detailSlide']
+            React.createElement aa.ui.transition.Basic,
+              'section': aa.ui.Detail
+              'sectionProps':
+                'key': 'section-detail'
+                'project': @props['data']['detail']
+                'activeSlide': @props['data']['detailSlide']
+                'viewport': @props['viewport']
+              'key': 'key-detail-' + @props['transition']
               'transition': @props['transition']
               'fromColors': @props['data']['splash']['colors']
               'toColors': @props['styleConfig']['colors']
           else
             null
       )
-
 
     React.DOM.div 'className': 'aa-application', [
         React.createElement aa.ui.Splash,
@@ -74,12 +76,6 @@ aa.ui.Application = React.createClass
           'colors': @props['data']['splash']['colors']
       ,
         content
-      # ,
-      #   React.createElement aa.ui.Detail,
-      #     'key': 'section-detail22'
-      #     'project': @props['data']['detail']
-      #     'activeSlide': @props['data']['detailSlide']
-      #     'viewport': @props['viewport']
       ,
         React.DOM.div 'key': 'TEMP1', 'className': 'TEMP', ''
     ]

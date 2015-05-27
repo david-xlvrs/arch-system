@@ -4,65 +4,66 @@ goog.require 'goog.style'
 goog.require 'aa.Const'
 goog.require 'aa.ui.transition.Config'
 
-aa.ui.transition.Basic = (section) ->
-  React.createClass
-    getDefaultProps: ->
-      'fromColors': {}
-      'toColors': {}
-      'transition': ''
+aa.ui.transition.Basic = React.createClass
+  getDefaultProps: ->
+    'section': null
+    'sectionProps': {}
+    'fromColors': {}
+    'toColors': {}
+    'transition': ''
 
-    getRealLeaveTransition: (transition) ->
-      if transition is aa.Const.TRANSITION.SPLASH_2_SECTION and window.newTransition isnt aa.Const.TRANSITION.SPLASH_2_SECTION
-        aa.Const.TRANSITION.SECTION_2_SECTION
-      # else if transition is aa.Const.TRANSITION.SECTION_2_SECTION and window.newTransition is aa.Const.TRANSITION.DETAIL_2_DETAIL
-      #   window.newTransition
-      # else if transition is aa.Const.TRANSITION.DETAIL_2_DETAIL and window.newTransition is aa.Const.TRANSITION.SECTION_2_SECTION
-      #   window.newTransition
-      else
-        transition
+  getRealLeaveTransition: (transition) ->
+    if transition is aa.Const.TRANSITION.SPLASH_2_SECTION and window.newTransition isnt aa.Const.TRANSITION.SPLASH_2_SECTION
+      aa.Const.TRANSITION.SECTION_2_SECTION
+    # else if transition is aa.Const.TRANSITION.SECTION_2_SECTION and window.newTransition is aa.Const.TRANSITION.DETAIL_2_DETAIL
+    #   window.newTransition
+    # else if transition is aa.Const.TRANSITION.DETAIL_2_DETAIL and window.newTransition is aa.Const.TRANSITION.SECTION_2_SECTION
+    #   window.newTransition
+    else
+      transition
 
-    componentWillEnter: (callback) ->
-      transition = @props['transition']
+  componentWillEnter: (callback) ->
+    transition = @props['transition']
 
-      console.log 'componentWillEnter', transition
+    console.log 'componentWillEnter', transition
+    requestAnimationFrame =>
+      goog.dom.classes.add @getDOMNode(), "#{transition}-enter"
+      aa.ui.transition.Config[transition]?['enter']? @
+
       requestAnimationFrame =>
-        goog.dom.classes.add @getDOMNode(), "#{transition}-enter"
-        aa.ui.transition.Config[transition]?['enter']? @
+        goog.dom.classes.add @getDOMNode(), "#{transition}-enter-active"
+        aa.ui.transition.Config[transition]?['enter-active']? @
+        window.setTimeout callback, aa.ui.transition.Config[transition]['duration']
 
-        requestAnimationFrame =>
-          goog.dom.classes.add @getDOMNode(), "#{transition}-enter-active"
-          aa.ui.transition.Config[transition]?['enter-active']? @
-          window.setTimeout callback, aa.ui.transition.Config[transition]['duration']
+  componentDidEnter: ->
+    transition = @props['transition']
 
-    componentDidEnter: ->
-      transition = @props['transition']
+    goog.dom.classes.remove @getDOMNode(), "#{transition}-enter", "#{transition}-enter-active"
+    console.log 'componentDidEnter', transition
 
-      goog.dom.classes.remove @getDOMNode(), "#{transition}-enter", "#{transition}-enter-active"
-      console.log 'componentDidEnter', transition
+  componentWillLeave: (callback) ->
+    transition = @getRealLeaveTransition @props['transition']
 
-    componentWillLeave: (callback) ->
-      transition = @getRealLeaveTransition @props['transition']
+    console.log 'componentWillLeave', transition
+    requestAnimationFrame =>
+      goog.dom.classes.add @getDOMNode(), "#{transition}-leave"
+      aa.ui.transition.Config[transition]?['leave']? @
 
-      console.log 'componentWillLeave', transition
       requestAnimationFrame =>
-        goog.dom.classes.add @getDOMNode(), "#{transition}-leave"
-        aa.ui.transition.Config[transition]?['leave']? @
+        goog.dom.classes.add @getDOMNode(), "#{transition}-leave-active"
+        aa.ui.transition.Config[transition]?['leave-active']? @
 
-        requestAnimationFrame =>
-          goog.dom.classes.add @getDOMNode(), "#{transition}-leave-active"
-          aa.ui.transition.Config[transition]?['leave-active']? @
+        window.setTimeout callback, aa.ui.transition.Config[transition]['duration']
 
-          window.setTimeout callback, aa.ui.transition.Config[transition]['duration']
+  componentDidLeave: () ->
+    transition = @getRealLeaveTransition @props['transition']
 
-    componentDidLeave: () ->
-      transition = @getRealLeaveTransition @props['transition']
+    console.log 'componentDidLeave', transition
+    goog.dom.classes.remove @getDOMNode(), "#{transition}-leave", "#{transition}-leave-active"
 
-      console.log 'componentDidLeave', transition
-      goog.dom.classes.remove @getDOMNode(), "#{transition}-leave", "#{transition}-leave-active"
-
-    render: ->
-      config =
-        'className': classNames ['aa-page']
-        'style':
-          'backgroundColor': @props['toColors']['bg']
-      React.DOM.div config, section
+  render: ->
+    config =
+      'className': classNames ['aa-page']
+      'style':
+        'backgroundColor': @props['toColors']['bg']
+    React.DOM.div config, React.createElement @props['section'], @props['sectionProps']
