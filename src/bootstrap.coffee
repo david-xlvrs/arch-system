@@ -57,7 +57,6 @@ sandbox.Bootstrap = ->
     Render whole application
   ###
   render = ->
-    console.log 'RENDER', completeSettings
     aa.ui.application.render completeSettings, appEl
 
   ###*
@@ -78,7 +77,6 @@ sandbox.Bootstrap = ->
 
     if routerStatus['params']?['projectId']
       completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectId']
-      console.log 'AA', routerStatus['params']?['slideId']
       completeSettings['data']['detailSlide'] = routerStatus['params']?['slideId']
 
     render()

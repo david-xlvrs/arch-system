@@ -109,7 +109,7 @@ class aa.Router extends goog.events.EventTarget
     switch
       when goog.string.isEmpty(previousRoute) or not newRoute then aa.Const.TRANSITION.SPLASH_2_SECTION
       when newRoute is previousRoute and newRoute is 'selected/{projectId}/{slideId}'
-        aa.Const.TRANSITION.DETAIL_2_DETAIL
+        aa.Const.TRANSITION.SECTION_2_SECTION #aa.Const.TRANSITION.DETAIL_2_DETAIL
       when newRoute is 'selected/{projectId}/{slideId}'
         aa.Const.TRANSITION.SECTION_2_SECTION
       when previousRoute is 'selected/{projectId}/{slideId}'
@@ -123,6 +123,9 @@ class aa.Router extends goog.events.EventTarget
     @private
   ###
   parseToken: (token) ->
+    if token.substr(token.length - 1, 1) is '/'
+      token = token.substr(0, token.length - 1)
+
     token.split aa.Router.DELIMITER
 
 
