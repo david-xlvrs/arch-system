@@ -74,6 +74,12 @@ aa.ui.Application = React.createClass
           'colors': @props['data']['splash']['colors']
       ,
         content
+      # ,
+      #   React.createElement aa.ui.Detail,
+      #     'key': 'section-detail22'
+      #     'project': @props['data']['detail']
+      #     'activeSlide': @props['data']['detailSlide']
+      #     'viewport': @props['viewport']
       ,
         React.DOM.div 'key': 'TEMP1', 'className': 'TEMP', ''
     ]
