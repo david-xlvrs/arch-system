@@ -104,10 +104,6 @@ aa.ui.DetailSlide = React.createClass
         'key': 'aa-content-menu'
         'colors': @props['project']?['colors']
 
-    #2-counter
-    content.push React.DOM.span 'key': 'counter', 'className': 'aa-detail-counter',
-      (activeSlide + 1) + '/' + @props['project']['slides'].length
-
     #3-slide title
     content.push React.createElement aa.ui.SelectedTitle,
       'clickable': no

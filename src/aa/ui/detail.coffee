@@ -1,5 +1,6 @@
 goog.provide 'aa.ui.Detail'
 
+goog.require 'aa.ui.DetailCounter'
 goog.require 'aa.ui.DetailSlide'
 goog.require 'goog.array'
 goog.require 'goog.object'
@@ -34,7 +35,15 @@ aa.ui.Detail = React.createClass
         'color': slides[activeSlide]['colors']['content']
         'backgroundColor': slides[activeSlide]['colors']['bg']
 
-    React.DOM.div config, React.createElement(React.addons.TransitionGroup, {
+    content = []
+
+    content.push React.createElement aa.ui.DetailCounter,
+        'key': 'detailCounter'
+        'active': parseInt(activeSlide, 10) + 1
+        'total': @props['project']['slides'].length
+        'color': slides[activeSlide]['colors']['content']
+
+    content.push React.createElement(React.addons.TransitionGroup, {
       'className': 'aa-detail', 'key': 'aa-detail-transition'},
         React.createElement aa.ui.transition.Basic,
           'section': aa.ui.DetailSlide
@@ -42,3 +51,6 @@ aa.ui.Detail = React.createClass
           'key': 'key-selected-SLIDE' + activeSlide
           'transition': aa.Const.TRANSITION.DETAIL_2_DETAIL
     )
+
+    React.DOM.div config, content
+

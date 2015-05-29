@@ -15,10 +15,6 @@ aa.ui.transition.Basic = React.createClass
   getRealLeaveTransition: (transition) ->
     if transition is aa.Const.TRANSITION.SPLASH_2_SECTION and window.newTransition isnt aa.Const.TRANSITION.SPLASH_2_SECTION
       aa.Const.TRANSITION.SECTION_2_SECTION
-    # else if transition is aa.Const.TRANSITION.SECTION_2_SECTION and window.newTransition is aa.Const.TRANSITION.DETAIL_2_DETAIL
-    #   window.newTransition
-    # else if transition is aa.Const.TRANSITION.DETAIL_2_DETAIL and window.newTransition is aa.Const.TRANSITION.SECTION_2_SECTION
-    #   window.newTransition
     else
       transition
 
