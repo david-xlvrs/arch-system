@@ -62,6 +62,7 @@ sandbox.Bootstrap = ->
   ###*
     Router settings and listening
   ###
+  prevDetailSlide = 0
   router = new aa.Router
     '': aa.Const.SECTION.SPLASH
     'selected': aa.Const.SECTION.SELECTED
@@ -77,7 +78,18 @@ sandbox.Bootstrap = ->
 
     if routerStatus['params']?['projectId']
       completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectId']
-      completeSettings['data']['detailSlide'] = routerStatus['params']?['slideId']
+      newDetailSlide = completeSettings['data']['detailSlide'] = parseInt routerStatus['params']?['slideId'], 10
+
+      slidesCount = completeSettings['data']['detail']['slides'].length
+
+      if (newDetailSlide > prevDetailSlide and not (prevDetailSlide is 0 and newDetailSlide + 1 is slidesCount)) or
+          (newDetailSlide is 0 and prevDetailSlide + 1 is slidesCount)
+        window.detailDirection = 1
+      else
+        window.detailDirection = 0
+
+      prevDetailSlide = newDetailSlide
+
 
     render()
 

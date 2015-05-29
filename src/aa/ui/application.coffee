@@ -28,7 +28,7 @@ aa.ui.Application = React.createClass
           when aa.Const.SECTION.INDEX
             React.createElement aa.ui.transition.Basic,
               'section': aa.ui.Index,
-              'sectionProps': 
+              'sectionProps':
                 'key': 'section-all'
                 'projects': @props['data']['all']
               'key': 'key-index-' + @props['transition']

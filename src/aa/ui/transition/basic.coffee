@@ -15,11 +15,13 @@ aa.ui.transition.Basic = React.createClass
   getRealLeaveTransition: (transition) ->
     if transition is aa.Const.TRANSITION.SPLASH_2_SECTION and window.newTransition isnt aa.Const.TRANSITION.SPLASH_2_SECTION
       aa.Const.TRANSITION.SECTION_2_SECTION
+    if transition is aa.Const.TRANSITION.DETAIL_2_NEXT
+      transition = if window.detailDirection then aa.Const.TRANSITION.DETAIL_2_NEXT else aa.Const.TRANSITION.DETAIL_2_PREVIOUS
     else
       transition
 
   componentWillEnter: (callback) ->
-    transition = @props['transition']
+    transition = @getRealLeaveTransition @props['transition']
 
     console.log 'componentWillEnter', transition
     requestAnimationFrame =>
@@ -32,7 +34,7 @@ aa.ui.transition.Basic = React.createClass
         window.setTimeout callback, aa.ui.transition.Config[transition]['duration']
 
   componentDidEnter: ->
-    transition = @props['transition']
+    transition = @getRealLeaveTransition @props['transition']
 
     goog.dom.classes.remove @getDOMNode(), "#{transition}-enter", "#{transition}-enter-active"
     console.log 'componentDidEnter', transition

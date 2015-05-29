@@ -49,7 +49,7 @@ aa.ui.Detail = React.createClass
           'section': aa.ui.DetailSlide
           'sectionProps': @props
           'key': 'key-selected-SLIDE' + activeSlide
-          'transition': aa.Const.TRANSITION.DETAIL_2_DETAIL
+          'transition': aa.Const.TRANSITION.DETAIL_2_NEXT
     )
 
     React.DOM.div config, content

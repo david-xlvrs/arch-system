@@ -87,6 +87,12 @@ aa.ui.DetailSlide = React.createClass
   componentWillUnmount: ->
     window.removeEventListener 'resize', @handleResize
 
+  onNextClick: (ev) ->
+    window.detailDirection = 1
+
+  onPreviousClick: (ev) ->
+    window.detailDirection = 0
+
   render: ->
     project = @props['project']
     activeSlide = @getActiveSlide()
@@ -141,6 +147,7 @@ aa.ui.DetailSlide = React.createClass
       #7-next slide
       content.push React.DOM.a {
         'key': 'next-slide'
+        'onClick': @onNextClick
         'className': 'aa-project-slide aa-next-slide'
         'href': '/#selected/' + project['id'] + '/' + nextSlide
         'style':
@@ -155,6 +162,7 @@ aa.ui.DetailSlide = React.createClass
       #8-previous slide
       content.push React.DOM.a {
         'key': 'previous-slide'
+        'onClick': @onPreviousClick
         'className': 'aa-project-slide aa-previous-slide'
         'href': '/#selected/' + project['id'] + '/' + previousSlide
         'style':

@@ -89,7 +89,7 @@
 /*
  *  TRANSITION_DETAIL_2_NEXT
  */
-.detail-to-detail-enter {
+.detail-to-next-enter {
 
   .aa-next-slide {
     transform: translate3d(100%,0,0);
@@ -106,7 +106,7 @@
     opacity: 0 !important;
   }
 
-  &.detail-to-detail-enter-active {
+  &.detail-to-next-enter-active {
     .aa-next-slide {
       opacity: 0.5 !important;
       transform: translate3d(0,0,0);
@@ -118,7 +118,7 @@
   }
 }
 
-.detail-to-detail-leave {
+.detail-to-next-leave {
 
   .aa-previous-slide {
     transform: translate3d(0,0,0);
@@ -142,12 +142,84 @@
     opacity: 1 !important;
   }
 
-  &.detail-to-detail-leave-active {
+  &.detail-to-next-leave-active {
     .aa-actual-slide {
       opacity: 0.5 !important;
     }
 
     .aa-next-slide {
+      opacity: 1 !important;
+    }
+
+    .aa-slide-title {
+      opacity: 0 !important;
+    }
+  }
+
+}
+
+/*
+ *  TRANSITION_DETAIL_2_PREVIOUS
+ */
+.detail-to-previous-enter {
+
+  .aa-previous-slide {
+    transform: translate3d(-100%,0,0);
+    transition: transform @animDurationSt ease-out @animDurationSt, opacity @animDurationSt ease-out @animDurationSt !important;
+    opacity: 0.75 !important;
+  }
+
+  .aa-next-slide, .aa-actual-slide, .aa-detail-counter, .aa-close, .aa-project-title {
+    display: none !important;
+  }
+
+  .aa-slide-title {
+    transition: opacity @animDurationSt ease-out @animDurationSt !important;
+    opacity: 0 !important;
+  }
+
+  &.detail-to-previous-enter-active {
+    .aa-previous-slide {
+      opacity: 0.5 !important;
+      transform: translate3d(0,0,0);
+    }
+
+    .aa-slide-title {
+      opacity: 1 !important;
+    }
+  }
+}
+
+.detail-to-previous-leave {
+
+  .aa-next-slide {
+    transform: translate3d(0,0,0);
+    transition: transform @animDurationSt/2 ease-out !important;
+  }
+
+  .aa-actual-slide {
+    transform: translate3d(0,0,0);
+    transition: transform @animDurationSt ease-out @animDurationSt/3, opacity @animDurationSt ease-out @animDurationSt/3 !important;
+    opacity: 1 !important;
+  }
+
+  .aa-previous-slide {
+    transform: translate3d(0,0,0);
+    transition: transform @animDurationSt ease-out @animDurationSt*2/3, opacity @animDurationSt ease-out @animDurationSt*2/3 !important;
+    opacity: 0.75 !important;
+  }
+
+  .aa-slide-title {
+    transition: opacity @animDurationSt ease-out !important;
+    opacity: 1 !important;
+  }
+
+  &.detail-to-previous-leave-active {
+    .aa-actual-slide {
+      opacity: 0.5 !important;
+    }
+
+    .aa-previous-slide {
       opacity: 1 !important;
     }
 

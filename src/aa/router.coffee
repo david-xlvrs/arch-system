@@ -19,6 +19,9 @@ class aa.Router extends goog.events.EventTarget
     ###* @private ###
     @previousRoute = null
 
+    ###* @private ###
+    @previousSlideId = 0
+
     ###*
       @type {aa.Router.Status}
       @private
@@ -104,12 +107,10 @@ class aa.Router extends goog.events.EventTarget
     @private
   ###
   getTransition: (previousRoute, newRoute) ->
-    console.log "previousRoute #{previousRoute} | newRoute #{newRoute}"
-
     switch
       when goog.string.isEmpty(previousRoute) or not newRoute then aa.Const.TRANSITION.SPLASH_2_SECTION
       when newRoute is previousRoute and newRoute is 'selected/{projectId}/{slideId}'
-        aa.Const.TRANSITION.SECTION_2_SECTION #aa.Const.TRANSITION.DETAIL_2_DETAIL
+        aa.Const.TRANSITION.SECTION_2_SECTION
       when newRoute is 'selected/{projectId}/{slideId}'
         aa.Const.TRANSITION.SECTION_2_SECTION
       when previousRoute is 'selected/{projectId}/{slideId}'
