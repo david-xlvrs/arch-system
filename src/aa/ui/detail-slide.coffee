@@ -17,6 +17,23 @@ aa.ui.DetailSlide = React.createClass
       'width': 0
       'height': 0
 
+  getContent: (slideKey, way) ->
+    slide = @props['project']['slides'][slideKey]
+
+    switch slide['type']
+      when 'image'
+        React.DOM.img
+          'key': 'projectImg' + slide['id']
+          'src': slide['image']['url']
+          'style': @getImageStyles slideKey, way
+      when 'text'
+        React.DOM.div
+          'key': 'projectImg' + slide['id']
+          'className': 'aa-text-content'
+          'style': @getTextStyles slideKey, way
+          'dangerouslySetInnerHTML':
+            '__html': slide['html']
+
   getActiveSlide: ->
     parseInt @props['activeSlide']
 
@@ -45,8 +62,6 @@ aa.ui.DetailSlide = React.createClass
     maxH = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
     maxW = cw - 4 * aa.Const.CSS.SIZE1
 
-    # console.log "cw #{cw}, ch #{ch}, maxH #{maxH}, maxW #{maxW}"
-
     # by width
     iw = maxW
     ih = iw / ratio
@@ -57,6 +72,35 @@ aa.ui.DetailSlide = React.createClass
       iw = ih * ratio
 
     ret =
+      'width': iw
+      'height': ih
+      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 2
+
+    if type is 'next'
+      ret['marginLeft'] = 'auto'
+      ret['marginRight'] = -(iw - aa.Const.CSS.SIZE1)
+    else if type is 'previous'
+      ret['marginLeft'] = -(iw - aa.Const.CSS.SIZE1)
+
+    ret
+
+  getTextStyles: (pos, type) ->
+    slide = @props['project']['slides'][pos]
+
+    cw = @props['viewport']['width']
+    ch = @props['viewport']['height']
+
+    menuHeight = aa.Const.CSS.MENU.HEIGHT
+    titleHeight = aa.Const.CSS.TITLE.HEIGHT
+
+    ih = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
+    iw = cw*0.75 - 4 * aa.Const.CSS.SIZE1
+
+    console.log 'slide', slide['colors']
+
+    ret =
+      'background': slide['colors']['content']
+      'color': slide['colors']['bg']
       'width': iw
       'height': ih
       'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 2
@@ -141,16 +185,15 @@ aa.ui.DetailSlide = React.createClass
     , 'X'
 
     #6-actual slide
-    imageStyles = @getImageStyles activeSlide
+    if slides[activeSlide]['type'] is 'image'
+      actualStyles = @getImageStyles activeSlide
+    else
+      actualStyles = @getTextStyles activeSlide
     config =
       'key': 'project' + project['id']
       'className': 'aa-project-slide aa-actual-slide'
-      'style': imageStyles
-    content.push React.DOM.a config, [
-      React.DOM.img
-        'key': 'projectImg' + slides[activeSlide]['id']
-        'src': slides[activeSlide]['image']['url']
-    ]
+      'style': actualStyles
+    content.push React.DOM.a config, @getContent activeSlide
 
     if slides.length > 1
       #7-next slide
@@ -160,13 +203,8 @@ aa.ui.DetailSlide = React.createClass
         'className': 'aa-project-slide aa-next-slide'
         'href': '/#selected/' + project['id'] + '/' + nextSlide
         'style':
-          'width': (@props['viewport']['width'] - imageStyles['width']) / 2
-      }, [
-        React.DOM.img
-          'key': 'projectImg' + slides[nextSlide]['id']
-          'src': slides[nextSlide]['image']['url']
-          'style': @getImageStyles nextSlide, 'next'
-      ]
+          'width': (@props['viewport']['width'] - actualStyles['width']) / 2
+      }, @getContent nextSlide, 'next'
 
       #8-previous slide
       content.push React.DOM.a {
@@ -175,13 +213,8 @@ aa.ui.DetailSlide = React.createClass
         'className': 'aa-project-slide aa-previous-slide'
         'href': '/#selected/' + project['id'] + '/' + previousSlide
         'style':
-          'width': (@props['viewport']['width'] - imageStyles['width']) / 2
-      }, [
-        React.DOM.img
-          'key': 'projectImg' + slides[previousSlide]['id']
-          'src': slides[previousSlide]['image']['url']
-          'style': @getImageStyles previousSlide, 'previous'
-      ]
+          'width': (@props['viewport']['width'] - actualStyles['width']) / 2
+      },  @getContent previousSlide, 'previous'
 
     React.DOM.div undefined, content
 
