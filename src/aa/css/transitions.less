@@ -97,12 +97,17 @@
     opacity: 0.75 !important;
   }
 
-  .aa-previous-slide, .aa-actual-slide, .aa-detail-counter, .aa-close, .aa-project-title {
+  .aa-previous-slide, .aa-actual-slide, .aa-close, .aa-project-title {
     display: none !important;
   }
 
   .aa-slide-title {
     transition: opacity @animDurationSt ease-out @animDurationSt !important;
+    opacity: 0 !important;
+  }
+
+  .aa-detail-counter {
+    transition: opacity @animDurationSt ease-in @animDurationSt/2;
     opacity: 0 !important;
   }
 
@@ -113,6 +118,10 @@
     }
 
     .aa-slide-title {
+      opacity: 1 !important;
+    }
+
+    .aa-detail-counter {
       opacity: 1 !important;
     }
   }
@@ -142,6 +151,11 @@
     opacity: 1 !important;
   }
 
+  .aa-detail-counter {
+    transition: opacity @animDurationSt/2 ease-in;
+    opacity: 1 !important;
+  }
+
   &.detail-to-next-leave-active {
     .aa-actual-slide {
       opacity: 0.5 !important;
@@ -152,6 +166,10 @@
     }
 
     .aa-slide-title {
+      opacity: 0 !important;
+    }
+
+    .aa-detail-counter {
       opacity: 0 !important;
     }
   }
@@ -169,12 +187,17 @@
     opacity: 0.75 !important;
   }
 
-  .aa-next-slide, .aa-actual-slide, .aa-detail-counter, .aa-close, .aa-project-title {
+  .aa-next-slide, .aa-actual-slide, .aa-close, .aa-project-title {
     display: none !important;
   }
 
   .aa-slide-title {
     transition: opacity @animDurationSt ease-out @animDurationSt !important;
+    opacity: 0 !important;
+  }
+
+  .aa-detail-counter {
+    transition: opacity @animDurationSt ease-in @animDurationSt/2;
     opacity: 0 !important;
   }
 
@@ -185,6 +208,10 @@
     }
 
     .aa-slide-title {
+      opacity: 1 !important;
+    }
+
+    .aa-detail-counter {
       opacity: 1 !important;
     }
   }
@@ -214,6 +241,11 @@
     opacity: 1 !important;
   }
 
+  .aa-detail-counter {
+    transition: opacity @animDurationSt/2 ease-in;
+    opacity: 1 !important;
+  }
+
   &.detail-to-previous-leave-active {
     .aa-actual-slide {
       opacity: 0.5 !important;
@@ -224,6 +256,10 @@
     }
 
     .aa-slide-title {
+      opacity: 0 !important;
+    }
+
+    .aa-detail-counter {
       opacity: 0 !important;
     }
   }
@@ -251,32 +287,5 @@
 
   &.fixed-title-leave-active {
     opacity: 0;
-  }
-}
-
-
-/*
- *  DETAIL_COUNTER
- */
-.keyframes-mixin(detailCounterFading; {
-    0% {opacity: 1;}
-    33% {opacity: 0;}
-    100% {opacity: 0;}
-});
-
-.fading-counter-leave {
-  .animation-mixin(detailCounterFading @animDurationSt*3/2 ease-in paused);
-
-  &.fading-counter-leave-active {
-    .animation-play-state-mixin(running);
-  }
-}
-
-.fading-counter-enter {
-  transition: opacity @animDurationSt ease-in @animDurationSt/2;
-  opacity: 0 !important;
-
-  &.fading-counter-enter-active {
-    opacity: 1 !important;
   }
 }
