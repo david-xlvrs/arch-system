@@ -94,9 +94,7 @@ aa.ui.DetailSlide = React.createClass
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
     ih = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
-    iw = cw*0.75 - 4 * aa.Const.CSS.SIZE1
-
-    console.log 'slide', slide['colors']
+    iw = cw * 0.75 - 4 * aa.Const.CSS.SIZE1
 
     ret =
       'background': slide['colors']['content']
@@ -126,10 +124,25 @@ aa.ui.DetailSlide = React.createClass
     @getAndSaveViewportSize()
 
   componentDidMount: ->
+    window.addEventListener 'keyup', @handleKey
     window.addEventListener 'resize', @handleResize
 
   componentWillUnmount: ->
+    window.removeEventListener 'keyup', @handleKey
     window.removeEventListener 'resize', @handleResize
+
+  handleKey: (e) ->
+    console.log 'KEY', e
+
+    switch
+      when e.keyIdentifier is 'Left'
+        @onPreviousClick()
+        window.location.href = '/#selected/' + @props['project']['id'] + '/' + @getPreviousSlide()
+      when e.keyIdentifier is 'Right'
+        @onNextClick()
+        window.location.href = '/#selected/' + @props['project']['id'] + '/' + @getNextSlide()
+      when e.keyCode is 27 #Esc
+        window.location.href = '/#selected/'
 
   onNextClick: (ev) ->
     window.detailDirection = 1

@@ -7,35 +7,18 @@ aa.ui.SelectedTitle = React.createClass
     'className': 'aa-project-title'
     'clickable': yes
     'projects': []
-    'imagePositions': [0]
+    'actualSlide': 0
 
-  getScrollCount: ->
-    @setState
-      'scroll': goog.dom.getDocumentScroll().y
 
-  handleScroll: (e) ->
-    @getScrollCount()
-
-  componentWillMount: ->
-    @getScrollCount()
-
-  componentDidMount: ->
-    window.addEventListener 'scroll', @handleScroll
-
-  componentWillUnmount: ->
-    window.removeEventListener 'scroll', @handleScroll
 
   render: ->
-    actualSlide = 0
-    for imagePosition, iter in @props['imagePositions']
-      if imagePosition - 20 > @state['scroll']
-        actualSlide = iter
-        break
-
+    actualSlide = @props['actualSlide']
     configA = {}
     if @props['clickable']
       configA['className'] = 'clickable'
       configA['href'] = '/#selected/' + @props['projects'][actualSlide]['id'] + '/0'
+      configA['style'] =
+        'color': @props['projects'][actualSlide]['colors']['bg']
 
     React.createElement React.addons.CSSTransitionGroup, 'key': 'aa-title-transition', 'transitionName': 'fixed-title',
       React.DOM.h2 'key': 'h2-' + actualSlide, 'className': @props['className'],

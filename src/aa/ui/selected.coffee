@@ -47,29 +47,58 @@ aa.ui.Selected = React.createClass
     'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2) else (menuHeight + aa.Const.CSS.SIZE1)
     'marginBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 3)
 
+  getScrollCount: ->
+    @setState
+      'scroll': goog.dom.getDocumentScroll().y
+
+  handleScroll: (e) ->
+    @getScrollCount()
+
+  componentWillMount: ->
+    @getScrollCount()
+
+  componentDidMount: ->
+    window.addEventListener 'scroll', @handleScroll
+    window.addEventListener 'keyup', @handleKey
+
+  componentWillUnmount: ->
+    window.removeEventListener 'scroll', @handleScroll
+
   render: ->
+    return React.DOM.div null, 'EMPTY' unless @props['projects']
+
+    imagesStyles = []
+    imagePositions = []
+    for project, iter in @props['projects']
+      imagesStyles.push imageStyles =  @getImageStyles iter
+
+      # count positions of images
+      imagePositions[iter] = imageStyles['marginTop'] + (imagePositions[iter] or 0)
+      imagePositions[iter] += position for position in imagePositions[0...iter]
+      imagePositions[iter + 1] = imageStyles['height'] unless iter + 1 is @props['projects'].length
+
+    actualSlide = 0
+    for imagePosition, iter in imagePositions
+      if imagePosition - 20 > @state['scroll']
+        actualSlide = iter
+        break
+
     content = []
     content.push React.createElement aa.ui.Menu,
       'key': 'aa-content-menu'
-      'colors': @props['colors']
+      'colors':
+        'content': @props['projects'][actualSlide]['colors']['bg']
 
     content.push React.DOM.span 'className': 'empty', 'key': 'dummyElement'
 
     if @props['projects']?.length
-
-      imagePositions = []
 
       for project, iter in @props['projects']
         config =
           'key': 'project' + project['id']
           'className': 'aa-project-slide'
           'href': '/#selected/' + project['id'] + '/0'
-          'style': imageStyles = @getImageStyles iter
-
-        # count positions of images
-        imagePositions[iter] = imageStyles['marginTop'] + (imagePositions[iter] or 0)
-        imagePositions[iter] += position for position in imagePositions[0...iter]
-        imagePositions[iter + 1] = imageStyles['height'] unless iter + 1 is @props['projects'].length
+          'style': imagesStyles[iter]
 
         content.push React.DOM.a config,
           React.DOM.img
@@ -79,7 +108,7 @@ aa.ui.Selected = React.createClass
       content.push React.createElement aa.ui.SelectedTitle,
         'key': 'projectTitle'
         'projects': @props['projects']
-        'imagePositions': imagePositions
+        'actualSlide': actualSlide
 
     config =
       'className': classNames ['aa-content', 'aa-content-selected']

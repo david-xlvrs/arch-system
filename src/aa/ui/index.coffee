@@ -18,12 +18,14 @@ aa.ui.Index = React.createClass
 
         content.push React.DOM.tr config, [
             React.DOM.td 'key': 'td' + project['id'] + '1',
-              React.DOM.img
-                'key': 'projectImg' + project['id']
-                'src': project['image']['url']
+              React.DOM.a 'href': '/#selected/' + project['id'] + '/0',
+                React.DOM.img
+                  'key': 'projectImg' + project['id']
+                  'src': project['image']['url']
           ,
             React.DOM.td 'key': 'td' + project['id'] + '2',
-              React.DOM.strong 'key': 'projectTitle' + project['id'], project['title']
+              React.DOM.a 'href': '/#selected/' + project['id'] + '/0',
+                React.DOM.strong 'key': 'projectTitle' + project['id'], project['title']
           ,
             React.DOM.td 'key': 'td' + project['id'] + '3',
               React.DOM.span 'key': 'projectParam1' + project['id'], project['params'][0]['value']
