@@ -8,17 +8,10 @@ aa.ui.transition.Basic = React.createClass
   getDefaultProps: ->
     'section': null
     'sectionProps': {}
-    'fromColors': {}
-    'toColors': {}
     'transition': ''
 
   getRealLeaveTransition: (transition) ->
-    if transition is aa.Const.TRANSITION.SPLASH_2_SECTION and window.newTransition isnt aa.Const.TRANSITION.SPLASH_2_SECTION
-      aa.Const.TRANSITION.SECTION_2_SECTION
-    if transition is aa.Const.TRANSITION.DETAIL_2_NEXT
-      transition = if window.detailDirection then aa.Const.TRANSITION.DETAIL_2_NEXT else aa.Const.TRANSITION.DETAIL_2_PREVIOUS
-    else
-      transition
+    transition
 
   componentWillEnter: (callback) ->
     transition = @getRealLeaveTransition @props['transition']
@@ -57,11 +50,7 @@ aa.ui.transition.Basic = React.createClass
     transition = @getRealLeaveTransition @props['transition']
 
     console.log 'componentDidLeave', transition
-    goog.dom.classes.remove @getDOMNode(), "#{transition}-leave", "#{transition}-leave-active"
+    # goog.dom.classes.remove @getDOMNode(), "#{transition}-leave", "#{transition}-leave-active"
 
   render: ->
-    config =
-      'className': classNames ['aa-page']
-      'style':
-        'backgroundColor': @props['toColors']['bg']
-    React.DOM.div config, React.createElement @props['section'], @props['sectionProps']
+    React.createElement @props['section'], @props['sectionProps']

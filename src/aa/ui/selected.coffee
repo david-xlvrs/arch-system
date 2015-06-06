@@ -1,5 +1,6 @@
 goog.provide 'aa.ui.Selected'
 
+goog.require 'goog.events'
 goog.require 'goog.style'
 goog.require 'aa.ui.SelectedTitle'
 goog.require 'aa.Const'
@@ -12,9 +13,6 @@ aa.ui.Selected = React.createClass
     'viewport':
       'width': 0
       'height': 0
-
-  getActualSlide: ->
-    0
 
   getImageStyles: (pos) ->
     slide = @props['projects'][pos]
@@ -31,8 +29,6 @@ aa.ui.Selected = React.createClass
     maxH = ch - 4 * aa.Const.CSS.SIZE1 - menuHeight - titleHeight
     maxW = cw - 4 * aa.Const.CSS.SIZE1
 
-    # console.log "cw #{cw}, ch #{ch}, maxH #{maxH}, maxW #{maxW}"
-
     # by width
     iw = maxW
     ih = iw / ratio
@@ -45,7 +41,7 @@ aa.ui.Selected = React.createClass
     'width': iw
     'height': ih
     'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2) else (menuHeight + aa.Const.CSS.SIZE1)
-    'marginBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 3)
+    'paddingBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 3)
 
   getScrollCount: ->
     @setState
@@ -54,15 +50,40 @@ aa.ui.Selected = React.createClass
   handleScroll: (e) ->
     @getScrollCount()
 
+  handleKey: (e) ->
+    switch e.keyCode
+      when 38 #Up
+        e.preventDefault()
+        iter = window.selectedActualSlide - 1
+        scrollTo = 0
+        scrollTo += style['height'] for style in window.selectedImagesStyles[0...iter]
+        scrollTo += style['marginTop'] for style in window.selectedImagesStyles[1..iter]
+
+        @props['handleScrollTo'] parseInt scrollTo
+      when 40 #Down
+        e.preventDefault()
+        iter = window.selectedActualSlide + 1
+        scrollTo = 0
+        scrollTo += style['height'] for style in window.selectedImagesStyles[0...iter]
+        scrollTo += style['marginTop'] for style in window.selectedImagesStyles[1..iter]
+
+        @props['handleScrollTo'] parseInt scrollTo
+
+  handleSlideClick: (e) ->
+    e.preventDefault() #390
+    if scrollTo = e.target?.getAttribute 'data-scroll-to'
+      @props['handleScrollTo'] parseInt scrollTo
+
   componentWillMount: ->
     @getScrollCount()
 
   componentDidMount: ->
-    window.addEventListener 'scroll', @handleScroll
-    window.addEventListener 'keyup', @handleKey
+    goog.events.listen window, goog.events.EventType.SCROLL, @handleScroll
+    goog.events.listen window, goog.events.EventType.KEYDOWN, @handleKey
 
   componentWillUnmount: ->
-    window.removeEventListener 'scroll', @handleScroll
+    goog.events.unlisten window, goog.events.EventType.SCROLL, @handleScroll
+    goog.events.unlisten window, goog.events.EventType.KEYDOWN, @handleKey
 
   render: ->
     return React.DOM.div null, 'EMPTY' unless @props['projects']
@@ -83,6 +104,10 @@ aa.ui.Selected = React.createClass
         actualSlide = iter
         break
 
+    #TODO: vyresit jinak predavani do klavesovych event
+    window.selectedActualSlide = actualSlide
+    window.selectedImagesStyles = imagesStyles
+
     content = []
     content.push React.createElement aa.ui.Menu,
       'key': 'aa-content-menu'
@@ -97,12 +122,25 @@ aa.ui.Selected = React.createClass
         config =
           'key': 'project' + project['id']
           'className': 'aa-project-slide'
-          'href': '/#selected/' + project['id'] + '/0'
+          'href': '/#selected/' + project['slug'] + '/0'
           'style': imagesStyles[iter]
+
+        if actualSlide isnt iter
+          config['onClick'] = @handleSlideClick
+          if actualSlide > iter
+            config['className'] += ' aa-previous'
+          else
+            config['className'] += ' aa-next'
+
+        scrollTo = 0
+        if iter > 0
+          scrollTo += style['height'] for style in imagesStyles[0...iter]
+          scrollTo += style['marginTop'] for style in imagesStyles[1..iter]
 
         content.push React.DOM.a config,
           React.DOM.img
             'key': 'projectImg' + project['id']
+            'data-scroll-to': scrollTo
             'src': project['image']['url']
 
       content.push React.createElement aa.ui.SelectedTitle,

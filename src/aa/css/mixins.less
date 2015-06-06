@@ -20,6 +20,21 @@
   }
 }
 
+.aa-cursor-up-mixin {
+  cursor: n-resize;
+}
+.aa-cursor-right-mixin {
+  cursor: e-resize;
+}
+.aa-cursor-down-mixin {
+  cursor: s-resize;
+}
+.aa-cursor-left-mixin {
+  cursor: w-resize;
+}
+
+
+
 .keyframes-mixin (@name; @arguments) {
   @-webkit-keyframes @name { @arguments(); }
   @-moz-keyframes @name { @arguments(); }

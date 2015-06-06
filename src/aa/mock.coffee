@@ -4,6 +4,7 @@ aa.mock.List =
   data: [
     id: 1
     title: 'Golf Klub Čertovo Břemeno'
+    slug: 'golf-klub-certovo-bremeno'
     date: '2010-01-01'
     desc: 'Novostavba Golfklubu s restaurací a kompletním zázemím pro hráče i personál golfového hřiště'
     params: [
@@ -24,6 +25,7 @@ aa.mock.List =
   ,
     id: 2
     title: 'Domy v mlze, Rtyně'
+    slug: 'domy-v-mlze-rtyne'
     date: '2009-01-01'
     desc: 'Nádherné výhledy nad dramatickým údolím řeky Jizery v obci
       Benešov u Semil. Svažitý pozemek situovaný na jih za zahradou'
@@ -45,6 +47,7 @@ aa.mock.List =
   ,
     id: 3
     title: 'Stodola, Benešov'
+    slug: 'stodola-benesov'
     date: '2012-01-01'
     desc: 'Nádherné výhledy nad dramatickým údolím řeky Jizery v obci
       Benešov u Semil. Svažitý pozemek situovaný na jih za zahradou'
@@ -67,6 +70,7 @@ aa.mock.Detail =
   data:
     id: 1
     title: 'Golf Klub Čertovo Břemeno'
+    slug: 'golf-klub-certovo-bremeno'
     date: '2010-01-01'
     desc: 'Novostavba Golfklubu s restaurací a kompletním zázemím pro hráče i personál golfového hřiště'
     params: [

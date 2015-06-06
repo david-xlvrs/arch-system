@@ -10,6 +10,7 @@ aa.Const =
     DETAIL: 'section-detail'
 
   TRANSITION:
+    NONE: 'none'
     SPLASH_2_SECTION: 'splash-to-section'
     SECTION_2_SECTION: 'section-to-section'
     DETAIL_2_NEXT: 'detail-to-next'

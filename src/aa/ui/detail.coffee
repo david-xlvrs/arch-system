@@ -27,23 +27,16 @@ aa.ui.Detail = React.createClass
     slides = project['slides']
 
     config =
-      'className': classNames
-        'aa-page': yes
-        'aa-page-detail': yes
+      'className': classNames ['aa-content', 'aa-content-detail']
+      'key': 'aa-detail-transition'
       'style':
         'color': slides[activeSlide]['colors']['content']
         'backgroundColor': slides[activeSlide]['colors']['bg']
 
-    content = []
 
-    content.push React.createElement(React.addons.TransitionGroup, {
-      'className': 'aa-detail', 'key': 'aa-detail-transition'},
+    React.createElement React.addons.TransitionGroup, config,
         React.createElement aa.ui.transition.Basic,
           'section': aa.ui.DetailSlide
           'sectionProps': @props
           'key': 'key-selected-SLIDE' + activeSlide
           'transition': aa.Const.TRANSITION.DETAIL_2_NEXT
-    )
-
-    React.DOM.div config, content
-

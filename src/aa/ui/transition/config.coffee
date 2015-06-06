@@ -5,14 +5,20 @@ goog.require 'aa.Const'
 
 aa.ui.transition.Config = {}
 
+aa.ui.transition.Config[aa.Const.TRANSITION.NONE] =
+  'duration': aa.Const.ANIMATION.DURATION * 2
+
 aa.ui.transition.Config[aa.Const.TRANSITION.SPLASH_2_SECTION] =
   'duration': aa.Const.ANIMATION.DURATION * 2
   'enter': (component) ->
     goog.style.setStyle component.getDOMNode(), 'background-color', component.props['fromColors']['bg']
   'enter-active': (component) ->
     goog.style.setStyle component.getDOMNode(), 'background-color', component.props['toColors']['bg']
+  'leave': (component) ->
+    goog.style.setStyle component.getDOMNode(), 'background-color', component.props['toColors']['bg']
   'leave-active': (component) ->
     goog.style.setStyle component.getDOMNode(), 'background-color', component.props['fromColors']['bg']
+    goog.style.setStyle goog.dom.getElementByClass('aa-content'), 'background-color', component.props['fromColors']['bg']
 
 aa.ui.transition.Config[aa.Const.TRANSITION.SECTION_2_SECTION] =
   'duration': aa.Const.ANIMATION.DURATION

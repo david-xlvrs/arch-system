@@ -8,6 +8,29 @@ aa.ui.Splash = React.createClass
     'title': ''
     'loaded': no
 
+
+
+  handleScroll: (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+
+    delta = Math.max( -1, Math.min(1, (e.wheelDelta or -e.detail)))
+
+    @setState 'wheelDelta': 0 unless @state?['wheelDelta']
+    @setState 'wheelDelta': @state?['wheelDelta'] += delta
+
+    if @state['wheelDelta'] < aa.ui.Application.SPLASH_DELTA_LIMIT and @props['loaded']
+      window.location.href = '/#selected/'
+      @componentWillUnmount()
+
+  componentDidMount: ->
+    window.addEventListener 'mousewheel', @handleScroll
+    window.addEventListener 'DOMMouseScroll', @handleScroll
+
+  componentWillUnmount: ->
+    window.removeEventListener 'mousewheel', @handleScroll
+    window.removeEventListener 'DOMMouseScroll', @handleScroll
+
   render: ->
     content = []
     content.push React.createElement(React.addons.CSSTransitionGroup, {
@@ -28,8 +51,13 @@ aa.ui.Splash = React.createClass
       ,
         @props['title']
 
+    content.push React.createElement aa.ui.Menu,
+      'key': 'aa-content-menu'
+      'colors': @props['colors']
+
+
     config =
-      'className': classNames ['aa-page', 'aa-page-splash']
+      'className': classNames ['aa-splash']
       'style':
         'backgroundImage': 'url(' + @props['imageUrl'] + ')'
     React.DOM.div config, content

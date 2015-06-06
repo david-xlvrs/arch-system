@@ -111,37 +111,21 @@ aa.ui.DetailSlide = React.createClass
 
     ret
 
-  getAndSaveViewportSize: ->
-    @setState
-      'viewport':
-        'width': goog.dom.getViewportSize().width
-        'height': goog.dom.getViewportSize().height
-
-  handleResize: (e) ->
-    @getAndSaveViewportSize()
-
-  componentWillMount: ->
-    @getAndSaveViewportSize()
-
   componentDidMount: ->
-    window.addEventListener 'keyup', @handleKey
-    window.addEventListener 'resize', @handleResize
+    goog.events.listen window, goog.events.EventType.KEYUP, @handleKey
 
   componentWillUnmount: ->
-    window.removeEventListener 'keyup', @handleKey
-    window.removeEventListener 'resize', @handleResize
+    goog.events.unlisten window, goog.events.EventType.KEYUP, @handleKey
 
   handleKey: (e) ->
-    console.log 'KEY', e
-
-    switch
-      when e.keyIdentifier is 'Left'
+    switch e.keyCode
+      when 37 #Left
         @onPreviousClick()
-        window.location.href = '/#selected/' + @props['project']['id'] + '/' + @getPreviousSlide()
-      when e.keyIdentifier is 'Right'
+        window.location.href = '/#selected/' + @props['project']['slug'] + '/' + @getPreviousSlide()
+      when 39 #Right
         @onNextClick()
-        window.location.href = '/#selected/' + @props['project']['id'] + '/' + @getNextSlide()
-      when e.keyCode is 27 #Esc
+        window.location.href = '/#selected/' + @props['project']['slug'] + '/' + @getNextSlide()
+      when 27 #Esc
         window.location.href = '/#selected/'
 
   onNextClick: (ev) ->
@@ -214,7 +198,7 @@ aa.ui.DetailSlide = React.createClass
         'key': 'next-slide'
         'onClick': @onNextClick
         'className': 'aa-project-slide aa-next-slide'
-        'href': '/#selected/' + project['id'] + '/' + nextSlide
+        'href': '/#selected/' + project['slug'] + '/' + nextSlide
         'style':
           'width': (@props['viewport']['width'] - actualStyles['width']) / 2
       }, @getContent nextSlide, 'next'
@@ -224,7 +208,7 @@ aa.ui.DetailSlide = React.createClass
         'key': 'previous-slide'
         'onClick': @onPreviousClick
         'className': 'aa-project-slide aa-previous-slide'
-        'href': '/#selected/' + project['id'] + '/' + previousSlide
+        'href': '/#selected/' + project['slug'] + '/' + previousSlide
         'style':
           'width': (@props['viewport']['width'] - actualStyles['width']) / 2
       },  @getContent previousSlide, 'previous'

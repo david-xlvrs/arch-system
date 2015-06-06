@@ -31,7 +31,7 @@ class aa.ProjectModel extends goog.events.EventTarget
   getAllData: ->
     @rows
 
-  getDetail: (projectId) ->
+  getDetail: (projectSlug) ->
     aa.mock.Detail.data
 
   load: ->

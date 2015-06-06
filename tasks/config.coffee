@@ -49,7 +49,7 @@ module.exports =
       namePng: 'sprite-icons.png'
       nameLess: 'sprite-icons.less'
     less:
-      srcGlob: './src/**/*.less'
+      srcGlob: './src/**/base.less'
       dst: './' + buildDir + '/css'
       mapDst: './' + buildDir + '/css/map'
       nameConcatenatedLess: 'style.less'

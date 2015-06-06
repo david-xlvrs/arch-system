@@ -6,6 +6,7 @@ goog.require 'aa.mock'
 goog.require 'aa.ui.Application'
 goog.require 'aa.ProjectModel'
 goog.require 'goog.dom'
+goog.require 'goog.fx.dom'
 goog.require 'goog.History'
 goog.require 'aa.Router'
 
@@ -33,12 +34,23 @@ sandbox.Bootstrap = ->
     render()
 
   ###*
+    Event Handlers
+  ###
+  handleScrollTo = (scrollTo, element) ->
+    element = document.body unless element
+    animScroll = new goog.fx.dom.Scroll element, [0, goog.dom.getDocumentScroll().y], [0, scrollTo], aa.Const.ANIMATION.DURATION, (input) ->
+      input * input * input
+    animScroll.play()
+    return
+
+  ###*
     Settings for Application
   ###
   completeSettings =
     'section': aa.Const.SECTION.SPLASH
     'transition': aa.ui.Application.TRANSITION_SPLASH_2_SECTION
     'loaded': projectsModel.isLoaded()
+    'handleScrollTo': handleScrollTo
     'styleConfig':
       'colors':
         'content': '#222'
@@ -66,9 +78,9 @@ sandbox.Bootstrap = ->
   router = new aa.Router
     '': aa.Const.SECTION.SPLASH
     'selected': aa.Const.SECTION.SELECTED
-    'selected/{projectId}': aa.Const.SECTION.DETAIL
-    'selected/{projectId}/{slideId}': aa.Const.SECTION.DETAIL
-    'selected/{projectId}/{slideId}/full': aa.Const.SECTION.DETAIL
+    'selected/{projectSlug}': aa.Const.SECTION.DETAIL
+    'selected/{projectSlug}/{slideId}': aa.Const.SECTION.DETAIL
+    'selected/{projectSlug}/{slideId}/full': aa.Const.SECTION.DETAIL
     'index': aa.Const.SECTION.INDEX
 
   goog.events.listen router, aa.Router.EventType.CHANGE, (e) ->
@@ -76,8 +88,8 @@ sandbox.Bootstrap = ->
     completeSettings['section'] = routerStatus['section']
     completeSettings['transition'] = routerStatus['transition']
 
-    if routerStatus['params']?['projectId']
-      completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectId']
+    if routerStatus['params']?['projectSlug']
+      completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectSlug']
       newDetailSlide = completeSettings['data']['detailSlide'] = parseInt routerStatus['params']?['slideId'], 10
 
       slidesCount = completeSettings['data']['detail']['slides'].length

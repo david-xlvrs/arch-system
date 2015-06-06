@@ -109,11 +109,11 @@ class aa.Router extends goog.events.EventTarget
   getTransition: (previousRoute, newRoute) ->
     switch
       when goog.string.isEmpty(previousRoute) or not newRoute then aa.Const.TRANSITION.SPLASH_2_SECTION
-      when newRoute is previousRoute and newRoute is 'selected/{projectId}/{slideId}'
+      when newRoute is previousRoute and newRoute is 'selected/{projectSlug}/{slideId}'
         aa.Const.TRANSITION.SECTION_2_SECTION
-      when newRoute is 'selected/{projectId}/{slideId}'
+      when newRoute is 'selected/{projectSlug}/{slideId}'
         aa.Const.TRANSITION.SECTION_2_SECTION
-      when previousRoute is 'selected/{projectId}/{slideId}'
+      when previousRoute is 'selected/{projectSlug}/{slideId}'
         if newRoute is 'selected'
           aa.Const.TRANSITION.SECTION_2_SECTION
         else
