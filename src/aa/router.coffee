@@ -134,7 +134,7 @@ class aa.Router extends goog.events.EventTarget
   @param {...string|number} varArgs
 ###
 aa.Router.getRoute = (section, varArgs) ->
-  params = goog.array.slice arguments, 1 #TODO: doresit jinak
+  params = goog.array.slice arguments, 1 #TODO: doresit jinak, zkusit aa.Router.getRoute = (section, varArgs...) ->
 
   switch section
     when aa.Const.SECTION.SELECTED then href = '/#selected'

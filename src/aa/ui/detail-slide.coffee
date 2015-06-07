@@ -1,6 +1,7 @@
 goog.provide 'aa.ui.DetailSlide'
 
 goog.require 'aa.Router'
+goog.require 'aa.ui.Fullscreen'
 goog.require 'goog.array'
 goog.require 'goog.object'
 
@@ -17,6 +18,11 @@ aa.ui.DetailSlide = React.createClass
     'viewport':
       'width': 0
       'height': 0
+
+  getInitialState: ->
+    'mousePosition':
+      'x': 0
+      'y': 0
 
   getContent: (slideKey, way) ->
     slide = @props['project']['slides'][slideKey]
@@ -83,6 +89,10 @@ aa.ui.DetailSlide = React.createClass
     else if type is 'previous'
       ret['marginLeft'] = -(iw - aa.Const.CSS.SIZE1)
 
+    # need fullscreen?
+    fullSize = @props['project']['slides'][pos]['fullImage']['size']
+    ret['fullscreen'] = maxW < fullSize[0] or maxH < fullSize[1]
+
     ret
 
   getTextStyles: (pos, type) ->
@@ -113,12 +123,25 @@ aa.ui.DetailSlide = React.createClass
     ret
 
   componentDidMount: ->
+    goog.events.listen window, goog.events.EventType.MOUSEMOVE, @handleMove
     goog.events.listen window, goog.events.EventType.KEYUP, @handleKey
 
   componentWillUnmount: ->
+    goog.events.unlisten window, goog.events.EventType.MOUSEMOVE, @handleMove
     goog.events.unlisten window, goog.events.EventType.KEYUP, @handleKey
 
+  handleMove: (e) ->
+    @setState
+      'mousePosition':
+        'x': e.clientX
+        'y': e.clientY
+
   handleKey: (e) ->
+    if @props['inFullscreen']
+      e.preventDefault()
+      e.stopPropagation()
+      return
+
     switch e.keyCode
       when 37 #Left
         @onPreviousClick()
@@ -191,6 +214,9 @@ aa.ui.DetailSlide = React.createClass
       'key': 'project' + project['id']
       'className': 'aa-project-slide aa-actual-slide'
       'style': actualStyles
+    if actualStyles['fullscreen']
+      config['className'] += ' aa-fullscreen'
+      config['href'] = aa.Router.getRoute aa.Const.SECTION.DETAIL, project['slug'], activeSlide, 'full'
     content.push React.DOM.a config, @getContent activeSlide
 
     if slides.length > 1
@@ -213,6 +239,20 @@ aa.ui.DetailSlide = React.createClass
         'style':
           'width': (@props['viewport']['width'] - actualStyles['width']) / 2
       },  @getContent previousSlide, 'previous'
+
+    #9-fullscreen
+    content.push React.createElement(React.addons.CSSTransitionGroup, {
+      'transitionName': aa.Const.TRANSITION.FULLSCREEN, 'key': 'fullscreen-transition'},
+        if @props['inFullscreen']
+          React.createElement aa.ui.Fullscreen,
+            'key': 'aa-fullscreen-container'
+            'className': 'aa-fullscreen-container'
+            'slide': slides[activeSlide]
+            'mousePosition': @state['mousePosition']
+            'returnUrl': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['slug'], activeSlide
+        else
+          null
+      )
 
     React.DOM.div undefined, content
 

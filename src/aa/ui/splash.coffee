@@ -33,10 +33,9 @@ aa.ui.Splash = React.createClass
 
   render: ->
     content = []
-    console.log 'SPLASH loaded', @props['loaded']
 
     content.push React.createElement(React.addons.CSSTransitionGroup, {
-      'className': 'aa-splash-fade', 'transitionName': 'example', 'key': 'splash-transition'},
+      'className': 'aa-splash-fade', 'transitionName': 'splash-loaded', 'key': 'splash-transition'},
         unless @props['loaded']
           React.DOM.div
             'key': 'splash-fade'

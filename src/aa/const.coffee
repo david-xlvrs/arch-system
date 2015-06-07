@@ -15,6 +15,7 @@ aa.Const =
     SECTION_2_SECTION: 'section-to-section'
     DETAIL_2_NEXT: 'detail-to-next'
     DETAIL_2_PREVIOUS: 'detail-to-previous'
+    FULLSCREEN: 'to-fullscreen'
 
   ANIMATION:
     DURATION: 500

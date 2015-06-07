@@ -48,6 +48,7 @@ aa.ui.Sections = React.createClass
                 'activeSlide': @props['data']['detailSlide']
                 'viewport': @props['viewport']
                 'previousSection': @props['previousSection']
+                'inFullscreen': @props['inFullscreen']
               'key': 'key-detail-trans'
               'transition': aa.Const.TRANSITION.SECTION_2_SECTION
           else

@@ -37,6 +37,7 @@ aa.ui.Application = React.createClass
               'viewport': @props['viewport']
               'loaded': @props['loaded']
               'handleScrollTo': @props['handleScrollTo']
+              'inFullscreen': @props['inFullscreen']
             'key': 'key-sections-trans'
             'transition': aa.Const.TRANSITION.SPLASH_2_SECTION
             'fromColors': @props['data']['splash']['colors']

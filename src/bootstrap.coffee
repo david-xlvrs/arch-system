@@ -80,7 +80,7 @@ sandbox.Bootstrap = ->
     'selected': aa.Const.SECTION.SELECTED
     'selected/{projectSlug}': aa.Const.SECTION.DETAIL
     'selected/{projectSlug}/{slideId}': aa.Const.SECTION.DETAIL
-    'selected/{projectSlug}/{slideId}/full': aa.Const.SECTION.DETAIL
+    'selected/{projectSlug}/{slideId}/{full}': aa.Const.SECTION.DETAIL
     'index': aa.Const.SECTION.INDEX
 
   goog.events.listen router, aa.Router.EventType.CHANGE, (e) ->
@@ -94,6 +94,8 @@ sandbox.Bootstrap = ->
     if routerStatus['params']?['projectSlug']
       completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectSlug']
       newDetailSlide = completeSettings['data']['detailSlide'] = parseInt routerStatus['params']?['slideId'], 10
+
+      completeSettings['inFullscreen'] = !!routerStatus['params']['full']
 
       slidesCount = completeSettings['data']['detail']['slides'].length
 

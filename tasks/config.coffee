@@ -49,7 +49,7 @@ module.exports =
       namePng: 'sprite-icons.png'
       nameLess: 'sprite-icons.less'
     less:
-      srcGlob: './src/**/base.less'
+      srcGlob: './src/**/*.less'
       dst: './' + buildDir + '/css'
       mapDst: './' + buildDir + '/css/map'
       nameConcatenatedLess: 'style.less'
@@ -61,3 +61,5 @@ module.exports =
       ]
       dst: './' + buildDir + '/_dev/vendor/'
       concatName: 'vendor.js'
+
+

@@ -101,7 +101,7 @@ aa.mock.Detail =
           size: [2362, 1670]
           url: '/img/data/04.jpg'
         fullImage:
-          size: [2048, 1536]
+          size: [2362, 1670]
           url: '/img/data/04.jpg'
       ,
         id: 3
@@ -116,7 +116,7 @@ aa.mock.Detail =
           size: [1671, 2362]
           url: '/img/data/03.jpg'
         fullImage:
-          size: [2048, 1536]
+          size: [1671, 2362]
           url: '/img/data/03.jpg'
       ,
         id: 2
@@ -144,7 +144,7 @@ aa.mock.Detail =
           size: [2362, 1670]
           url: '/img/data/02.jpg'
         fullImage:
-          size: [2048, 1536]
+          size: [2362, 1670]
           url: '/img/data/02.jpg'
 
 
