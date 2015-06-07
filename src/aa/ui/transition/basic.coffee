@@ -11,7 +11,10 @@ aa.ui.transition.Basic = React.createClass
     'transition': ''
 
   getRealLeaveTransition: (transition) ->
-    transition
+    if transition is aa.Const.TRANSITION.DETAIL_2_NEXT
+      transition = if window.detailDirection then aa.Const.TRANSITION.DETAIL_2_NEXT else aa.Const.TRANSITION.DETAIL_2_PREVIOUS
+    else
+      transition
 
   componentWillEnter: (callback) ->
     transition = @getRealLeaveTransition @props['transition']

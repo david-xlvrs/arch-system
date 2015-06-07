@@ -88,6 +88,9 @@ sandbox.Bootstrap = ->
     completeSettings['section'] = routerStatus['section']
     completeSettings['transition'] = routerStatus['transition']
 
+    if router.getStatus()['section'] in [aa.Const.SECTION.SELECTED, aa.Const.SECTION.INDEX, aa.Const.SECTION.PRIVATE]
+      completeSettings['previousSection'] = router.getStatus()['section']
+
     if routerStatus['params']?['projectSlug']
       completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectSlug']
       newDetailSlide = completeSettings['data']['detailSlide'] = parseInt routerStatus['params']?['slideId'], 10

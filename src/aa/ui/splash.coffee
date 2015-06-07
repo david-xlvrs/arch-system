@@ -20,7 +20,7 @@ aa.ui.Splash = React.createClass
     @setState 'wheelDelta': @state?['wheelDelta'] += delta
 
     if @state['wheelDelta'] < aa.ui.Application.SPLASH_DELTA_LIMIT and @props['loaded']
-      window.location.href = '/#selected/'
+      window.location.href = aa.Router.getRoute aa.Const.SECTION.SELECTED
       @componentWillUnmount()
 
   componentDidMount: ->
@@ -33,6 +33,8 @@ aa.ui.Splash = React.createClass
 
   render: ->
     content = []
+    console.log 'SPLASH loaded', @props['loaded']
+
     content.push React.createElement(React.addons.CSSTransitionGroup, {
       'className': 'aa-splash-fade', 'transitionName': 'example', 'key': 'splash-transition'},
         unless @props['loaded']

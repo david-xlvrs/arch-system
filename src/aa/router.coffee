@@ -129,6 +129,25 @@ class aa.Router extends goog.events.EventTarget
 
     token.split aa.Router.DELIMITER
 
+###*
+  @param {string} section
+  @param {...string|number} varArgs
+###
+aa.Router.getRoute = (section, varArgs) ->
+  params = goog.array.slice arguments, 1 #TODO: doresit jinak
+
+  switch section
+    when aa.Const.SECTION.SELECTED then href = '/#selected'
+    when aa.Const.SECTION.INDEX then href = '/#index'
+    when aa.Const.SECTION.PRIVATE then href = '/#private'
+    when aa.Const.SECTION.ABOUT then href = '/#about'
+    when aa.Const.SECTION.DETAIL then href = '/#selected'
+    else href = '/'
+
+  if params
+    href += '/' + param for param in params
+
+  href
 
 ###*
   @const

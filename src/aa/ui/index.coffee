@@ -18,13 +18,13 @@ aa.ui.Index = React.createClass
 
         content.push React.DOM.tr config, [
             React.DOM.td 'key': 'td' + project['id'] + '1',
-              React.DOM.a 'href': '/#selected/' + project['id'] + '/0',
+              React.DOM.a 'href': aa.Router.getRoute(aa.Const.SECTION.DETAIL, project['slug'], 0),
                 React.DOM.img
                   'key': 'projectImg' + project['id']
                   'src': project['image']['url']
           ,
             React.DOM.td 'key': 'td' + project['id'] + '2',
-              React.DOM.a 'href': '/#selected/' + project['id'] + '/0',
+              React.DOM.a 'href': aa.Router.getRoute(aa.Const.SECTION.DETAIL, project['slug'], 0),
                 React.DOM.strong 'key': 'projectTitle' + project['id'], project['title']
           ,
             React.DOM.td 'key': 'td' + project['id'] + '3',

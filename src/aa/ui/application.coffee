@@ -10,6 +10,7 @@ aa.ui.Application = React.createClass
 
   getDefaultProps: ->
     'section': aa.Const.SECTION.SPLASH
+    'previousSection': aa.Const.SECTION.SELECTED
     'transition': aa.Const.TRANSITION.SPLASH_2_SECTION
     'viewport':
       'width': 0
@@ -31,6 +32,7 @@ aa.ui.Application = React.createClass
               'key': 'section-sections'
               'styleConfig': @props['styleConfig']
               'section': @props['section']
+              'previousSection': @props['previousSection']
               'data': @props['data']
               'viewport': @props['viewport']
               'loaded': @props['loaded']

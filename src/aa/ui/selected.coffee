@@ -122,7 +122,7 @@ aa.ui.Selected = React.createClass
         config =
           'key': 'project' + project['id']
           'className': 'aa-project-slide'
-          'href': '/#selected/' + project['slug'] + '/0'
+          'href': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['slug'], 0
           'style': imagesStyles[iter]
 
         if actualSlide isnt iter

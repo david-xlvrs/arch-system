@@ -1,5 +1,6 @@
 goog.provide 'aa.ui.DetailSlide'
 
+goog.require 'aa.Router'
 goog.require 'goog.array'
 goog.require 'goog.object'
 
@@ -121,12 +122,12 @@ aa.ui.DetailSlide = React.createClass
     switch e.keyCode
       when 37 #Left
         @onPreviousClick()
-        window.location.href = '/#selected/' + @props['project']['slug'] + '/' + @getPreviousSlide()
+        window.location.href = aa.Router.getRoute aa.Const.SECTION.DETAIL, @props['project']['slug'], @getPreviousSlide()
       when 39 #Right
         @onNextClick()
-        window.location.href = '/#selected/' + @props['project']['slug'] + '/' + @getNextSlide()
+        window.location.href = aa.Router.getRoute aa.Const.SECTION.DETAIL, @props['project']['slug'], @getNextSlide()
       when 27 #Esc
-        window.location.href = '/#selected/'
+        window.location.href = aa.Router.getRoute aa.Const.SECTION.SELECTED
 
   onNextClick: (ev) ->
     window.detailDirection = 1
@@ -178,7 +179,7 @@ aa.ui.DetailSlide = React.createClass
     content.push React.DOM.a
       'key': 'detail-closer'
       'className': 'aa-close'
-      'href': '/#selected'
+      'href': aa.Router.getRoute @props['previousSection']
     , 'X'
 
     #6-actual slide
@@ -198,7 +199,7 @@ aa.ui.DetailSlide = React.createClass
         'key': 'next-slide'
         'onClick': @onNextClick
         'className': 'aa-project-slide aa-next-slide'
-        'href': '/#selected/' + project['slug'] + '/' + nextSlide
+        'href': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['slug'], nextSlide
         'style':
           'width': (@props['viewport']['width'] - actualStyles['width']) / 2
       }, @getContent nextSlide, 'next'
@@ -208,7 +209,7 @@ aa.ui.DetailSlide = React.createClass
         'key': 'previous-slide'
         'onClick': @onPreviousClick
         'className': 'aa-project-slide aa-previous-slide'
-        'href': '/#selected/' + project['slug'] + '/' + previousSlide
+        'href': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['slug'], previousSlide
         'style':
           'width': (@props['viewport']['width'] - actualStyles['width']) / 2
       },  @getContent previousSlide, 'previous'

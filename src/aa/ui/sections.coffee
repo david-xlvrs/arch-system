@@ -47,6 +47,7 @@ aa.ui.Sections = React.createClass
                 'project': @props['data']['detail']
                 'activeSlide': @props['data']['detailSlide']
                 'viewport': @props['viewport']
+                'previousSection': @props['previousSection']
               'key': 'key-detail-trans'
               'transition': aa.Const.TRANSITION.SECTION_2_SECTION
           else

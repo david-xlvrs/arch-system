@@ -16,7 +16,7 @@ aa.ui.SelectedTitle = React.createClass
     configA = {}
     if @props['clickable']
       configA['className'] = 'clickable'
-      configA['href'] = '/#selected/' + @props['projects'][actualSlide]['id'] + '/0'
+      configA['href'] = aa.Router.getRoute aa.Const.SECTION.DETAIL, @props['projects'][actualSlide]['slug'], 0
       configA['style'] =
         'color': @props['projects'][actualSlide]['colors']['bg']
 
