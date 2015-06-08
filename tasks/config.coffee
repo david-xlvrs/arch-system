@@ -50,9 +50,10 @@ module.exports =
       nameLess: 'sprite-icons.less'
     less:
       srcGlob: './src/**/*.less'
+      mainGlob: '**/base.less'
       dst: './' + buildDir + '/css'
       mapDst: './' + buildDir + '/css/map'
-      nameConcatenatedLess: 'style.less'
+      nameCSS: 'style.css'
       nameCSSMinified: 'style.min.css'
     vendor:
       srcGlob: [

@@ -1,16 +1,17 @@
 module.exports = (g, gsize, config) ->
 
   g.task 'less:transpile', [], ->
-    gconcat = require 'gulp-concat'
     gfilter = require 'gulp-filter'
     gless = require 'gulp-less'
     path = require 'path'
     sprite = require('css-sprite').stream
     gconnect = require 'gulp-connect'
+    grename = require 'gulp-rename'
 
     filterImagesForSprite = gfilter '*.png'
     filterSpriteImage = gfilter config.paths.sprites.namePng
     filterLess = gfilter '**/*.less'
+    filterMainLess = gfilter config.paths.less.mainGlob
 
     stream = g.src([config.paths.sprites.srcGlob, config.paths.less.srcGlob])
       .pipe(filterImagesForSprite)
@@ -43,12 +44,12 @@ module.exports = (g, gsize, config) ->
       stream = stream.pipe(gsourcemaps.init loadMaps: yes)
 
     stream = stream.pipe(gsize title: 'less:transpile source')
-      .pipe(gconcat config.paths.less.nameConcatenatedLess)
+      .pipe(filterMainLess)
       .pipe(gless())
+      .pipe(grename config.paths.less.nameCSS)
 
     if config.argv.production
       gminify = require 'gulp-minify-css'
-      grename = require 'gulp-rename'
       stream = stream.pipe(gminify())
         .pipe(grename config.paths.less.nameCSSMinified)
 
