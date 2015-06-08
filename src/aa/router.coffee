@@ -70,15 +70,16 @@ class aa.Router extends goog.events.EventTarget
     foundRoute = null
     params = {}
 
-    for part, i in hash
+    for route of @config
       break if foundRoute
-      for route of @config
+      for part, i in hash
+
         parsedRoute = @parseToken route
         if part isnt parsedRoute[i]
           if parsedRoute[i]?[0] is '{'
             params[parsedRoute[i].replace(/[{}]/g, '')] = part
           else
-            continue
+            break
         if hash.length is i + 1
           foundRoute = route
           break

@@ -26,6 +26,7 @@ sandbox.Bootstrap = ->
   projectsModel = new aa.ProjectModel()
   projectsModel.load()
   projectsModel.addEventListener 'change', (e) ->
+    completeSettings['filter']['params'] = projectsModel.getParams()
     completeSettings['loaded'] = projectsModel.isLoaded()
     completeSettings['data']['splash'] = projectsModel.getSplashData()
     completeSettings['data']['selected'] = projectsModel.getSelectedData()
@@ -64,6 +65,7 @@ sandbox.Bootstrap = ->
       'all': projectsModel.getAllData()
       'detail': projectsModel.getDetail 1
       'detailSlide': 0
+    'filter': {}
 
   ###*
     Render whole application
@@ -82,6 +84,7 @@ sandbox.Bootstrap = ->
     'selected/{projectSlug}/{slideId}': aa.Const.SECTION.DETAIL
     'selected/{projectSlug}/{slideId}/{full}': aa.Const.SECTION.DETAIL
     'index': aa.Const.SECTION.INDEX
+    'index/{sortBy}/{sortWay}': aa.Const.SECTION.INDEX
 
   goog.events.listen router, aa.Router.EventType.CHANGE, (e) ->
     routerStatus = router.getStatus()
@@ -107,6 +110,9 @@ sandbox.Bootstrap = ->
 
       prevDetailSlide = newDetailSlide
 
+    if routerStatus['params']?['sortBy']
+      completeSettings['filter']['sortBy'] = routerStatus['params']?['sortBy']
+      completeSettings['filter']['sortWay'] = routerStatus['params']?['sortWay']
 
     render()
 

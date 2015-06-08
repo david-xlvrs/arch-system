@@ -12,6 +12,7 @@ aa.ui.Application = React.createClass
     'section': aa.Const.SECTION.SPLASH
     'previousSection': aa.Const.SECTION.SELECTED
     'transition': aa.Const.TRANSITION.SPLASH_2_SECTION
+    'params': []
     'viewport':
       'width': 0
       'height': 0
@@ -38,6 +39,7 @@ aa.ui.Application = React.createClass
               'loaded': @props['loaded']
               'handleScrollTo': @props['handleScrollTo']
               'inFullscreen': @props['inFullscreen']
+              'filter': @props['filter']
             'key': 'key-sections-trans'
             'transition': aa.Const.TRANSITION.SPLASH_2_SECTION
             'fromColors': @props['data']['splash']['colors']

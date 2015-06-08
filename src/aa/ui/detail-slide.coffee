@@ -150,7 +150,7 @@ aa.ui.DetailSlide = React.createClass
         @onNextClick()
         window.location.href = aa.Router.getRoute aa.Const.SECTION.DETAIL, @props['project']['slug'], @getNextSlide()
       when 27 #Esc
-        window.location.href = aa.Router.getRoute aa.Const.SECTION.SELECTED
+        window.location.href = aa.Router.getRoute @props['previousSection']
 
   onNextClick: (ev) ->
     window.detailDirection = 1

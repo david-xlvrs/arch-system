@@ -37,6 +37,9 @@ aa.ui.Sections = React.createClass
               'sectionProps':
                 'key': 'section-all'
                 'projects': @props['data']['all']
+                'viewport': @props['viewport']
+                'colors': @props['styleConfig']['colors']
+                'filter': @props['filter']
               'key': 'key-index-trans'
               'transition': aa.Const.TRANSITION.SECTION_2_SECTION
           when aa.Const.SECTION.DETAIL

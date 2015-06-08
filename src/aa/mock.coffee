@@ -1,5 +1,22 @@
 goog.provide 'aa.mock'
 
+aa.mock.Params = [
+    key: null
+    name: ' '
+  ,
+    key: 'title'
+    name: 'Název projektu'
+  ,
+    key: 'custom1'
+    name: 'Typologie'
+  ,
+    key: 'custom2'
+    name: 'Status'
+  ,
+    key: 'date'
+    name: 'Rok'
+]
+
 aa.mock.List =
   data: [
     id: 1
@@ -7,15 +24,8 @@ aa.mock.List =
     slug: 'golf-klub-certovo-bremeno'
     date: '2010-01-01'
     desc: 'Novostavba Golfklubu s restaurací a kompletním zázemím pro hráče i personál golfového hřiště'
-    params: [
-        key: 'custom1'
-        name: 'Typologie'
-        value: 'Golfové hřiště'
-      ,
-        key: 'custom2'
-        name: 'Status'
-        value: 'Realizováno'
-    ]
+    custom1: 'Golfové hřiště'
+    custom2: 'Realizováno'
     colors:
       bg: '#4c746c'
       content: '#C6CFCE'
@@ -29,15 +39,8 @@ aa.mock.List =
     date: '2009-01-01'
     desc: 'Nádherné výhledy nad dramatickým údolím řeky Jizery v obci
       Benešov u Semil. Svažitý pozemek situovaný na jih za zahradou'
-    params: [
-        key: 'custom1'
-        name: 'Typologie'
-        value: 'Rodinný dům'
-      ,
-        key: 'custom2'
-        name: 'Status'
-        value: 'Realizováno'
-    ]
+    custom1: 'Rodinný dům'
+    custom2: 'Realizováno'
     colors:
       bg: '#6c797e'
       content: '#fff'
@@ -51,13 +54,8 @@ aa.mock.List =
     date: '2012-01-01'
     desc: 'Nádherné výhledy nad dramatickým údolím řeky Jizery v obci
       Benešov u Semil. Svažitý pozemek situovaný na jih za zahradou'
-    params: [
-        name: 'Typologie'
-        value: 'Urbanismus'
-      ,
-        name: 'Status'
-        value: 'Realizováno'
-    ]
+    custom1: 'Urbanismus'
+    custom2: 'Soutěž'
     colors:
       bg: '#8b8c8e'
       content: '#2b2933'
@@ -73,15 +71,8 @@ aa.mock.Detail =
     slug: 'golf-klub-certovo-bremeno'
     date: '2010-01-01'
     desc: 'Novostavba Golfklubu s restaurací a kompletním zázemím pro hráče i personál golfového hřiště'
-    params: [
-        key: 'custom1'
-        name: 'Typologie'
-        value: 'Golfové hřiště'
-      ,
-        key: 'custom2'
-        name: 'Status'
-        value: 'Realizováno'
-    ]
+    custom1: 'Golfové hřiště'
+    custom2: 'Realizováno'
     colors:
       bg: '#4c746c'
       content: '#C6CFCE'

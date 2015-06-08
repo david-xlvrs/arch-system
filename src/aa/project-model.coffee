@@ -34,6 +34,9 @@ class aa.ProjectModel extends goog.events.EventTarget
   getDetail: (projectSlug) ->
     aa.mock.Detail.data
 
+  getParams: ->
+    aa.mock.Params
+
   load: ->
     setTimeout(=>
       @rows = aa.mock.List.data
