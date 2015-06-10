@@ -39,8 +39,14 @@
     left: 0;
     width: 100%;
     height: @filterPanelHeight;
-    padding: 0 @size1;
-    box-sizing: border-box;
+
+    &.aa-with-search {
+      height: @filterPanelHeight + @filterSearchHeight;
+    }
+
+    .aa-filter-sorting {
+      padding: 0 30px;
+    }
 
     .aa-filter-part {
       display: block;
@@ -78,6 +84,29 @@
           content: 'A';
         }
       }
+    }
+
+    .aa-filter-search {
+      clear: both;
+      display: block;
+      height: @filterSearchHeight;
+      line-height: @filterSearchHeight;
+      padding: 0 30px;
+      background: #999;
+
+      .aa-filter-part {
+        height: @filterSearchHeight;
+        line-height: @filterSearchHeight;
+
+        a {
+          &::before {
+            left: -15px;
+            font-size: 15px;
+            content: 'X';
+          }
+        }
+      }
+
     }
   }
 }

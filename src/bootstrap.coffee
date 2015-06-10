@@ -65,7 +65,11 @@ sandbox.Bootstrap = ->
       'all': projectsModel.getAllData()
       'detail': projectsModel.getDetail 1
       'detailSlide': 0
-    'filter': {}
+    'filter':
+      'search': ''
+      'params': []
+      'sortBy': 'date'
+      'sortWay': 'desc'
 
   ###*
     Render whole application
@@ -85,6 +89,7 @@ sandbox.Bootstrap = ->
     'selected/{projectSlug}/{slideId}/{full}': aa.Const.SECTION.DETAIL
     'index': aa.Const.SECTION.INDEX
     'index/{sortBy}/{sortWay}': aa.Const.SECTION.INDEX
+    'index/{sortBy}/{sortWay}/{search}': aa.Const.SECTION.INDEX
 
   goog.events.listen router, aa.Router.EventType.CHANGE, (e) ->
     routerStatus = router.getStatus()
@@ -113,6 +118,11 @@ sandbox.Bootstrap = ->
     if routerStatus['params']?['sortBy']
       completeSettings['filter']['sortBy'] = routerStatus['params']?['sortBy']
       completeSettings['filter']['sortWay'] = routerStatus['params']?['sortWay']
+
+    if routerStatus['params']?['search']
+      completeSettings['filter']['search'] = routerStatus['params']['search']
+    else
+      completeSettings['filter']['search'] = ''
 
     render()
 

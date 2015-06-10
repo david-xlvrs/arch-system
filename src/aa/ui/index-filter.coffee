@@ -1,13 +1,22 @@
 goog.provide 'aa.ui.IndexFilter'
 
 goog.require 'aa.Const'
+goog.require 'goog.object'
 
 aa.ui.IndexFilter = React.createClass
 
+  getFilterHref: (key) ->
+    search = goog.object.clone @props['search']
+
+    delete search[key] if search[key]
+
+    newSearch = if goog.object.isEmpty(search) then '' else goog.json.serialize search
+    aa.Router.getRoute aa.Const.SECTION.INDEX, @props['sortBy'], @props['sortWay'], newSearch
+
   render: ->
     content = []
-
-    console.log 'props', @props
+    sortingParts = []
+    searchParts = []
 
     for param, iter in @props['params']
       configDiv =
@@ -24,14 +33,30 @@ aa.ui.IndexFilter = React.createClass
         configA['href'] = aa.Router.getRoute aa.Const.SECTION.INDEX, param['key'], 'asc'
         configA['className'] = 'to-asc'
 
-      content.push React.DOM.div configDiv, React.DOM.a configA, param['name']
+      sortingParts.push React.DOM.div configDiv, React.DOM.a configA, param['name']
 
-    console.log 'props', @props
+      configDiv['key'] += 'search'
+      configA['key'] += 'search'
+      configA['href'] = @getFilterHref param['key']
 
+      a = if @props['search'][param['key']]
+        React.DOM.a configA, @props['search'][param['key']]
+      else
+        null
+
+      searchParts.push React.DOM.div configDiv, a
+
+    content.push React.DOM.div 'key': 'filter-part-sorting', 'className': 'aa-filter-sorting', sortingParts
+
+    unless goog.object.isEmpty @props['search']
+      search = React.DOM.div 'key': 'filter-part-search', 'className': 'aa-filter-search', searchParts
+      content.push search
 
     config =
       'key': 'index-table'
-      'className': 'aa-index-filter'
+      'className': classNames
+        'aa-index-filter': yes
+        'aa-with-search': not goog.object.isEmpty @props['search']
       'style':
         'color': @props['colors']['bg']
         'backgroundColor': @props['colors']['content']
