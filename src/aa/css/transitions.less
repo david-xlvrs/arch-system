@@ -97,12 +97,13 @@
   position: fixed !important;
   top: 0;
   left: 0;
-  opacity: 0.01;
-  transition: opacity @animDurationSt ease-in !important;
+  opacity: 0.01 !important;
+
   z-index: 10;
 
   &.section-to-section-enter-active, &.to-fullscreen-enter-active {
-    opacity: 1;
+    transition: opacity @animDurationSt ease-in !important;
+    opacity: 1 !important;
   }
 }
 
@@ -136,12 +137,10 @@
   }
 
   .aa-slide-title {
-    transition: opacity @animDurationSt ease-out @animDurationSt !important;
     opacity: 0 !important;
   }
 
   .aa-detail-counter {
-    transition: opacity @animDurationSt ease-in @animDurationSt/2;
     opacity: 0 !important;
   }
 
@@ -152,10 +151,12 @@
     }
 
     .aa-slide-title {
+      transition: opacity @animDurationSt ease-out @animDurationSt !important;
       opacity: 1 !important;
     }
 
     .aa-detail-counter {
+      transition: opacity @animDurationSt ease-in @animDurationSt/2;
       opacity: 1 !important;
     }
   }
@@ -226,12 +227,10 @@
   }
 
   .aa-slide-title {
-    transition: opacity @animDurationSt ease-out @animDurationSt !important;
     opacity: 0 !important;
   }
 
   .aa-detail-counter {
-    transition: opacity @animDurationSt ease-in @animDurationSt/2;
     opacity: 0 !important;
   }
 
@@ -242,10 +241,12 @@
     }
 
     .aa-slide-title {
+      transition: opacity @animDurationSt ease-out @animDurationSt !important;
       opacity: 1 !important;
     }
 
     .aa-detail-counter {
+      transition: opacity @animDurationSt ease-in @animDurationSt/2;
       opacity: 1 !important;
     }
   }
