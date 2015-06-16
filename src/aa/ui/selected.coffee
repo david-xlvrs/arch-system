@@ -63,6 +63,9 @@ aa.ui.Selected = React.createClass
       when 40 #Down
         e.preventDefault()
         iter = window.selectedActualSlide + 1
+        if iter is window.selectedImagesStyles.length
+          iter = 0
+
         scrollTo = 0
         scrollTo += style['height'] for style in window.selectedImagesStyles[0...iter]
         scrollTo += style['marginTop'] for style in window.selectedImagesStyles[1..iter]
