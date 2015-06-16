@@ -203,7 +203,9 @@ aa.ui.DetailSlide = React.createClass
       'key': 'detail-closer'
       'className': 'aa-close'
       'href': aa.Router.getRoute @props['previousSection']
-    , 'X'
+      'dangerouslySetInnerHTML':
+        '__html': '&#10005;'
+
 
     #6-actual slide
     if slides[activeSlide]['type'] is 'image'

@@ -4,7 +4,7 @@ aa.ui.Fullscreen = React.createClass
   statics:
     TOLERANCE: 20
 
-  handleMove: (clientX, clientY) ->
+  countImagePosition: (clientX, clientY) ->
     viewX = goog.dom.getViewportSize().width - 2 * aa.ui.Fullscreen.TOLERANCE
     viewY = goog.dom.getViewportSize().height - 2 * aa.ui.Fullscreen.TOLERANCE
 
@@ -22,6 +22,10 @@ aa.ui.Fullscreen = React.createClass
     'left': -moveX * percX
     'top': -moveY * percY
 
+  handleClick: (e) ->
+    if e.target.tagName is 'IMG'
+      window.location.href = @props['returnUrl']
+
   handleKey: (e) ->
     e.preventDefault()
     e.stopPropagation()
@@ -30,9 +34,11 @@ aa.ui.Fullscreen = React.createClass
       window.location.href = @props['returnUrl']
 
   componentDidMount: ->
+    goog.events.listen window, goog.events.EventType.CLICK, @handleClick
     goog.events.listen window, goog.events.EventType.KEYUP, @handleKey
 
   componentWillUnmount: ->
+    goog.events.unlisten window, goog.events.EventType.CLICK, @handleClick
     goog.events.unlisten window, goog.events.EventType.KEYUP, @handleKey
 
   render: ->
@@ -41,12 +47,13 @@ aa.ui.Fullscreen = React.createClass
     content.push React.DOM.img
       'key': 'fullImg' + @props['slide']['id']
       'src': @props['slide']['image']['url']
-      'style': @handleMove @props['mousePosition']['x'], @props['mousePosition']['y']
+      'style': @countImagePosition @props['mousePosition']['x'], @props['mousePosition']['y']
 
     content.push React.DOM.a
       'key': 'detail-closer'
       'className': 'aa-close'
       'href': @props['returnUrl']
-    , 'X'
+      'dangerouslySetInnerHTML':
+        '__html': '&#10005;'
 
     React.DOM.div 'className': @props['className'], content
