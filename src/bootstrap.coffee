@@ -31,7 +31,9 @@ sandbox.Bootstrap = ->
     completeSettings['data']['splash'] = projectsModel.getSplashData()
     completeSettings['data']['selected'] = projectsModel.getSelectedData()
     completeSettings['data']['all'] = projectsModel.getAllData()
-    completeSettings['data']['detail'] = projectsModel.getDetail 1
+
+    routerStatus = router.getStatus()
+    completeSettings['data']['detail'] = projectsModel.getDetail routerStatus['params']?['projectSlug']
     render()
 
   ###*

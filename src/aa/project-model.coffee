@@ -32,7 +32,7 @@ class aa.ProjectModel extends goog.events.EventTarget
     @rows
 
   getDetail: (projectSlug) ->
-    aa.mock.Detail.data
+    aa.mock.Detail[projectSlug]
 
   getParams: ->
     aa.mock.Params
