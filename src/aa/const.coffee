@@ -25,6 +25,6 @@ aa.Const =
     IMG_MAX_HEIGHT: 0.65
     SIZE1: 30
     MENU:
-      HEIGHT: 50
+      HEIGHT: 40
     TITLE:
       HEIGHT: 40

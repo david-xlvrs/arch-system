@@ -26,7 +26,7 @@ aa.ui.Selected = React.createClass
     menuHeight = aa.Const.CSS.MENU.HEIGHT
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    maxH = ch - 4 * aa.Const.CSS.SIZE1 - menuHeight - titleHeight
+    maxH = ch - 5 * aa.Const.CSS.SIZE1 - menuHeight - titleHeight
     maxW = cw - 4 * aa.Const.CSS.SIZE1
 
     # by width
@@ -40,7 +40,7 @@ aa.ui.Selected = React.createClass
 
     'width': iw
     'height': ih
-    'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2) else (menuHeight + aa.Const.CSS.SIZE1)
+    'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2) else (menuHeight + 2 * aa.Const.CSS.SIZE1)
     'paddingBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 3)
 
   getScrollCount: ->
