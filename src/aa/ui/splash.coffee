@@ -8,7 +8,9 @@ aa.ui.Splash = React.createClass
     'title': ''
     'loaded': no
 
-
+  handleClick: (e) ->
+    if e.target.tagName is 'H1' or goog.dom.classes.has e.target, 'aa-splash-fade'
+      window.location.href = aa.Router.getRoute aa.Const.SECTION.SELECTED
 
   handleScroll: (e) ->
     e.preventDefault()
@@ -24,10 +26,12 @@ aa.ui.Splash = React.createClass
       @componentWillUnmount()
 
   componentDidMount: ->
+    goog.events.listen window, goog.events.EventType.CLICK, @handleClick
     window.addEventListener 'mousewheel', @handleScroll
     window.addEventListener 'DOMMouseScroll', @handleScroll
 
   componentWillUnmount: ->
+    goog.events.unlisten window, goog.events.EventType.CLICK, @handleClick
     window.removeEventListener 'mousewheel', @handleScroll
     window.removeEventListener 'DOMMouseScroll', @handleScroll
 
