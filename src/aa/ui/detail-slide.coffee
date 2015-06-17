@@ -66,8 +66,11 @@ aa.ui.DetailSlide = React.createClass
     menuHeight = aa.Const.CSS.MENU.HEIGHT
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    maxH = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
-    maxW = cw - 4 * aa.Const.CSS.SIZE1
+    idealH = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
+    idealW = cw - 4 * aa.Const.CSS.SIZE1
+
+    maxH = Math.min idealH, slide['image']['size'][1]
+    maxW = Math.min idealW, slide['image']['size'][0]
 
     # by width
     iw = maxW
@@ -81,7 +84,7 @@ aa.ui.DetailSlide = React.createClass
     ret =
       'width': iw
       'height': ih
-      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 2
+      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 2 + (idealH - ih) / 2
 
     if type is 'next'
       ret['marginLeft'] = 'auto'
