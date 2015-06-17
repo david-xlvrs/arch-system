@@ -19,8 +19,8 @@ aa.ui.Fullscreen = React.createClass
     moveX = imgX - viewX - 2 * aa.ui.Fullscreen.TOLERANCE
     moveY = imgY - viewY - 2 * aa.ui.Fullscreen.TOLERANCE
 
-    'left': -moveX * percX
-    'top': -moveY * percY
+    'left': if imgX > viewX then -moveX * percX else (goog.dom.getViewportSize().width - imgX) / 2
+    'top': if imgY > viewY then -moveY * percY else (goog.dom.getViewportSize().height - imgY) / 2
 
   handleClick: (e) ->
     if e.target.tagName is 'IMG'
@@ -56,4 +56,9 @@ aa.ui.Fullscreen = React.createClass
       'dangerouslySetInnerHTML':
         '__html': '&#10005;'
 
-    React.DOM.div 'className': @props['className'], content
+    config =
+      'className': @props['className']
+      'style':
+        'backgroundColor': @props['colors']['bg']
+
+    React.DOM.div config, content

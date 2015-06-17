@@ -252,6 +252,7 @@ aa.ui.DetailSlide = React.createClass
           React.createElement aa.ui.Fullscreen,
             'key': 'aa-fullscreen-container'
             'className': 'aa-fullscreen-container'
+            'colors': slides[activeSlide]?['colors']
             'slide': slides[activeSlide]
             'mousePosition': @state['mousePosition']
             'returnUrl': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['slug'], activeSlide
