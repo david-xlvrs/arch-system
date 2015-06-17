@@ -128,7 +128,6 @@
 
   .aa-next-slide {
     transform: translate3d(100%,0,0);
-    transition: transform @animDurationSt ease-out @animDurationSt, opacity @animDurationSt ease-out @animDurationSt !important;
     opacity: @opacityHoverOn !important;
   }
 
@@ -146,6 +145,7 @@
 
   &.detail-to-next-enter-active {
     .aa-next-slide {
+      transition: transform @animDurationSt ease-out @animDurationSt, opacity @animDurationSt ease-out @animDurationSt !important;
       opacity: @opacityHoverOff !important;
       transform: translate3d(0,0,0);
     }
@@ -166,18 +166,15 @@
 
   .aa-previous-slide {
     transform: translate3d(0,0,0);
-    transition: transform @animDurationSt/2 ease-out !important;
   }
 
   .aa-actual-slide {
     transform: translate3d(0,0,0);
-    transition: transform @animDurationSt ease-out @animDurationSt/3, opacity @animDurationSt ease-out @animDurationSt/3 !important;
     opacity: 1 !important;
   }
 
   .aa-next-slide {
     transform: translate3d(0,0,0);
-    transition: transform @animDurationSt ease-out @animDurationSt*2/3, opacity @animDurationSt ease-out @animDurationSt*2/3 !important;
     opacity: @opacityHoverOn !important;
   }
 
@@ -196,7 +193,16 @@
       opacity: @opacityHoverOff !important;
     }
 
+    .aa-previous-slide {
+      transition: transform @animDurationSt/2 ease-out !important;
+    }
+
+    .aa-actual-slide {
+      transition: transform @animDurationSt ease-out @animDurationSt/3, opacity @animDurationSt ease-out @animDurationSt/3 !important;
+    }
+
     .aa-next-slide {
+      transition: transform @animDurationSt ease-out @animDurationSt*2/3, opacity @animDurationSt ease-out @animDurationSt*2/3 !important;
       opacity: 1 !important;
     }
 
@@ -218,7 +224,6 @@
 
   .aa-previous-slide {
     transform: translate3d(-100%,0,0);
-    transition: transform @animDurationSt ease-out @animDurationSt, opacity @animDurationSt ease-out @animDurationSt !important;
     opacity: @opacityHoverOn !important;
   }
 
@@ -236,6 +241,7 @@
 
   &.detail-to-previous-enter-active {
     .aa-previous-slide {
+      transition: transform @animDurationSt ease-out @animDurationSt, opacity @animDurationSt ease-out @animDurationSt !important;
       opacity: @opacityHoverOff !important;
       transform: translate3d(0,0,0);
     }
