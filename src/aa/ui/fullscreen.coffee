@@ -5,8 +5,11 @@ aa.ui.Fullscreen = React.createClass
     TOLERANCE: 20
 
   countImagePosition: (clientX, clientY) ->
-    viewX = goog.dom.getViewportSize().width - 2 * aa.ui.Fullscreen.TOLERANCE
-    viewY = goog.dom.getViewportSize().height - 2 * aa.ui.Fullscreen.TOLERANCE
+    screenX = goog.dom.getViewportSize().width
+    screenY = goog.dom.getViewportSize().height
+
+    viewX = screenX - 2 * aa.ui.Fullscreen.TOLERANCE
+    viewY = screenY - 2 * aa.ui.Fullscreen.TOLERANCE
 
     imgX = @props['slide']['fullImage']['size'][0]
     imgY = @props['slide']['fullImage']['size'][1]
@@ -19,8 +22,8 @@ aa.ui.Fullscreen = React.createClass
     moveX = imgX - viewX - 2 * aa.ui.Fullscreen.TOLERANCE
     moveY = imgY - viewY - 2 * aa.ui.Fullscreen.TOLERANCE
 
-    'left': if imgX > viewX then -moveX * percX else (goog.dom.getViewportSize().width - imgX) / 2
-    'top': if imgY > viewY then -moveY * percY else (goog.dom.getViewportSize().height - imgY) / 2
+    'left': if imgX > screenX then -moveX * percX else (screenX - imgX) / 2
+    'top': if imgY > screenY then -moveY * percY else (screenY - imgY) / 2
 
   handleClick: (e) ->
     if e.target.tagName is 'IMG'
