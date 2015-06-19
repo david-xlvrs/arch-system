@@ -26,7 +26,7 @@ aa.ui.Selected = React.createClass
     menuHeight = aa.Const.CSS.MENU.HEIGHT
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    maxH = ch - 5 * aa.Const.CSS.SIZE1 - menuHeight - titleHeight
+    maxH = ch - 6 * aa.Const.CSS.SIZE1 - menuHeight - titleHeight
     maxW = cw - 4 * aa.Const.CSS.SIZE1
 
     # by width
@@ -40,7 +40,7 @@ aa.ui.Selected = React.createClass
 
     'width': iw
     'height': ih
-    'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2) else (menuHeight + 2 * aa.Const.CSS.SIZE1)
+    'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2) else (menuHeight + 3 * aa.Const.CSS.SIZE1)
     'paddingBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 3)
 
   getScrollCount: ->
@@ -90,6 +90,7 @@ aa.ui.Selected = React.createClass
 
   render: ->
     return React.DOM.div null, 'EMPTY' unless @props['projects']
+    console.log 'reere'
 
     imagesStyles = []
     imagePositions = []
@@ -134,6 +135,8 @@ aa.ui.Selected = React.createClass
             config['className'] += ' aa-previous'
           else
             config['className'] += ' aa-next'
+        else
+          config['className'] += ' aa-actual'
 
         scrollTo = 0
         if iter > 0
