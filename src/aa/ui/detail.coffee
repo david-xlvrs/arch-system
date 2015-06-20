@@ -1,5 +1,6 @@
 goog.provide 'aa.ui.Detail'
 
+goog.require 'aa.Router'
 goog.require 'aa.ui.DetailSlide'
 goog.require 'goog.array'
 goog.require 'goog.object'
@@ -32,7 +33,6 @@ aa.ui.Detail = React.createClass
       'style':
         'color': slides[activeSlide]['colors']['content']
         'backgroundColor': slides[activeSlide]['colors']['bg']
-
 
     React.createElement React.addons.TransitionGroup, config,
         React.createElement aa.ui.transition.Basic,

@@ -66,7 +66,7 @@ aa.ui.DetailSlide = React.createClass
     menuHeight = aa.Const.CSS.MENU.HEIGHT
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    idealH = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
+    idealH = ch - 6 * aa.Const.CSS.SIZE1 - 2 * titleHeight
     idealW = cw - 4 * aa.Const.CSS.SIZE1
 
     maxH = Math.min idealH, slide['image']['size'][1]
@@ -84,7 +84,7 @@ aa.ui.DetailSlide = React.createClass
     ret =
       'width': iw
       'height': ih
-      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 2 + (idealH - ih) / 2
+      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 3 + (idealH - ih) / 2
 
     if type is 'next'
       ret['marginLeft'] = 'auto'
@@ -107,7 +107,7 @@ aa.ui.DetailSlide = React.createClass
     menuHeight = aa.Const.CSS.MENU.HEIGHT
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    ih = ch - 4 * aa.Const.CSS.SIZE1 - 2 * titleHeight
+    ih = ch - 6 * aa.Const.CSS.SIZE1 - 2 * titleHeight
     iw = cw * 0.75 - 4 * aa.Const.CSS.SIZE1
 
     ret =
@@ -115,7 +115,7 @@ aa.ui.DetailSlide = React.createClass
       'color': slide['colors']['bg']
       'width': iw
       'height': ih
-      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 2
+      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 3
 
     if type is 'next'
       ret['marginLeft'] = 'auto'
@@ -259,6 +259,26 @@ aa.ui.DetailSlide = React.createClass
         else
           null
       )
+
+    #10-previous project
+    config =
+      'className': 'aa-detail-previous-project'
+      'key': 'aa-detail-previous-project'
+      'href': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['previousProject']['slug'], 0
+      'style':
+        'color': project['previousProject']['colors']['content']
+        'backgroundColor': project['previousProject']['colors']['bg']
+    content.push React.DOM.a config, 'Previous Project'
+
+    #10-next project
+    config =
+      'className': 'aa-detail-next-project'
+      'key': 'aa-detail-next-project'
+      'href': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['nextProject']['slug'], 0
+      'style':
+        'color': project['nextProject']['colors']['content']
+        'backgroundColor': project['nextProject']['colors']['bg']
+    content.push React.DOM.a config, 'Next Project'
 
     React.DOM.div undefined, content
 

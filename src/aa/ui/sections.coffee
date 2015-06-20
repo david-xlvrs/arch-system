@@ -52,7 +52,7 @@ aa.ui.Sections = React.createClass
                 'viewport': @props['viewport']
                 'previousSection': @props['previousSection']
                 'inFullscreen': @props['inFullscreen']
-              'key': 'key-detail-trans'
+              'key': 'key-detail-trans' + @props['data']['detail']['id']
               'transition': aa.Const.TRANSITION.SECTION_2_SECTION
           else
             React.createElement aa.ui.transition.Basic,
