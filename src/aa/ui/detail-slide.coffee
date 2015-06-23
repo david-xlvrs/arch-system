@@ -152,6 +152,10 @@ aa.ui.DetailSlide = React.createClass
       when 39 #Right
         @onNextClick()
         window.location.href = aa.Router.getRoute aa.Const.SECTION.DETAIL, @props['project']['slug'], @getNextSlide()
+      when 38 #Up
+        window.location.href = aa.Router.getRoute aa.Const.SECTION.DETAIL, @props['project']['previousProject']['slug'], 0
+      when 40 #Down
+        window.location.href = aa.Router.getRoute aa.Const.SECTION.DETAIL, @props['project']['nextProject']['slug'], 0
       when 27 #Esc
         window.location.href = aa.Router.getRoute @props['previousSection']
 
@@ -176,7 +180,12 @@ aa.ui.DetailSlide = React.createClass
     #1-menu
     content.push React.createElement aa.ui.Menu,
         'key': 'aa-content-menu'
-        'colors': @props['project']?['colors']
+        'justOne':
+          switch @props['previousSection']
+            when aa.Const.SECTION.SELECTED then 'selected'
+            when aa.Const.SECTION.INDEX then 'index'
+        'colors':
+          'content': slides[activeSlide]?['colors']['content']
 
     #2-counter
     spanConfig =
@@ -265,20 +274,20 @@ aa.ui.DetailSlide = React.createClass
       'className': 'aa-detail-previous-project'
       'key': 'aa-detail-previous-project'
       'href': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['previousProject']['slug'], 0
+    spanConfig =
       'style':
-        'color': project['previousProject']['colors']['content']
         'backgroundColor': project['previousProject']['colors']['bg']
-    content.push React.DOM.a config, 'Previous Project'
+    content.push React.DOM.a config, React.DOM.span spanConfig, ''
 
     #10-next project
     config =
       'className': 'aa-detail-next-project'
       'key': 'aa-detail-next-project'
       'href': aa.Router.getRoute aa.Const.SECTION.DETAIL, project['nextProject']['slug'], 0
+    spanConfig =
       'style':
-        'color': project['nextProject']['colors']['content']
         'backgroundColor': project['nextProject']['colors']['bg']
-    content.push React.DOM.a config, 'Next Project'
+    content.push React.DOM.a config, React.DOM.span spanConfig, ''
 
     React.DOM.div undefined, content
 

@@ -95,7 +95,7 @@ aa.mock.Detail = {
         desc: 'nějaký popisek' # muze byt null
         colors:
           bg: '#4c746c'
-          content: '#C6CFCE'
+          content: '#fff'
         image:
           size: [2362, 1670]
           url: '/img/data/04.jpg'
@@ -110,7 +110,7 @@ aa.mock.Detail = {
         desc: 'nějaký popisek' # muze byt null
         colors:
           bg: '#6d633c'
-          content: '#322E4B'
+          content: '#fff'
         image:
           size: [1671, 2362]
           url: '/img/data/03.jpg'
@@ -141,7 +141,7 @@ aa.mock.Detail = {
         '
         colors:
           bg: '#C6CFCE'
-          content: '#4c746c'
+          content: '#fff'
       ,
         id: 2
         projectId: 1
@@ -150,7 +150,7 @@ aa.mock.Detail = {
         desc: 'nějaký popisek' # muze byt null
         colors:
           bg: '#607a77'
-          content: '#C4AC9B'
+          content: '#fff'
         image:
           size: [2362, 1670]
           url: '/img/data/02.jpg'
@@ -179,7 +179,7 @@ aa.mock.Detail = {
       title: '1'
       colors:
         bg: '#6e837e'
-        content: '#CAB5A9'
+        content: '#fff'
       image:
         size: [750, 498]
         url: '/img/data/proj2/img01.jpeg'
@@ -193,7 +193,7 @@ aa.mock.Detail = {
       title: '2'
       colors:
         bg: '#443d2b'
-        content: '#20222F'
+        content: '#fff'
       image:
         size: [750, 557]
         url: '/img/data/proj2/img02.jpeg'
@@ -207,7 +207,7 @@ aa.mock.Detail = {
       title: '3'
       colors:
         bg: '#6e7271'
-        content: '#AFACA9'
+        content: '#fff'
       image:
         size: [750, 501]
         url: '/img/data/proj2/img03.jpeg'
@@ -221,7 +221,7 @@ aa.mock.Detail = {
       title: '4'
       colors:
         bg: '#7c704a'
-        content: '#3A3957'
+        content: '#fff'
       image:
         size: [750, 515]
         url: '/img/data/proj2/img04.jpeg'
@@ -235,7 +235,7 @@ aa.mock.Detail = {
       title: '5'
       colors:
         bg: '#545448'
-        content: '#353138'
+        content: '#fff'
       image:
         size: [554, 750]
         url: '/img/data/proj2/img05.jpeg'
@@ -249,7 +249,7 @@ aa.mock.Detail = {
       title: '6'
       colors:
         bg: '#f4f4f4'
-        content: '#060606'
+        content: '#fff'
       image:
         size: [750, 530]
         url: '/img/data/proj2/img06.jpeg'
@@ -263,7 +263,7 @@ aa.mock.Detail = {
       title: '7'
       colors:
         bg: '#545b4b'
-        content: '#55464C'
+        content: '#fff'
       image:
         size: [750, 409]
         url: '/img/data/proj2/img07.jpeg'
@@ -277,7 +277,7 @@ aa.mock.Detail = {
       title: '8'
       colors:
         bg: '#5d707e'
-        content: '#C4AD8E'
+        content: '#fff'
       image:
         size: [750, 280]
         url: '/img/data/proj2/img08.jpeg'
@@ -291,7 +291,7 @@ aa.mock.Detail = {
       title: '9'
       colors:
         bg: '#4f3f30'
-        content: '#1E2E30'
+        content: '#fff'
       image:
         size: [750, 498]
         url: '/img/data/proj2/img09.jpeg'
@@ -320,7 +320,7 @@ aa.mock.Detail = {
       title: '1'
       colors:
         bg: '#5b6773'
-        content: '#B1A189'
+        content: '#fff'
       image:
         size: [750, 562]
         url: '/img/data/proj3/img01.jpeg'
@@ -334,7 +334,7 @@ aa.mock.Detail = {
       title: '2'
       colors:
         bg: '#606465'
-        content: '#A39F9B'
+        content: '#fff'
       image:
         size: [750, 562]
         url: '/img/data/proj3/img02.jpeg'
@@ -348,7 +348,7 @@ aa.mock.Detail = {
       title: '3'
       colors:
         bg: '#5e5a3d'
-        content: '#332C40'
+        content: '#fff'
       image:
         size: [750, 562]
         url: '/img/data/proj3/img03.jpeg'
@@ -362,7 +362,7 @@ aa.mock.Detail = {
       title: '4'
       colors:
         bg: '#6d7440'
-        content: '#4B2C4E'
+        content: '#fff'
       image:
         size: [562, 750]
         url: '/img/data/proj3/img04.jpeg'
@@ -376,7 +376,7 @@ aa.mock.Detail = {
       title: '5'
       colors:
         bg: '#7f806e'
-        content: '#534A56'
+        content: '#fff'
       image:
         size: [750, 562]
         url: '/img/data/proj3/img05.jpeg'
@@ -390,7 +390,7 @@ aa.mock.Detail = {
       title: '6'
       colors:
         bg: '#425b58'
-        content: '#927B6A'
+        content: '#fff'
       image:
         size: [750, 562]
         url: '/img/data/proj3/img06.jpeg'
@@ -404,7 +404,7 @@ aa.mock.Detail = {
       title: '7'
       colors:
         bg: '#f1f1f1'
-        content: '#090909'
+        content: '#fff'
       image:
         size: [750, 296]
         url: '/img/data/proj3/img07.jpeg'
@@ -418,7 +418,7 @@ aa.mock.Detail = {
       title: '8'
       colors:
         bg: '#57594c'
-        content: '#3B333C'
+        content: '#fff'
       image:
         size: [750, 562]
         url: '/img/data/proj3/img08.jpeg'
@@ -432,7 +432,7 @@ aa.mock.Detail = {
       title: '9'
       colors:
         bg: '#838578'
-        content: '#381A3A'
+        content: '#fff'
       image:
         size: [750, 562]
         url: '/img/data/proj3/img09.jpeg'
@@ -461,7 +461,7 @@ aa.mock.Detail = {
       title: '1'
       colors:
         bg: '#878684'
-        content: '#434344'
+        content: '#fff'
       image:
         size: [750, 563]
         url: '/img/data/proj4/img01.jpeg'
@@ -475,7 +475,7 @@ aa.mock.Detail = {
       title: '2'
       colors:
         bg: '#949691'
-        content: '#666365'
+        content: '#fff'
       image:
         size: [750, 622]
         url: '/img/data/proj4/img02.jpeg'
@@ -489,7 +489,7 @@ aa.mock.Detail = {
       title: '3'
       colors:
         bg: '#84837f'
-        content: '#434344'
+        content: '#fff'
       image:
         size: [750, 563]
         url: '/img/data/proj4/img03.jpeg'
@@ -503,7 +503,7 @@ aa.mock.Detail = {
       title: '4'
       colors:
         bg: '#a59d9b'
-        content: '#6F7672'
+        content: '#fff'
       image:
         size: [563, 750]
         url: '/img/data/proj4/img04.jpeg'
@@ -517,7 +517,7 @@ aa.mock.Detail = {
       title: '5'
       colors:
         bg: '#ba9a85'
-        content: '#557770'
+        content: '#fff'
       image:
         size: [750, 563]
         url: '/img/data/proj4/img05.jpeg'
@@ -531,7 +531,7 @@ aa.mock.Detail = {
       title: '6'
       colors:
         bg: '#98be11'
-        content: '#8F0D76'
+        content: '#fff'
       image:
         size: [563, 750]
         url: '/img/data/proj4/img06.jpeg'
@@ -545,7 +545,7 @@ aa.mock.Detail = {
       title: '7'
       colors:
         bg: '#cfcfc3'
-        content: '#666368'
+        content: '#fff'
       image:
         size: [750, 513]
         url: '/img/data/proj4/img07.jpeg'
@@ -559,7 +559,7 @@ aa.mock.Detail = {
       title: '8'
       colors:
         bg: '#ababad'
-        content: '#F7F6F4'
+        content: '#fff'
       image:
         size: [750, 563]
         url: '/img/data/proj4/img08.jpeg'
@@ -573,7 +573,7 @@ aa.mock.Detail = {
       title: '9'
       colors:
         bg: '#5b6870'
-        content: '#B0A08D'
+        content: '#fff'
       image:
         size: [750, 563]
         url: '/img/data/proj4/img09.jpeg'

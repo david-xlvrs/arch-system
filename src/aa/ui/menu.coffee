@@ -11,32 +11,36 @@ aa.ui.Menu = React.createClass
     urlwithoutHash = window.location.href.split('#')[0]
 
     #about
-    links.push React.createElement aa.ui.MenuItem,
-      'key': 'about'
-      'title': 'About us'
-      'isActive': @props['active'] is 'about'
-      'url': urlwithoutHash + '#about'
-      'className': 'aa-menu-about'
+    if not @props['justOne'] or @props['justOne'] is 'about'
+      links.push React.createElement aa.ui.MenuItem,
+        'key': 'about'
+        'title': 'About us'
+        'isActive': @props['active'] is 'about'
+        'url': urlwithoutHash + '#about'
+        'className': 'aa-menu-about'
 
     #selected
-    links.push React.createElement aa.ui.MenuItem,
-      'key': 'selected'
-      'title': 'Selected projects'
-      'isActive': @props['active'] is 'selected'
-      'url': urlwithoutHash + '#selected'
-      'className': 'aa-menu-selected'
+    if not @props['justOne'] or @props['justOne'] is 'selected'
+      links.push React.createElement aa.ui.MenuItem,
+        'key': 'selected'
+        'title': 'Selected projects'
+        'isActive': @props['active'] is 'selected'
+        'url': urlwithoutHash + '#selected'
+        'className': 'aa-menu-selected'
 
     #index
-    links.push React.createElement aa.ui.MenuItem,
-      'key': 'index'
-      'title': 'Index'
-      'isActive': @props['active'] is 'index'
-      'url': urlwithoutHash + '#index'
-      'className': 'aa-menu-index'
+    if not @props['justOne'] or @props['justOne'] is 'index'
+      links.push React.createElement aa.ui.MenuItem,
+        'key': 'index'
+        'title': 'Index'
+        'isActive': @props['active'] is 'index'
+        'url': urlwithoutHash + '#index'
+        'className': 'aa-menu-index'
 
     config =
       'className': classNames
         'aa-menu': yes
+        'aa-just-one': !!@props['justOne']
       'style':
         'color': @props['colors']['content']
         'backgroundColor': @props['colors']['bg']
