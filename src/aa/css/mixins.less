@@ -1,13 +1,13 @@
 @animDurationSt: 500ms;
 @animDurationMin: 200ms;
 
-@size1: 30px;
+@size1: 20px;
 
 @menuHeight: 40px;
 @filterPanelHeight: 30px;
 @filterSearchHeight: 60px;
 
-@opacityHoverOff: 0.8;
+@opacityHoverOff: 0.5;
 @opacityHoverOn: 1;
 @opacityHoverActive: 0.9;
 
@@ -15,7 +15,7 @@
   transition: opacity @animDurationMin ease-in;
   opacity: @opacityHoverOff;
 
-  &:hover {
+  &:hover, &.active, &.hover {
     opacity: @opacityHoverOn;
   }
 

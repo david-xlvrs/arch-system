@@ -43,7 +43,7 @@
 
   transition: background-color @animDurationSt ease-in;
 
-  .aa-project-slide, .project-title {
+  .aa-project-slide, .aa-project-title {
     opacity: 0.01;
     transition: opacity @animDurationSt ease-in 0.4s;
   }
@@ -56,7 +56,7 @@
   &.splash-to-section-enter-active {
     .animation-play-state-mixin(running);
 
-    .aa-project-slide, .project-title {
+    .aa-project-slide, .aa-project-title {
       opacity: 1;
     }
   }
@@ -76,7 +76,7 @@
     background: transparent !important;
   }
 
-  .aa-project-slide, .project-title {
+  .aa-project-slide, .aa-project-title {
     opacity: 1;
     transition: opacity @animDurationSt ease-in;
   }
@@ -84,7 +84,7 @@
   &.splash-to-section-leave-active {
     .animation-play-state-mixin(running);
 
-    .aa-project-slide, .project-title {
+    .aa-project-slide, .aa-project-title {
       opacity: 0.01;
     }
   }

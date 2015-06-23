@@ -3,6 +3,7 @@ goog.provide 'aa.ui.Selected'
 goog.require 'goog.events'
 goog.require 'goog.style'
 goog.require 'aa.ui.SelectedTitle'
+goog.require 'aa.ui.SelectedCounter'
 goog.require 'aa.Const'
 
 aa.ui.Selected = React.createClass
@@ -43,12 +44,23 @@ aa.ui.Selected = React.createClass
     'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2) else (menuHeight + 3 * aa.Const.CSS.SIZE1)
     'paddingBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 3)
 
+  highlightNext: (hovered) ->
+    @setState
+      'nextHover': hovered
+
   getScrollCount: ->
     @setState
       'scroll': goog.dom.getDocumentScroll().y
 
   handleScroll: (e) ->
     @getScrollCount()
+
+  goNext: (iter) ->
+    scrollTo = 0
+    scrollTo += style['height'] for style in window.selectedImagesStyles[0...iter]
+    scrollTo += style['marginTop'] for style in window.selectedImagesStyles[1..iter]
+
+    @props['handleScrollTo'] parseInt scrollTo
 
   handleKey: (e) ->
     switch e.keyCode
@@ -66,11 +78,7 @@ aa.ui.Selected = React.createClass
         if iter is window.selectedImagesStyles.length
           iter = 0
 
-        scrollTo = 0
-        scrollTo += style['height'] for style in window.selectedImagesStyles[0...iter]
-        scrollTo += style['marginTop'] for style in window.selectedImagesStyles[1..iter]
-
-        @props['handleScrollTo'] parseInt scrollTo
+        @goNext iter
 
   handleSlideClick: (e) ->
     e.preventDefault() #390
@@ -90,7 +98,6 @@ aa.ui.Selected = React.createClass
 
   render: ->
     return React.DOM.div null, 'EMPTY' unless @props['projects']
-    console.log 'reere'
 
     imagesStyles = []
     imagePositions = []
@@ -98,14 +105,18 @@ aa.ui.Selected = React.createClass
       imagesStyles.push imageStyles =  @getImageStyles iter
 
       # count positions of images
-      imagePositions[iter] = imageStyles['marginTop'] + (imagePositions[iter] or 0)
-      imagePositions[iter] += position for position in imagePositions[0...iter]
-      imagePositions[iter + 1] = imageStyles['height'] unless iter + 1 is @props['projects'].length
+      imagePositions[iter] = imageStyles['marginTop'] + imageStyles['height'] + (imagePositions[iter - 1] or 0)
 
     actualSlide = 0
     for imagePosition, iter in imagePositions
-      if imagePosition - 20 > @state['scroll']
+      if imagePosition - 40 > @state['scroll']
         actualSlide = iter
+        break
+
+    nextSlide = 1
+    for imagePosition, iter in imagePositions
+      if imagePosition - 100 > @state['scroll']
+        nextSlide = iter + 1
         break
 
     #TODO: vyresit jinak predavani do klavesovych event
@@ -115,12 +126,22 @@ aa.ui.Selected = React.createClass
     content = []
     content.push React.createElement aa.ui.Menu,
       'key': 'aa-content-menu'
+      'active': 'selected'
       'colors':
         'content': @props['projects'][actualSlide]['colors']['bg']
 
     content.push React.DOM.span 'className': 'empty', 'key': 'dummyElement'
 
     if @props['projects']?.length
+
+      content.push React.createElement aa.ui.SelectedCounter,
+        'key': 'projectCounter'
+        'onClick': (number) => @goNext number
+        'onMouseEnter': () => @highlightNext yes
+        'onMouseLeave': () => @highlightNext no
+        'projects': @props['projects']
+        'hovered': @state['nextHover']
+        'actualSlide': nextSlide
 
       for project, iter in @props['projects']
         config =
@@ -134,7 +155,10 @@ aa.ui.Selected = React.createClass
           if actualSlide > iter
             config['className'] += ' aa-previous'
           else
+            config['className'] += ' hover' if @state['nextHover']
             config['className'] += ' aa-next'
+            config['onMouseEnter'] = (e) => @highlightNext yes
+            config['onMouseLeave'] = (e) => @highlightNext no
         else
           config['className'] += ' aa-actual'
 

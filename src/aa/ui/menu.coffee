@@ -13,21 +13,24 @@ aa.ui.Menu = React.createClass
     #about
     links.push React.createElement aa.ui.MenuItem,
       'key': 'about'
-      'title': 'about & contacts'
+      'title': 'About us'
+      'isActive': @props['active'] is 'about'
       'url': urlwithoutHash + '#about'
       'className': 'aa-menu-about'
 
     #selected
     links.push React.createElement aa.ui.MenuItem,
       'key': 'selected'
-      'title': 'selected projects'
+      'title': 'Selected projects'
+      'isActive': @props['active'] is 'selected'
       'url': urlwithoutHash + '#selected'
       'className': 'aa-menu-selected'
 
     #index
     links.push React.createElement aa.ui.MenuItem,
       'key': 'index'
-      'title': 'index'
+      'title': 'Index'
+      'isActive': @props['active'] is 'index'
       'url': urlwithoutHash + '#index'
       'className': 'aa-menu-index'
 
@@ -46,13 +49,14 @@ aa.ui.MenuItem = React.createClass
   getDefaultProps: ->
     'title': ''
     'url': ''
-    'active': no
+    'isActive': no
     'display': yes
     'className': ''
 
   render: ->
-    classes = [@props['className']]
-    classes.push 'active' if @props['active']
+    aConfig =
+      'href': @props['url']
+    aConfig['className'] = 'active' if @props['isActive']
 
-    React.DOM.li 'className': classes,
-      React.DOM.a 'href': @props['url'], @props['title']
+    React.DOM.li 'className': @props['className'],
+      React.DOM.a aConfig, @props['title']

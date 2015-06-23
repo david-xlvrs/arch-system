@@ -90,6 +90,7 @@ aa.ui.Index = React.createClass
 
     menu = React.createElement aa.ui.Menu,
       'key': 'aa-content-menu'
+      'active': 'index'
       'colors': @props['colors']
 
     config =
