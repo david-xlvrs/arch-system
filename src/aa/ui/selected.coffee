@@ -27,7 +27,7 @@ aa.ui.Selected = React.createClass
     menuHeight = aa.Const.CSS.MENU.HEIGHT
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    maxH = ch - 6 * aa.Const.CSS.SIZE1 - menuHeight - titleHeight - 40
+    maxH = ch - 8 * aa.Const.CSS.SIZE1 - menuHeight - titleHeight
     maxW = cw - 4 * aa.Const.CSS.SIZE1
 
     # by width
@@ -41,8 +41,8 @@ aa.ui.Selected = React.createClass
 
     'width': iw
     'height': ih
-    'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 2 + 20) else (menuHeight + 3 * aa.Const.CSS.SIZE1 + 20)
-    'paddingBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 3 + 20)
+    'marginTop': if pos then (titleHeight + aa.Const.CSS.SIZE1 * 3) else (menuHeight + 4 * aa.Const.CSS.SIZE1)
+    'paddingBottom': if pos is @props['projects'].length - 1 then (titleHeight + aa.Const.CSS.SIZE1 * 4)
 
   highlightNext: (hovered) ->
     @setState
