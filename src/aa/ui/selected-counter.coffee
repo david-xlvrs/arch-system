@@ -22,7 +22,7 @@ aa.ui.SelectedCounter = React.createClass
       'onMouseEnter': (e) => @props['onMouseEnter']()
       'onMouseLeave': (e) => @props['onMouseLeave']()
       'style':
-        'color': @props['projects'][actualSlide]['colors']['bg']
+        'color': @props['projects'][@props['actualSlide'] - 1]['colors']['bg']
 
     configA['className'] += ' hover' if @props['hovered']
 
@@ -30,7 +30,7 @@ aa.ui.SelectedCounter = React.createClass
       text = "Back to the top"
       configA['className'] += ' back-to-top'
     else
-      text = "Next Project (#{actualSlide}/#{@props['projects'].length})"
+      text = "Next Project (#{actualSlide + 1}/#{@props['projects'].length})"
 
     # React.createElement React.addons.CSSTransitionGroup, 'key': 'aa-title-transition', 'transitionName': 'fixed-title',
     React.DOM.h2 'key': 'h2-' + actualSlide, 'className': @props['className'],
