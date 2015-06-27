@@ -143,7 +143,7 @@ aa.Router.getRoute = (section, varArgs) ->
     when aa.Const.SECTION.PRIVATE then href = '/#private'
     when aa.Const.SECTION.ABOUT then href = '/#about'
     when aa.Const.SECTION.DETAIL then href = '/#selected'
-    else href = '/'
+    else href = '/#'
 
   if params
     href += '/' + param for param in params

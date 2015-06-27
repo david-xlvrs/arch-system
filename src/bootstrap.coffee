@@ -46,6 +46,33 @@ sandbox.Bootstrap = ->
     animScroll.play()
     return
 
+  wheeling = null
+  wheelDelta = 0
+  wheelDeltaPrev = 1
+  handleWheel = (e) ->
+    if completeSettings['section'] isnt aa.Const.SECTION.SELECTED and completeSettings['section'] isnt aa.Const.SECTION.INDEX
+      wheelDeltaPrev = 0
+      return
+
+    clearTimeout wheeling
+
+    wheeling = setTimeout (->
+      wheeling = undefined
+      wheelDeltaPrev = wheelDelta
+    ), 150
+
+    if wheelDelta - wheelDeltaPrev + aa.ui.Application.SPLASH_DELTA_LIMIT > 0 and wheelDeltaPrev isnt 0
+      window.location.href = aa.Router.getRoute aa.Const.SECTION.SPLASH
+
+    if goog.dom.getDocumentScroll().y > 0
+      wheelDelta = 0
+      return
+    delta = Math.max( -1, Math.min(1, (e.wheelDelta or -e.detail)))
+    wheelDelta += delta
+
+  window.addEventListener 'mousewheel', handleWheel
+  window.addEventListener 'DOMMouseScroll', handleWheel
+
   ###*
     Settings for Application
   ###
