@@ -48,6 +48,10 @@ aa.ui.Selected = React.createClass
     @setState
       'nextHover': hovered
 
+  highlightSelected: (hovered) ->
+    @setState
+      'selectedHover': hovered
+
   getScrollCount: ->
     @setState
       'scroll': goog.dom.getDocumentScroll().y
@@ -161,6 +165,9 @@ aa.ui.Selected = React.createClass
             config['onMouseLeave'] = (e) => @highlightNext no
         else
           config['className'] += ' aa-actual'
+          config['className'] += ' hover' if @state['selectedHover']
+          config['onMouseEnter'] = (e) => @highlightSelected yes
+          config['onMouseLeave'] = (e) => @highlightSelected no
 
         scrollTo = 0
         if iter > 0
@@ -175,6 +182,9 @@ aa.ui.Selected = React.createClass
 
       content.push React.createElement aa.ui.SelectedTitle,
         'key': 'projectTitle'
+        'onMouseEnter': () => @highlightSelected yes
+        'onMouseLeave': () => @highlightSelected no
+        'hovered': @state['selectedHover']
         'projects': @props['projects']
         'actualSlide': actualSlide
 
