@@ -24,6 +24,11 @@ aa.ui.DetailSlide = React.createClass
       'x': 0
       'y': 0
 
+  getTextSlideContent: (slide) ->
+    str = '<div class="columns">'
+    str += slide['html']
+    str += '</div>'
+
   getContent: (slideKey, way) ->
     slide = @props['project']['slides'][slideKey]
 
@@ -39,7 +44,7 @@ aa.ui.DetailSlide = React.createClass
           'className': 'aa-text-content'
           'style': @getTextStyles slideKey, way
           'dangerouslySetInnerHTML':
-            '__html': slide['html']
+            '__html': @getTextSlideContent slide
 
   getActiveSlide: ->
     parseInt @props['activeSlide']
@@ -107,15 +112,13 @@ aa.ui.DetailSlide = React.createClass
     menuHeight = aa.Const.CSS.MENU.HEIGHT
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
-    ih = ch - 6 * aa.Const.CSS.SIZE1 - 2 * titleHeight
+    ih = ch - 8 * aa.Const.CSS.SIZE1 - 2 * titleHeight
     iw = cw * 0.75 - 4 * aa.Const.CSS.SIZE1
 
     ret =
-      'background': slide['colors']['content']
-      'color': slide['colors']['bg']
       'width': iw
       'height': ih
-      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 3
+      'marginTop': titleHeight + aa.Const.CSS.SIZE1 * 4
 
     if type is 'next'
       ret['marginLeft'] = 'auto'

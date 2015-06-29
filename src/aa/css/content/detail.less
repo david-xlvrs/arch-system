@@ -26,7 +26,7 @@
         position: relative;
 
         .aa-text-content {
-          overflow: auto;
+          overflow-y: auto;
         }
       }
 
@@ -81,14 +81,14 @@
 
     .detail-to-next-leave {
       .aa-next-slide {
-        img {
+        img, div.aa-text-content {
           transition: transform @animDurationSt/2 ease-out @animDurationSt*2/3 !important;
           transform: translate3d(0, 0, 0) !important;
         }
       }
 
       .aa-actual-slide {
-        img {
+        img, div.aa-text-content {
           transition: transform @animDurationSt/2 ease-out @animDurationSt/3 !important;
           transform: translate3d(-@size1/2, 0, 0) !important;
         }
@@ -97,14 +97,14 @@
 
     .detail-to-previous-leave {
       .aa-previous-slide {
-        img {
+        img, div.aa-text-content {
           transition: transform @animDurationSt/2 ease-out @animDurationSt*2/3 !important;
           transform: translate3d(0, 0, 0) !important;
         }
       }
 
       .aa-actual-slide {
-        img {
+        img, div.aa-text-content {
           transition: transform @animDurationSt/2 ease-out @animDurationSt/3 !important;
           transform: translate3d(@size1/2, 0, 0) !important;
         }
@@ -162,12 +162,25 @@
     .aa-text-content {
       box-sizing: border-box;
       padding: 23px 80px 0 80px;
-      text-decoration: none;
       overflow: hidden;
+      text-decoration: none;
+      color: #000;
+      background-color: #fff;
+
+      div.columns {
+        .column-count-mixin(2);
+        .column-gap-mixin(@size1 * 2);
+      }
+
+      .explication {
+        p {
+          padding-bottom: 11px;
+        }
+      }
 
       p {
         text-decoration: none;
-        padding-bottom: 23px;
+        padding-bottom: 22px;
       }
     }
 

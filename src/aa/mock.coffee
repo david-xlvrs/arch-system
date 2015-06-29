@@ -123,6 +123,16 @@ aa.mock.Detail = {
         type: 'text'
         title: 'Explikace'
         html: '
+          <div class="explication">
+            <p>Autor: Stanislav Fiala</p>
+            <p>Spolupráce: Jiří Václavů, Vít Mlázovský, Jana Štefuráková, Milan Bulva</p>
+            <p>Adresa: Alenina Lhota, Jistebnice, Česká republika</p>
+            <p>Investor: Golf Čertovo Břemeno s.r.o.</p>
+            <p>Projekt: 2009-2010</p>
+            <p>Realizace: 2010-2011</p>
+            <p>Zastavěná plocha: 1443 m<sup>2</sup></p>
+            <p>Obestavěný prostor: 5245 m<sup>3</sup></p>
+          </div>
           <p>Golfové hřiště Čertovo břemeno nepatří k těm umělým, vyumělkovaným, které po světě najdete. Možná se dá i říct, že rodina majitelů
             měla spíš touhu dát do pořádku zanedbanou krajinu okolo svých statků, očistit ji od náletových křovin, vysušit neprostupné močály a
             místo nich vytvořit spoustu malých jezírek, kde se zase usadily ryby a žáby. Povedlo se jim to neuvěřitelně přirozeným způsobem s
@@ -140,7 +150,7 @@ aa.mock.Detail = {
             fungujícím organismem.</p>
         '
         colors:
-          bg: '#C6CFCE'
+          bg: '#6C6C6C'
           content: '#fff'
       ,
         id: 2
