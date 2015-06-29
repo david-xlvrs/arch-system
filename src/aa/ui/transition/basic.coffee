@@ -43,6 +43,8 @@ aa.ui.transition.Basic = React.createClass
       goog.dom.classes.add @getDOMNode(), "#{transition}-leave"
       aa.ui.transition.Config[transition]?['leave']? @
 
+      goog.dom.classes.add @getDOMNode(), "transition-to-detail" if window.newSection is aa.Const.SECTION.DETAIL
+
       requestAnimationFrame =>
         goog.dom.classes.add @getDOMNode(), "#{transition}-leave-active"
         aa.ui.transition.Config[transition]?['leave-active']? @

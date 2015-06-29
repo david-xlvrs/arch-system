@@ -87,6 +87,7 @@ class aa.Router extends goog.events.EventTarget
     if foundRoute or goog.string.isEmpty foundRoute
       window.previousTransition = window.newTransition
       window.newTransition = @getTransition @previousRoute, foundRoute
+      window.newSection = @config[foundRoute]
 
       @status =
         'section': @config[foundRoute]

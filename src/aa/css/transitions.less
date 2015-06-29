@@ -109,14 +109,29 @@
 
 .section-to-section-leave, .to-fullscreen-leave {
   opacity: 1;
-  transition: opacity @animDurationSt ease-in !important;
+
+  .aa-project-slide.aa-actual {
+      img {
+        opacity: 1 !important;
+      }
+    }
 
   &.section-to-section-leave-active {
+    transition: opacity @animDurationSt ease-in !important;
     opacity: 0.99;
     z-index: 1;
+
+    &.transition-to-detail .aa-project-slide.aa-actual {
+      img {
+        transition: transform @animDurationSt/2 ease-out, opacity @animDurationSt/2 ease-out;
+        transform: scale(1.5, 1.5) !important;
+        opacity: 0.01 !important;
+      }
+    }
   }
 
   &.to-fullscreen-leave-active {
+    transition: opacity @animDurationSt ease-in !important;
     opacity: 0.01;
   }
 }
