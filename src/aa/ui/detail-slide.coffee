@@ -113,7 +113,7 @@ aa.ui.DetailSlide = React.createClass
     titleHeight = aa.Const.CSS.TITLE.HEIGHT
 
     ih = ch - 8 * aa.Const.CSS.SIZE1 - 2 * titleHeight
-    iw = cw * 0.75 - 4 * aa.Const.CSS.SIZE1
+    iw = cw * 0.65 - 4 * aa.Const.CSS.SIZE1
 
     ret =
       'width': iw
