@@ -33,43 +33,30 @@ aa.mock.List =
       url: '/img/data/bahnhof_sud_01.jpg'
   ,
     id: 2
-    title: 'Letní rodinný dům na ostrově Caicos'
-    slug: 'letni-rodinny-dum-na-ostrove-caicos'
+    title: 'Vorarlberg Museum, Bregenz'
+    slug: 'vorarlberg-museum'
     date: '2012-01-01'
-    custom1: 'Rodinný dům'
-    custom2: 'Realizováno'
+    custom1: 'Museum'
+    custom2: 'Realized'
     colors:
-      bg: '#6e837e'
-      content: '#CAB5A9'
-    image:
-      size: [750, 498]
-      url: '/img/data/proj2/img01.jpeg'
-  ,
-    id: 3
-    title: 'Rodinný dum Vlna'
-    slug: 'rodinny-dum-vlna'
-    date: '2009-01-01'
-    custom1: 'Rodinný dům'
-    custom2: 'Realizováno'
-    colors:
-      bg: '#5b6773'
-      content: '#B1A189'
-    image:
-      size: [750, 562]
-      url: '/img/data/proj3/img01.jpeg'
-  ,
-    id: 4
-    title: 'Sídlo firmy mminterier'
-    slug: 'sidlo-firmy-mminterier'
-    date: '2009-01-01'
-    custom1: 'Urbanismus'
-    custom2: 'Realizováno'
-    colors:
-      bg: '#878684'
+      bg: '#a2a8ae'
       content: '#ffffff'
     image:
-      size: [750, 563]
-      url: '/img/data/proj4/img01.jpeg'
+      size: [5577, 2065]
+      url: '/img/data/proj2/vorarlberg_museum_01.jpg'
+  ,
+    id: 3
+    title: 'MFO Park, Zurich (Oerlikon)'
+    slug: 'mfo-park'
+    date: '2009-01-01'
+    custom1: 'Public park'
+    custom2: 'Realised'
+    colors:
+      bg: '#534b3b'
+      content: '#ffffff'
+    image:
+      size: [2800, 1875]
+      url: '/img/data/proj3/mfo_park_01.jpg'
 ]
 
 aa.mock.Detail = {
@@ -181,426 +168,285 @@ aa.mock.Detail = {
           url: '/img/data/bahnhof_sud_04.jpg'
     ]
   ,
-  'letni-rodinny-dum-na-ostrove-caicos':
+  'vorarlberg-museum':
     id: 2
-    title: 'Letní rodinný dům na ostrově Caicos'
-    slug: 'letni-rodinny-dum-na-ostrove-caicos'
+    title: 'Vorarlberg Museum, Bregenz'
+    slug: 'vorarlberg-museum'
     date: '2012-01-01'
-    custom1: 'Rodinný dům'
-    custom2: 'Realizováno'
+    custom1: 'Museum'
+    custom2: 'Realised'
     colors:
-      bg: '#6e837e'
-      content: '#CAB5A9'
+      bg: '#a2a8ae'
+      content: '#ffffff'
     image:
-      size: [750, 498]
-      url: '/img/data/proj2/img01.jpeg'
+      size: [5577, 2065]
+      url: '/img/data/proj2/vorarlberg_museum_01.jpg'
     slides: [
       id: 1
       projectId: 2
       type: 'image'
       title: '1'
       colors:
-        bg: '#6e837e'
-        content: '#fff'
+        bg: '#a2a8ae'
+        content: '#ffffff'
       image:
-        size: [750, 498]
-        url: '/img/data/proj2/img01.jpeg'
+        size: [5577, 2065]
+        url: '/img/data/proj2/vorarlberg_museum_01.jpg'
       fullImage:
-        size: [750, 498]
-        url: '/img/data/proj2/img01.jpeg'
+        size: [5577, 2065]
+        url: '/img/data/proj2/vorarlberg_museum_01.jpg'
     ,
       id: 2
       projectId: 2
       type: 'image'
       title: '2'
       colors:
-        bg: '#443d2b'
-        content: '#fff'
+        bg: '#7e8182'
+        content: '#ffffff'
       image:
-        size: [750, 557]
-        url: '/img/data/proj2/img02.jpeg'
+        size: [2800, 1869]
+        url: '/img/data/proj2/vorarlberg_museum_02.jpg'
       fullImage:
-        size: [750, 557]
-        url: '/img/data/proj2/img02.jpeg'
+        size: [2800, 1869]
+        url: '/img/data/proj2/vorarlberg_museum_02.jpg'
     ,
       id: 3
       projectId: 2
       type: 'image'
       title: '3'
       colors:
-        bg: '#6e7271'
-        content: '#fff'
+        bg: '#393a3b'
+        content: '#ffffff'
       image:
-        size: [750, 501]
-        url: '/img/data/proj2/img03.jpeg'
+        size: [2800, 1869]
+        url: '/img/data/proj2/vorarlberg_museum_03.jpg'
       fullImage:
-        size: [750, 501]
-        url: '/img/data/proj2/img03.jpeg'
+        size: [2800, 1869]
+        url: '/img/data/proj2/vorarlberg_museum_03.jpg'
     ,
       id: 4
       projectId: 2
       type: 'image'
       title: '4'
       colors:
-        bg: '#7c704a'
-        content: '#fff'
+        bg: '#9c9ea2'
+        content: '#ffffff'
       image:
-        size: [750, 515]
-        url: '/img/data/proj2/img04.jpeg'
+        size: [2552, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_04.jpg'
       fullImage:
-        size: [750, 515]
-        url: '/img/data/proj2/img04.jpeg'
+        size: [2552, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_04.jpg'
     ,
       id: 5
       projectId: 2
       type: 'image'
       title: '5'
       colors:
-        bg: '#545448'
-        content: '#fff'
+        bg: '#5d5953'
+        content: '#ffffff'
       image:
-        size: [554, 750]
-        url: '/img/data/proj2/img05.jpeg'
+        size: [2800, 1869]
+        url: '/img/data/proj2/vorarlberg_museum_05.jpg'
       fullImage:
-        size: [554, 750]
-        url: '/img/data/proj2/img05.jpeg'
+        size: [2800, 1869]
+        url: '/img/data/proj2/vorarlberg_museum_05.jpg'
     ,
       id: 6
       projectId: 2
       type: 'image'
       title: '6'
       colors:
-        bg: '#f4f4f4'
-        content: '#fff'
+        bg: '#d3d3d3'
+        content: '#000000'
       image:
-        size: [750, 530]
-        url: '/img/data/proj2/img06.jpeg'
+        size: [2800, 1418]
+        url: '/img/data/proj2/vorarlberg_museum_06.png'
       fullImage:
-        size: [750, 530]
-        url: '/img/data/proj2/img06.jpeg'
+        size: [2800, 1418]
+        url: '/img/data/proj2/vorarlberg_museum_06.png'
     ,
       id: 7
       projectId: 2
       type: 'image'
       title: '7'
       colors:
-        bg: '#545b4b'
-        content: '#fff'
+        bg: '#d3d3d3'
+        content: '#000000'
       image:
-        size: [750, 409]
-        url: '/img/data/proj2/img07.jpeg'
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_07.png'
       fullImage:
-        size: [750, 409]
-        url: '/img/data/proj2/img07.jpeg'
-    ,
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_07.png'
+   ,
       id: 8
       projectId: 2
       type: 'image'
       title: '8'
       colors:
-        bg: '#5d707e'
-        content: '#fff'
+        bg: '#d3d3d3'
+        content: '#000000'
       image:
-        size: [750, 280]
-        url: '/img/data/proj2/img08.jpeg'
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_08.png'
       fullImage:
-        size: [750, 280]
-        url: '/img/data/proj2/img08.jpeg'
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_08.png'
     ,
       id: 9
       projectId: 2
       type: 'image'
       title: '9'
       colors:
-        bg: '#4f3f30'
-        content: '#fff'
+        bg: '#d3d3d3'
+        content: '#000000'
       image:
-        size: [750, 498]
-        url: '/img/data/proj2/img09.jpeg'
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_09.png'
       fullImage:
-        size: [750, 498]
-        url: '/img/data/proj2/img09.jpeg'
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_09.png'
+    ,
+      id: 10
+      projectId: 2
+      type: 'image'
+      title: '10'
+      colors:
+        bg: '#d3d3d3'
+        content: '#000000'
+      image:
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_10.png'
+      fullImage:
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_10.png'
+   ,
+      id: 11
+      projectId: 2
+      type: 'image'
+      title: '11'
+      colors:
+        bg: '#d3d3d3'
+        content: '#000000'
+      image:
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_11.png'
+      fullImage:
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_11.png'
+    ,
+      id: 12
+      projectId: 2
+      type: 'image'
+      title: '12'
+      colors:
+        bg: '#d3d3d3'
+        content: '#000000'
+      image:
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_12.png'
+      fullImage:
+        size: [2800, 2800]
+        url: '/img/data/proj2/vorarlberg_museum_12.png'
     ]
   ,
-  'rodinny-dum-vlna':
+  'mfo-park':
     id: 3
-    title: 'Rodinný dum Vlna'
-    slug: 'rodinny-dum-vlna'
+    title: 'MFO Park, Zurich (Oerlikon)'
+    slug: 'mfo-park'
     date: '2009-01-01'
-    custom1: 'Rodinný dům'
-    custom2: 'Realizováno'
+    custom1: 'Public park'
+    custom2: 'Realised'
     colors:
-      bg: '#5b6773'
-      content: '#B1A189'
+      bg: '#534b3b'
+      content: '#ffffff'
     image:
-      size: [750, 562]
-      url: '/img/data/proj3/img01.jpeg'
+      size: [2800, 1875]
+      url: '/img/data/proj3/mfo_park_01.jpg'
     slides: [
       id: 1
       projectId: 3
       type: 'image'
       title: '1'
       colors:
-        bg: '#5b6773'
-        content: '#fff'
+        bg: '#534b3b'
+        content: '#ffffff'
       image:
-        size: [750, 562]
-        url: '/img/data/proj3/img01.jpeg'
+        size: [2800, 1875]
+        url: '/img/data/proj3/mfo_park_01.jpg'
       fullImage:
-        size: [750, 562]
-        url: '/img/data/proj3/img01.jpeg'
+        size: [2800, 1875]
+        url: '/img/data/proj3/mfo_park_01.jpg'
     ,
       id: 2
       projectId: 3
       type: 'image'
       title: '2'
       colors:
-        bg: '#606465'
-        content: '#fff'
+        bg: '#78653d'
+        content: '#ffffff'
       image:
-        size: [750, 562]
-        url: '/img/data/proj3/img02.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_02.jpg'
       fullImage:
-        size: [750, 562]
-        url: '/img/data/proj3/img02.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_02.jpg'
     ,
       id: 3
       projectId: 3
       type: 'image'
       title: '3'
       colors:
-        bg: '#5e5a3d'
-        content: '#fff'
+        bg: '#3a362a'
+        content: '#ffffff'
       image:
-        size: [750, 562]
-        url: '/img/data/proj3/img03.jpeg'
+        size: [1869, 2800]
+        url: '/img/data/proj3/mfo_park_03.jpg'
       fullImage:
-        size: [750, 562]
-        url: '/img/data/proj3/img03.jpeg'
+        size: [1869, 2800]
+        url: '/img/data/proj3/mfo_park_03.jpg'
     ,
       id: 4
       projectId: 3
       type: 'image'
       title: '4'
       colors:
-        bg: '#6d7440'
-        content: '#fff'
+        bg: '#595859'
+        content: '#ffffff'
       image:
-        size: [562, 750]
-        url: '/img/data/proj3/img04.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_04.jpg'
       fullImage:
-        size: [562, 750]
-        url: '/img/data/proj3/img04.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_04.jpg'
     ,
       id: 5
       projectId: 3
       type: 'image'
       title: '5'
       colors:
-        bg: '#7f806e'
-        content: '#fff'
+        bg: '#797778'
+        content: '#ffffff'
       image:
-        size: [750, 562]
-        url: '/img/data/proj3/img05.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_05.jpg'
       fullImage:
-        size: [750, 562]
-        url: '/img/data/proj3/img05.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_05.jpg'
     ,
       id: 6
       projectId: 3
       type: 'image'
       title: '6'
       colors:
-        bg: '#425b58'
-        content: '#fff'
+        bg: '#8b8886'
+        content: '#ffffff'
       image:
-        size: [750, 562]
-        url: '/img/data/proj3/img06.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_06.jpg'
       fullImage:
-        size: [750, 562]
-        url: '/img/data/proj3/img06.jpeg'
-    ,
-      id: 7
-      projectId: 3
-      type: 'image'
-      title: '7'
-      colors:
-        bg: '#f1f1f1'
-        content: '#fff'
-      image:
-        size: [750, 296]
-        url: '/img/data/proj3/img07.jpeg'
-      fullImage:
-        size: [750, 296]
-        url: '/img/data/proj3/img07.jpeg'
-    ,
-      id: 8
-      projectId: 3
-      type: 'image'
-      title: '8'
-      colors:
-        bg: '#57594c'
-        content: '#fff'
-      image:
-        size: [750, 562]
-        url: '/img/data/proj3/img08.jpeg'
-      fullImage:
-        size: [750, 562]
-        url: '/img/data/proj3/img08.jpeg'
-    ,
-      id: 9
-      projectId: 3
-      type: 'image'
-      title: '9'
-      colors:
-        bg: '#838578'
-        content: '#fff'
-      image:
-        size: [750, 562]
-        url: '/img/data/proj3/img09.jpeg'
-      fullImage:
-        size: [750, 562]
-        url: '/img/data/proj3/img09.jpeg'
-      ]
-  ,
-  'sidlo-firmy-mminterier':
-    id: 4
-    title: 'Sídlo firmy mminterier'
-    slug: 'sidlo-firmy-mminterier'
-    date: '2009-01-01'
-    custom1: 'Urbanismus'
-    custom2: 'Realizováno'
-    colors:
-      bg: '#878684'
-      content: '#434344'
-    image:
-      size: [750, 563]
-      url: '/img/data/proj4/img01.jpeg'
-    slides: [
-      id: 1
-      projectId: 4
-      type: 'image'
-      title: '1'
-      colors:
-        bg: '#878684'
-        content: '#fff'
-      image:
-        size: [750, 563]
-        url: '/img/data/proj4/img01.jpeg'
-      fullImage:
-        size: [750, 563]
-        url: '/img/data/proj4/img01.jpeg'
-    ,
-      id: 2
-      projectId: 4
-      type: 'image'
-      title: '2'
-      colors:
-        bg: '#949691'
-        content: '#fff'
-      image:
-        size: [750, 622]
-        url: '/img/data/proj4/img02.jpeg'
-      fullImage:
-        size: [750, 622]
-        url: '/img/data/proj4/img02.jpeg'
-    ,
-      id: 3
-      projectId: 4
-      type: 'image'
-      title: '3'
-      colors:
-        bg: '#84837f'
-        content: '#fff'
-      image:
-        size: [750, 563]
-        url: '/img/data/proj4/img03.jpeg'
-      fullImage:
-        size: [750, 563]
-        url: '/img/data/proj4/img03.jpeg'
-    ,
-      id: 4
-      projectId: 4
-      type: 'image'
-      title: '4'
-      colors:
-        bg: '#a59d9b'
-        content: '#fff'
-      image:
-        size: [563, 750]
-        url: '/img/data/proj4/img04.jpeg'
-      fullImage:
-        size: [563, 750]
-        url: '/img/data/proj4/img04.jpeg'
-    ,
-      id: 5
-      projectId: 4
-      type: 'image'
-      title: '5'
-      colors:
-        bg: '#ba9a85'
-        content: '#fff'
-      image:
-        size: [750, 563]
-        url: '/img/data/proj4/img05.jpeg'
-      fullImage:
-        size: [750, 563]
-        url: '/img/data/proj4/img05.jpeg'
-    ,
-      id: 6
-      projectId: 4
-      type: 'image'
-      title: '6'
-      colors:
-        bg: '#98be11'
-        content: '#fff'
-      image:
-        size: [563, 750]
-        url: '/img/data/proj4/img06.jpeg'
-      fullImage:
-        size: [563, 750]
-        url: '/img/data/proj4/img06.jpeg'
-    ,
-      id: 7
-      projectId: 4
-      type: 'image'
-      title: '7'
-      colors:
-        bg: '#cfcfc3'
-        content: '#fff'
-      image:
-        size: [750, 513]
-        url: '/img/data/proj4/img07.jpeg'
-      fullImage:
-        size: [750, 513]
-        url: '/img/data/proj4/img07.jpeg'
-    ,
-      id: 8
-      projectId: 4
-      type: 'image'
-      title: '8'
-      colors:
-        bg: '#ababad'
-        content: '#fff'
-      image:
-        size: [750, 563]
-        url: '/img/data/proj4/img08.jpeg'
-      fullImage:
-        size: [750, 563]
-        url: '/img/data/proj4/img08.jpeg'
-    ,
-      id: 9
-      projectId: 4
-      type: 'image'
-      title: '9'
-      colors:
-        bg: '#5b6870'
-        content: '#fff'
-      image:
-        size: [750, 563]
-        url: '/img/data/proj4/img09.jpeg'
-      fullImage:
-        size: [750, 563]
-        url: '/img/data/proj4/img09.jpeg'
+        size: [2800, 1860]
+        url: '/img/data/proj3/mfo_park_06.jpg'
     ]
 }
