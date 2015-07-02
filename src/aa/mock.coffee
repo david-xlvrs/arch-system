@@ -20,17 +20,17 @@ aa.mock.Params = [
 aa.mock.List =
   data: [
     id: 1
-    title: 'Golf Klub Čertovo Břemeno'
-    slug: 'golf-klub-certovo-bremeno'
+    title: 'Bahnhof Süd, Basel'
+    slug: 'bahnhof-sud'
     date: '2010-01-01'
-    custom1: 'Golfové hřiště'
-    custom2: 'Realizováno'
+    custom1: 'Residential'
+    custom2: 'Realised'
     colors:
-      bg: '#4c746c'
-      content: '#C6CFCE'
+      bg: '#4f5d74'
+      content: '#ffffff'
     image:
-      size: [2362, 1670]
-      url: '/img/data/01.jpg'
+      size: [1922, 2880]
+      url: '/img/data/bahnhof_sud_01.jpg'
   ,
     id: 2
     title: 'Letní rodinný dům na ostrově Caicos'
@@ -66,57 +66,57 @@ aa.mock.List =
     custom2: 'Realizováno'
     colors:
       bg: '#878684'
-      content: '#434344'
+      content: '#ffffff'
     image:
       size: [750, 563]
       url: '/img/data/proj4/img01.jpeg'
 ]
 
 aa.mock.Detail = {
-  'golf-klub-certovo-bremeno':
+  'bahnhof-sud':
     id: 1
-    title: 'Golf Klub Čertovo Břemeno'
-    slug: 'golf-klub-certovo-bremeno'
+    title: 'Bahnhof Süd, Basel'
+    slug: 'bahnhof-sud'
     date: '2010-01-01'
-    desc: 'Novostavba Golfklubu s restaurací a kompletním zázemím pro hráče i personál golfového hřiště'
-    custom1: 'Golfové hřiště'
-    custom2: 'Realizováno'
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
+    custom1: 'Residential'
+    custom2: 'Realized'
     colors:
-      bg: '#4c746c'
-      content: '#C6CFCE'
+      bg: '#878684'
+      content: '#ffffff'
     image:
-      size: [2362, 1670]
-      url: '/img/data/01.jpg'
+      size: [4912, 7360]
+      url: '/img/data/DSC_1789.JPG'
     slides: [
         id: 1
         projectId: 1
         type: 'image'
-        title: 'Hlavní budova'
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
         desc: 'nějaký popisek' # muze byt null
         colors:
-          bg: '#4c746c'
-          content: '#fff'
+          bg: '#878684'
+          content: '#ffffff'
         image:
-          size: [2362, 1670]
-          url: '/img/data/04.jpg'
+          size: [1922, 2880]
+          url: '/img/data/bahnhof_sud_01.jpg'
         fullImage:
-          size: [2362, 1670]
-          url: '/img/data/04.jpg'
+          size: [1922, 2880]
+          url: '/img/data/bahnhof_sud_01.jpg'
       ,
         id: 3
         projectId: 1
         type: 'image'
-        title: 'Klubovna'
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
         desc: 'nějaký popisek' # muze byt null
         colors:
-          bg: '#6d633c'
-          content: '#fff'
+          bg: '#545e70'
+          content: '#ffffff'
         image:
-          size: [1671, 2362]
-          url: '/img/data/03.jpg'
+          size: [2880, 1922]
+          url: '/img/data/bahnhof_sud_02.jpg'
         fullImage:
-          size: [1671, 2362]
-          url: '/img/data/03.jpg'
+          size: [2880, 1922]
+          url: '/img/data/bahnhof_sud_02.jpg'
       ,
         id: 2
         projectId: 1
@@ -124,14 +124,11 @@ aa.mock.Detail = {
         title: 'Explikace'
         html: '
           <div class="explication">
-            <p>Autor: Stanislav Fiala</p>
-            <p>Spolupráce: Jiří Václavů, Vít Mlázovský, Jana Štefuráková, Milan Bulva</p>
-            <p>Adresa: Alenina Lhota, Jistebnice, Česká republika</p>
-            <p>Investor: Golf Čertovo Břemeno s.r.o.</p>
-            <p>Projekt: 2009-2010</p>
-            <p>Realizace: 2010-2011</p>
-            <p>Zastavěná plocha: 1443 m<sup>2</sup></p>
-            <p>Obestavěný prostor: 5245 m<sup>3</sup></p>
+            <p>Author: Herzog & de Meuron: Bahnhof Süd</p>
+            <p>Photograph: Benedikt Markel</p>
+            <p>Location: Güterstrasse 123–127, Basel, Switzerland</p>
+            <p>Study: 2009-2010</p>
+            <p>Realisation: 2010-2011</p>
           </div>
           <p>Golfové hřiště Čertovo břemeno nepatří k těm umělým, vyumělkovaným, které po světě najdete. Možná se dá i říct, že rodina majitelů
             měla spíš touhu dát do pořádku zanedbanou krajinu okolo svých statků, očistit ji od náletových křovin, vysušit neprostupné močály a
@@ -151,22 +148,37 @@ aa.mock.Detail = {
         '
         colors:
           bg: '#6C6C6C'
-          content: '#fff'
+          content: '#ffffff'
       ,
         id: 2
         projectId: 1
         type: 'image'
-        title: 'Tréninkové plochy'
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
         desc: 'nějaký popisek' # muze byt null
         colors:
-          bg: '#607a77'
-          content: '#fff'
+          bg: '#5d6e8c'
+          content: '#ffffff'
         image:
-          size: [2362, 1670]
-          url: '/img/data/02.jpg'
+          size: [2880, 1922]
+          url: '/img/data/bahnhof_sud_03.jpg'
         fullImage:
-          size: [2362, 1670]
-          url: '/img/data/02.jpg'
+          size: [2880, 1922]
+          url: '/img/data/bahnhof_sud_03.jpg'
+               ,
+        id: 2
+        projectId: 1
+        type: 'image'
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
+        desc: 'nějaký popisek' # muze byt null
+        colors:
+          bg: '#525659'
+          content: '#ffffff'
+        image:
+          size: [2880, 1922]
+          url: '/img/data/bahnhof_sud_04.jpg'
+        fullImage:
+          size: [2880, 1922]
+          url: '/img/data/bahnhof_sud_04.jpg'
     ]
   ,
   'letni-rodinny-dum-na-ostrove-caicos':
