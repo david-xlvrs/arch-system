@@ -20,8 +20,8 @@ aa.mock.Params = [
 aa.mock.List =
   data: [
     id: 1
-    title: 'Bahnhof Süd, Basel'
-    slug: 'bahnhof-sud'
+    title: 'Bahnhof Süd, Basel (Herzog & de Meuron)'
+    slug: 'bahnhof-sud-basel'
     date: '2010-01-01'
     custom1: 'Residential'
     custom2: 'Realised'
@@ -33,8 +33,8 @@ aa.mock.List =
       url: '/img/data/bahnhof_sud_01.jpg'
   ,
     id: 2
-    title: 'Vorarlberg Museum, Bregenz'
-    slug: 'vorarlberg-museum'
+    title: 'Vorarlberg Museum, Bregenz (Cukrowicz Nachbaur Architekten)'
+    slug: 'vorarlberg-museum-bregenz'
     date: '2012-01-01'
     custom1: 'Museum'
     custom2: 'Realized'
@@ -46,8 +46,8 @@ aa.mock.List =
       url: '/img/data/proj2/vorarlberg_museum_01.jpg'
   ,
     id: 3
-    title: 'MFO Park, Zurich (Oerlikon)'
-    slug: 'mfo-park'
+    title: 'MFO Park, Oerlikon, Zurich (Burckhardt+Partner)'
+    slug: 'mfo-park-oerlikon'
     date: '2009-01-01'
     custom1: 'Public park'
     custom2: 'Realised'
@@ -57,13 +57,52 @@ aa.mock.List =
     image:
       size: [2800, 1875]
       url: '/img/data/proj3/mfo_park_01.jpg'
+  ,
+    id: 4
+    title: 'Kunstmuseum, Winterthur (Gigon/Guyer)'
+    slug: 'kunstmuseum-winterthur'
+    date: '2009-01-01'
+    custom1: 'Museum'
+    custom2: 'Realised'
+    colors:
+      bg: '#697271'
+      content: '#ffffff'
+    image:
+      size: [2800, 4316]
+      url: '/img/data/proj4/kunstmuseum_winterthur_01.jpg'
+  ,
+    id: 5
+    title: 'Literaturmuseum, Marbach (David Chipperfield)'
+    slug: 'literaturmuseum-marbach'
+    date: '2009-01-01'
+    custom1: 'Museum'
+    custom2: 'Realised'
+    colors:
+      bg: '#7d8a6f'
+      content: '#ffffff'
+    image:
+      size: [2800, 1922]
+      url: '/img/data/proj5/literaturmuseum_marbach_01.jpg'
+  ,
+    id: 6
+    title: 'Kunsthaus, Bregenz (Zumthor Atelier)'
+    slug: 'kunsthaus-bregenz'
+    date: '2009-01-01'
+    custom1: 'Kunsthalle'
+    custom2: 'Realised'
+    colors:
+      bg: '#727a72'
+      content: '#ffffff'
+    image:
+      size: [2800, 4315]
+      url: '/img/data/proj6/kunsthaus_bregenz_01.jpg'
 ]
 
 aa.mock.Detail = {
-  'bahnhof-sud':
+  'bahnhof-sud-basel':
     id: 1
-    title: 'Bahnhof Süd, Basel'
-    slug: 'bahnhof-sud'
+    title: 'Bahnhof Süd, Basel (Herzog & de Meuron)'
+    slug: 'bahnhof-sud-basel'
     date: '2010-01-01'
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
     custom1: 'Residential'
@@ -90,7 +129,7 @@ aa.mock.Detail = {
           size: [1922, 2880]
           url: '/img/data/bahnhof_sud_01.jpg'
       ,
-        id: 3
+        id: 2
         projectId: 1
         type: 'image'
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
@@ -105,7 +144,7 @@ aa.mock.Detail = {
           size: [2880, 1922]
           url: '/img/data/bahnhof_sud_02.jpg'
       ,
-        id: 2
+        id: 3
         projectId: 1
         type: 'text'
         title: 'Explikace'
@@ -137,7 +176,7 @@ aa.mock.Detail = {
           bg: '#6C6C6C'
           content: '#ffffff'
       ,
-        id: 2
+        id: 4
         projectId: 1
         type: 'image'
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
@@ -152,7 +191,7 @@ aa.mock.Detail = {
           size: [2880, 1922]
           url: '/img/data/bahnhof_sud_03.jpg'
                ,
-        id: 2
+        id: 5
         projectId: 1
         type: 'image'
         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis magna lorem, quis lobortis.'
@@ -168,10 +207,10 @@ aa.mock.Detail = {
           url: '/img/data/bahnhof_sud_04.jpg'
     ]
   ,
-  'vorarlberg-museum':
+  'vorarlberg-museum-bregenz':
     id: 2
     title: 'Vorarlberg Museum, Bregenz'
-    slug: 'vorarlberg-museum'
+    slug: 'vorarlberg-museum-bregenz'
     date: '2012-01-01'
     custom1: 'Museum'
     custom2: 'Realised'
@@ -351,10 +390,10 @@ aa.mock.Detail = {
         url: '/img/data/proj2/vorarlberg_museum_12.png'
     ]
   ,
-  'mfo-park':
+  'mfo-park-oerlikon':
     id: 3
     title: 'MFO Park, Zurich (Oerlikon)'
-    slug: 'mfo-park'
+    slug: 'mfo-park-oerlikon'
     date: '2009-01-01'
     custom1: 'Public park'
     custom2: 'Realised'
@@ -448,5 +487,231 @@ aa.mock.Detail = {
       fullImage:
         size: [2800, 1860]
         url: '/img/data/proj3/mfo_park_06.jpg'
+    ]
+    ,
+    'kunstmuseum-winterthur':
+    id: 4
+    title: 'Kunstmuseum, Winterthur (Gigon/Guyer)'
+    slug: 'kunstmuseum-winterthur'
+    date: '2009-01-01'
+    custom1: 'Public park'
+    custom2: 'Realised'
+    colors:
+      bg: '#534b3b'
+      content: '#ffffff'
+    image:
+      size: [2800, 1875]
+      url: '/img/data/proj4/kunstmuseum_winterthur_01.jpg'
+    slides: [
+      id: 1
+      projectId: 4
+      type: 'image'
+      title: '1'
+      colors:
+        bg: '#697271'
+        content: '#ffffff'
+      image:
+        size: [2800, 4316]
+        url: '/img/data/proj4/kunstmuseum_winterthur_01.jpg'
+      fullImage:
+        size: [2800, 4316]
+        url: '/img/data/proj4/kunstmuseum_winterthur_01.jpg'
+    ,
+      id: 2
+      projectId: 4
+      type: 'image'
+      title: '2'
+      colors:
+        bg: '#7d8c6d'
+        content: '#ffffff'
+      image:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_02.jpg'
+      fullImage:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_02.jpg'
+    ,
+      id: 3
+      projectId: 4
+      type: 'image'
+      title: '3'
+      colors:
+        bg: '#707b6c'
+        content: '#ffffff'
+      image:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_03.jpg'
+      fullImage:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_03.jpg'
+    ,
+      id: 4
+      projectId: 4
+      type: 'image'
+      title: '4'
+      colors:
+        bg: '#626666'
+        content: '#ffffff'
+      image:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_04.jpg'
+      fullImage:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_04.jpg'
+    ,
+      id: 5
+      projectId: 4
+      type: 'image'
+      title: '5'
+      colors:
+        bg: '#5c656d'
+        content: '#ffffff'
+      image:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_05.jpg'
+      fullImage:
+        size: [2800, 4315]
+        url: '/img/data/proj4/kunstmuseum_winterthur_05.jpg'
+    ,
+    'literaturmuseum-marbach':
+    id: 5
+    title: 'Literaturmuseum, Marbach (David Chipperfield)'
+    slug: 'literaturmuseum-marbach'
+    date: '2009-01-01'
+    custom1: 'Museum'
+    custom2: 'Realised'
+    colors:
+      bg: '#7d8a6f'
+      content: '#ffffff'
+    image:
+      size: [2800, 1922]
+      url: '/img/data/proj5/literaturmuseum_marbach_01.jpg'
+    slides: [
+      id: 1
+      projectId: 5
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#7d8a6f'
+        content: '#ffffff'
+      image:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_01.jpg'
+      fullImage:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_01.jpg'
+    ,
+      id: 2
+      projectId: 5
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#6d6f6e'
+        content: '#ffffff'
+      image:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_02.jpg'
+      fullImage:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_02.jpg'
+    ,
+      id: 3
+      projectId: 5
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#73716b'
+        content: '#ffffff'
+      image:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_03.jpg'
+      fullImage:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_03.jpg'
+    ,
+      id: 4
+      projectId: 5
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#474540'
+        content: '#ffffff'
+      image:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_04.jpg'
+      fullImage:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_04.jpg'
+    ,
+      id: 5
+      projectId: 5
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#8a8986'
+        content: '#ffffff'
+      image:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_05.jpg'
+      fullImage:
+        size: [2800, 1922]
+        url: '/img/data/proj5/literaturmuseum_marbach_05.jpg'
+    ,
+    'literaturmuseum-marbach':
+    id: 6
+    title: 'Kunsthaus, Bregenz (Zumthor Atelier)'
+    slug: 'kunsthaus-bregenz'
+    date: '2009-01-01'
+    custom1: 'Museum'
+    custom2: 'Realised'
+    colors:
+      bg: '#727a72'
+      content: '#ffffff'
+    image:
+      size: [2800, 4315]
+      url: '/img/data/proj6/kunsthaus_bregenz_01.jpg'
+    slides: [
+      id: 1
+      projectId: 6
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#727a72'
+        content: '#ffffff'
+      image:
+        size: [2800, 4315]
+        url: '/img/data/proj6/kunsthaus_bregenz_01.jpg'
+      fullImage:
+        size: [2800, 4315]
+        url: '/img/data/proj6/kunsthaus_bregenz_01.jpg'
+    ,
+      id: 2
+      projectId: 6
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#aeaeaa'
+        content: '#ffffff'
+      image:
+        size: [2800, 1950]
+        url: '/img/data/proj6/kunsthaus_bregenz_02.jpg'
+      fullImage:
+        size: [2800, 1950]
+        url: '/img/data/proj6/kunsthaus_bregenz_02.jpg'
+    ,
+      id: 3
+      projectId: 6
+      type: 'image'
+      title: 'Photo © Benedikt Markel'
+      colors:
+        bg: '#2a313f'
+        content: '#ffffff'
+      image:
+        size: [2800, 4315]
+        url: '/img/data/proj6/kunsthaus_bregenz_03.jpg'
+      fullImage:
+        size: [2800, 4315]
+        url: '/img/data/proj6/kunsthaus_bregenz_03.jpg'
+    ,
     ]
 }
