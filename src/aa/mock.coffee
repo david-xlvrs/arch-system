@@ -297,13 +297,13 @@ aa.mock.Detail = {
       title: '6'
       colors:
         bg: '#d3d3d3'
-        content: '#000000'
+        content: '#ffffff'
       image:
         size: [2800, 1418]
-        url: '/img/data/proj2/vorarlberg_museum_06.png'
+        url: '/img/data/proj2/vorarlberg_museum_06.jpg'
       fullImage:
         size: [2800, 1418]
-        url: '/img/data/proj2/vorarlberg_museum_06.png'
+        url: '/img/data/proj2/vorarlberg_museum_06.jpg'
     ,
       id: 7
       projectId: 2
@@ -311,13 +311,13 @@ aa.mock.Detail = {
       title: '7'
       colors:
         bg: '#d3d3d3'
-        content: '#000000'
+        content: '#ffffff'
       image:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_07.png'
+        url: '/img/data/proj2/vorarlberg_museum_07.jpg'
       fullImage:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_07.png'
+        url: '/img/data/proj2/vorarlberg_museum_07.jpg'
    ,
       id: 8
       projectId: 2
@@ -325,13 +325,13 @@ aa.mock.Detail = {
       title: '8'
       colors:
         bg: '#d3d3d3'
-        content: '#000000'
+        content: '#ffffff'
       image:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_08.png'
+        url: '/img/data/proj2/vorarlberg_museum_08.jpg'
       fullImage:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_08.png'
+        url: '/img/data/proj2/vorarlberg_museum_08.jpg'
     ,
       id: 9
       projectId: 2
@@ -339,13 +339,13 @@ aa.mock.Detail = {
       title: '9'
       colors:
         bg: '#d3d3d3'
-        content: '#000000'
+        content: '#ffffff'
       image:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_09.png'
+        url: '/img/data/proj2/vorarlberg_museum_09.jpg'
       fullImage:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_09.png'
+        url: '/img/data/proj2/vorarlberg_museum_09.jpg'
     ,
       id: 10
       projectId: 2
@@ -353,13 +353,13 @@ aa.mock.Detail = {
       title: '10'
       colors:
         bg: '#d3d3d3'
-        content: '#000000'
+        content: '#ffffff'
       image:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_10.png'
+        url: '/img/data/proj2/vorarlberg_museum_10.jpg'
       fullImage:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_10.png'
+        url: '/img/data/proj2/vorarlberg_museum_10.jpg'
    ,
       id: 11
       projectId: 2
@@ -367,13 +367,13 @@ aa.mock.Detail = {
       title: '11'
       colors:
         bg: '#d3d3d3'
-        content: '#000000'
+        content: '#ffffff'
       image:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_11.png'
+        url: '/img/data/proj2/vorarlberg_museum_11.jpg'
       fullImage:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_11.png'
+        url: '/img/data/proj2/vorarlberg_museum_11.jpg'
     ,
       id: 12
       projectId: 2
@@ -381,13 +381,13 @@ aa.mock.Detail = {
       title: '12'
       colors:
         bg: '#d3d3d3'
-        content: '#000000'
+        content: '#ffffff'
       image:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_12.png'
+        url: '/img/data/proj2/vorarlberg_museum_12.jpg'
       fullImage:
         size: [2800, 2800]
-        url: '/img/data/proj2/vorarlberg_museum_12.png'
+        url: '/img/data/proj2/vorarlberg_museum_12.jpg'
     ]
   ,
   'mfo-park-oerlikon':
