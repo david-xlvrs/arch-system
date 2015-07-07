@@ -657,7 +657,7 @@ aa.mock.Detail = {
         size: [2800, 1922]
         url: '/img/data/proj5/literaturmuseum_marbach_05.jpg'
     ,
-    'literaturmuseum-marbach':
+    'kunsthaus-bregenz':
     id: 6
     title: 'Kunsthaus, Bregenz (Zumthor Atelier)'
     slug: 'kunsthaus-bregenz'
